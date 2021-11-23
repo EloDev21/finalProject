@@ -1,0 +1,38 @@
+{% block title %}Contact us
+{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+	<div class="jumbotron mt-5">
+		<h1>Nouveau message</h1>
+		<p class="lead">Une personne souhaiterait avoir plus d'infos sur les circuits safari et vient de vous laisser un message . </p>
+	</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Sujet :</th>
+					<th scope="col">Prénom(s)</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Email</th>
+			
+					<th scope="col">Message</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">
+						{{contact.subject}}</th>
+						
+
+					<td>{{contact.firstname}}</td>
+					<td>{{contact.lastname}}</td>
+					<td>{{contact.email}}</td>
+				
+					<td>{{contact.message | nl2br}}</td>
+				</tr>
+
+			</tbody>
+		</table>
+	
+{% endblock %}

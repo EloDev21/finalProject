@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter
+{% endblock %}
+
+{% block content %}
+
+	<div
+		class="container mt-5 mb-5 form">
+		{# on peut styler le message d'erreur 
+		 #}
+
+		{% if not formContact.vars.valid %}
+			<div class="alert alert-danger">
+				Erreur dans l'ajout du formulaire !!!
+			</div>
+		{% endif %}
+
+		{% for message in app.flashes('message_envoye') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{{ form_start(formContact) }}
+
+		<div class="row form-control justify-content-center
+				">
+
+			<div class="col">
+				{{form_label(formContact.subject, 'Sujet:')}}
+
+				<div class="col">
+					{{form_widget(formContact.subject)}}
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col">
+					{{form_label(formContact.firstname,'Prénom(s) ')}}
+
+					<div class="col">
+						{{form_widget(formContact.firstname)}}
+					</div>
+					<div class="col">
+						{{form_label(formContact.lastname,'Nom ')}}
+
+						<div class="col">
+							{{form_widget(formContact.lastname)}}
+						</div>
+						<div class="row">
+
+							<div class="col">
+								{{form_label(formContact.email,'Adresse email')}}
+
+								<div class="col">
+									{{form_widget(formContact.email)}}
+								</div>
+								
+										<div class="row">
+
+											<div class="col">
+												{{form_label(formContact.message,'Entrez votre message')}}
+
+												<div class="col">
+													{{form_widget(formContact.message)}}
+												</div>
+												<br>
+												<input class="btn btn-warning  align-center" type="submit" value="Envoyer le mail.">
+
+												{{form_end(formContact)}}
+											</div>
+										{% endblock %}

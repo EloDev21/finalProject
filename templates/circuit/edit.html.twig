@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+{% block title %}Edit a trip{% endblock %}
+{% block content %}
+<main>
+
+	<div class="container mt-5 align-center form">
+		<h1>Modification d'un circuit </h1>
+			{% for message in app.flashes('circuit_edited') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+		{{form_start(formCircuit)}}
+		<div class="row">
+
+			<div class="col">
+				{{form_label(formCircuit.title, 'Titre du circuit')}}
+
+				<div class="col">
+					{{form_widget(formCircuit.title)}}
+				</div>
+			</div><br><br>
+			<div class="row">
+
+				<div class="col">
+					{{form_label(formCircuit.description,'Description du circuit ')}}
+
+					<div class="col">
+						{{form_widget(formCircuit.description)}}
+					</div>
+					<div class="row">
+
+						<div class="col">
+							{{form_label(formCircuit.minidescription,'Mini description du circuit')}}
+
+							<div class="col">
+								{{form_widget(formCircuit.minidescription)}}
+							</div>
+							<div class="row">
+
+								<div class="col">
+									{{form_label(formCircuit.price,'Prix du circuit')}}
+
+									<div class="col">
+										{{form_widget(formCircuit.price)}}
+									</div>
+
+
+								</div>
+							<div class="row">
+
+								<div class="col">
+									{{form_label(formCircuit.picture,'Photo du circuit ')}}
+
+									<div class="col">
+										{{form_widget(formCircuit.picture)}}
+									</div>
+
+                                    <br><br>
+								</div>
+								<div class="row">
+
+									<div class="col">
+										{{form_label(formCircuit.imageFile,'Photo du circuit ')}}
+
+										<div class="col">
+											{{form_widget(formCircuit.imageFile)}}
+										</div>
+
+
+									</div>
+                            
+								<input type="submit" class="btn-btn-success sm" value=" Modifier et sauvegarder">
+								{{form_end(formCircuit)}}
+
+							</div>
+                        </main>
+
+{% endblock %}

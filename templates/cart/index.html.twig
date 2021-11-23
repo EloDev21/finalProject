@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block content %}
+
+<div class="container" style="display:flex;justify-content:center">
+<div>
+<a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
+                        
+<i class="bi bi-trash"></i>Retour aux circuits &#x2714; 
+</a>
+</div>
+<div class="col-8">
+{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
+{% if items | length >0  %}
+    <table class="table table-striped">
+    <thead> 
+        <tr>
+        <th>Titre Circuit </th>
+        <th>Nbre de personnes </th>
+        <th> Prix Unitaire </th>
+        <th>Total  </th>
+        <th> Total </th>
+            {# dernier th vide pour pouvoir mettre des buttons dans le table #}
+        <th>  </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+        <td><img src="{{item.circuit.picture}}" width="50" height="50" center> {{item.circuit.title}} </td>
+        {# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
+        <td> {{item.quantity}} 
+        <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
+        <a href="{{path('cart_remove', {'id':item.circuit.id})}}" class=" btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i>
+        </td>
+        <td> {{item.circuit.price}} </td>
+        {# <td>  {{item.quantity}}</td> #}
+        <td>{{item.circuit.price * item.quantity}} €  </td>
+        <td>
+        <a href="{{path('cart_remove', {'id':item.circuit.id})}}" class=" btn btn-danger btn-sm">
+        
+    <i class="bi bi-trash"></i>Supprimer
+    </a>
+        </td>
+        </tr>
+            
+        {% endfor %}
+        <tfoot>
+            <tr>
+            <td colspan="3">Total :  </td>
+            <td>{{total}}€ </td>
+            <td> 
+                <a href="#"  class="btn btn-success btn-sm">
+                        
+            <i class="bi bi-trash"></i>Paiement &#x2714; 
+            </a>
+        </td>
+            </tr>
+        </tfoot>
+    </tbody>
+
+</table>
+{% else %}
+    
+<h4>Surprise votre panier est vide !!!</h4>
+
+{% endif %}
+</div>
+</div>
+
+{% endblock %}

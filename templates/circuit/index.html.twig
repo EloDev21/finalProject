@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CircuitController!{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+		<h1>Mon super site</h1>
+		<h2 class="lead">A envoyer en FTP</h2>
+
+		<section class="mt-5">
+        <a href="{{ path('circuit_add') }}" class="btn btn-success">
+    <i class="fa fa-plus-square" aria-hidden="true"></i>Ajouter un circuit</a>&nbsp;&nbsp;
+        <div class="row">
+        {% for circuit in circuits %}
+				<div class="col-md-4">
+					<div class="card">
+					<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+
+						{# <img src="{{circuit.picture}}" class="card-img-top" alt="..."/></a> #}
+						{# <img src="{{asset('/images/circuits' ~ circuit.image)}}" class="card-img-top" alt="..."/></a> #}
+						<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top" alt="..." width="100%" height="100%"/></a>
+						<div class="card-body">
+							{# <h5 class="{{circuit.title}}"></h5> #}
+							<h3 class="card-title text-center" >
+							<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+								{{circuit.title}}</a>
+						</h3>
+							<p class="card-text">Article {{circuit.id}}</p>
+						 <p class="card-text">{{circuit.minidescription}}</p> 
+
+						<p class="card-text text-center" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+					
+						 <a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
+						<i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;
+					<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+							 
+						</div>
+					</div>
+				</div>
+
+            {% endfor %}
+			</div>
+		</section>
+
+	</div>
+
+{% endblock %}

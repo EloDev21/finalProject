@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       circuits_img:
+           uri_prefix: /images/circuits
+           upload_destination: '%kernel.project_dir%/public/images/circuits'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
