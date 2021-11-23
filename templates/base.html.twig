@@ -32,9 +32,13 @@
 <a href="{{ path('home') }}" class="active" ><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
 <a href="{{ path('circuit') }}"><i class="fa fa-plane"></i> Circuits</a>
 <a href=""><i class="fa fa-user-plus"></i> Sign IN</a>
+{% if app.user %}
 <a href=""><i class="fa fa-shopping-cart"></i> Panier</a>
-<a href=""><i class="fa fa-quit"></i> Log Out</a>
+
+<a href="logout"><i class="fa fa-quit"></i> Log Out</a>
 <a href=""><i class="fa fa-user"></i> Profil</a>
+{% endif %}
+
 
 <a href="{{path('contact')}}"><i class="fa fa-phone"></i> Contact</a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block content %}
+
+<div class="container" style="display:flex;justify-content:center">
+<div>
+<a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
+                        
+<i class="bi bi-trash"></i>Retour aux circuits &#x2714; 
+</a>
+</div>
+<div class="col-8">
+{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
+{% if profiles | length >0  %}
+    <table class="table table-striped">
+    <thead> 
+        <tr>
+        <th>prénom </th>
+        <th>Nom </th>
+        <th> Téléphone </th>
+        <th>Email  </th>
+        {# <th> Role </th> #}
+            {# dernier th vide pour pouvoir mettre des buttons dans le table #}
+        <th>  </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for profile in profiles %}
+        <tr>
+        <td>{{profile.firstname}} </td>
+        {# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
+      
+        <td> {{profile.lastname}} </td>
+        <td> {{profile.phone}} </td>
+        
+        <td>{{profile.email}}  </td>
+        {# <td>{{profile.roles}}  </td> #}
+      
+        </tr>
+            
+        {% endfor %}
+        <tfoot>
+         
+            <tr>
+          
+                <a href="{{path('pass_edit')}}"  class="btn btn-success btn-sm">
+                        
+            <i class="bi bi-trash"></i>Modifier le password &#x2714; 
+            </a>
+        </td>
+            </tr>
+        </tfoot>
+    </tbody>
+
+</table>
+{% else %}
+    
+<h4>Surprise votre panier est vide !!!</h4>
+
+{% endif %}
+</div>
+</div>
+
+{% endblock %}

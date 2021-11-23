@@ -10,6 +10,13 @@
 <h1>Mon super site</h1>
 <h2 class="lead">A envoyer en FTP</h2>
 
+{% if (is_granted('ROLE_ADMIN') ) %}
+<span style:color="green">Bonjour et Bienvenue Administratuer</span>
+{% endif %}
+{% if app.user %}
+    Bonjour {{app.user.firstname | upper}}
+{% endif %}
+
 
 <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
 

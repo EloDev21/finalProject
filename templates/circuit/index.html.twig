@@ -8,8 +8,10 @@
 		<h2 class="lead">A envoyer en FTP</h2>
 
 		<section class="mt-5">
+		{% if( is_granted('ROLE_EDITOR') ) %}
         <a href="{{ path('circuit_add') }}" class="btn btn-success">
     <i class="fa fa-plus-square" aria-hidden="true"></i>Ajouter un circuit</a>&nbsp;&nbsp;
+	{% endif %}
         <div class="row">
         {% for circuit in circuits %}
 				<div class="col-md-4">
@@ -29,11 +31,13 @@
 						 <p class="card-text">{{circuit.minidescription}}</p> 
 
 						<p class="card-text text-center" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+						{% if( is_granted('ROLE_EDITOR') ) %}
 					
+				
 						 <a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
 						<i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;
 					<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-							 
+				{% endif %}	 
 						</div>
 					</div>
 				</div>
