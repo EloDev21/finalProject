@@ -4,12 +4,8 @@
 {% block content %}
 
 	<div class="container mt-5 align-center">
-		<h1>Formulaire d'ajout  d'une circuit - Sene'Safari</h1>
-			{% for message in app.flashes('circuit_added') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+		<h1>Formulaire d'ajout  d'un circuit - Sene'Safari</h1>
+	
 
 		{{form_start(formCircuit)}}
 		<div class="row">

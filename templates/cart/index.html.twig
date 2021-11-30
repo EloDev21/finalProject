@@ -1,17 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Votre panier{% endblock %}
 
 {% block content %}
 
 <div class="container" style="display:flex;justify-content:center">
-<div>
-<a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
-                        
-<i class="bi bi-trash"></i>Retour aux circuits &#x2714; 
-</a>
-</div>
-<div class="col-8">
+
+<div class="col-6">
 {# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
 {% if items | length >0  %}
     <table class="table table-striped">
@@ -30,7 +25,7 @@
     <tbody>
         {% for item in items %}
         <tr>
-        <td><img src="{{item.circuit.picture}}" width="50" height="50" center> {{item.circuit.title}} </td>
+        <td><img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/> {{item.circuit.title}} </td>
         {# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
         <td> {{item.quantity}} 
         <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
@@ -56,6 +51,11 @@
                 <a href="#"  class="btn btn-success btn-sm">
                         
             <i class="bi bi-trash"></i>Paiement &#x2714; 
+            </a>
+      
+            <a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
+                                    
+            <i class="bi bi-trash"></i>Circuits &#x2714; 
             </a>
         </td>
             </tr>

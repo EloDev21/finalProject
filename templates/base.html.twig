@@ -28,17 +28,21 @@
     <body>
         {# mise en place de la navbar dans le fichier base pour l'avoir sur toutes les templates #}
         
-<div class="topnav" id="myTopnav">
-<a href="{{ path('home') }}" class="active" ><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+<div class="topnav" id="myTopnav"style="background: linear-gradient(75deg, #7f5539, gray),linear-gradient(142deg, transparent, white),linear-gradient(108deg, gray, transparent);font-weight:bold;font-color:black">
+<a href="{{ path('home') }}" class="" ><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
 <a href="{{ path('circuit') }}"><i class="fa fa-plane"></i> Circuits</a>
-<a href=""><i class="fa fa-user-plus"></i> Sign IN</a>
+<a href="{{path('app_login')}}"><i class="fa fa-user-plus"></i> Sign IN</a>
 {% if app.user %}
-<a href=""><i class="fa fa-shopping-cart"></i> Panier</a>
+<a href="{{path('cart_index')}}"><i class="fa fa-shopping-cart"></i> Panier</a>
 
-<a href="logout"><i class="fa fa-quit"></i> Log Out</a>
-<a href=""><i class="fa fa-user"></i> Profil</a>
+<a href="{{path('app_logout')}}"><i class="fa fa-sign-out"></i> Log Out</a>
+<a href="{{path('profile_detail')}}"><i class="fa fa-user"></i> Profil</a>
 {% endif %}
 
+{% if(is_granted('ROLE_EDITOR')) %}
+<a href="{{ path('profiles') }}">
+<i class="fa fa-users"></i>Clients</a>
+{% endif %}
 
 <a href="{{path('contact')}}"><i class="fa fa-phone"></i> Contact</a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DetailController!{% endblock %}
+{% block title %}{{circuit.title}}{% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,8 @@
 
 
     <div class="col md-8">
-        <img src="{{circuit.picture}}" class="card-img-top" alt="...">
+<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top" alt="..." width="100%" height="100%"/></a>  
+    {# <img src="{{circuit.picture}}" class="card-img-top" alt="..."> #}
     </div>
     <div class="col md-4 jumbotron">
         <h1 class="text-center" style="color:wheat">{{circuit.title}}</h1>

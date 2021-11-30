@@ -2,7 +2,7 @@
 {% block title %}{% endblock %}
 {% block content %}
 <div class="container">
-<h1>Modification du profil de :  {{app.firstname}}  {{app.lastname}}</h1>
+<h1>Modification du profil de :  {{app.user.firstname}}  {{app.user.lastname}}</h1>
 {{form(form)}}
 </div>
 

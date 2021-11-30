@@ -35,10 +35,10 @@ class CircuitController extends AbstractController
         $formCircuit = $this->createForm(CircuitType::class, $circuit);
         $formCircuit->handleRequest($request);
         if ($formCircuit->isSubmitted() && $formCircuit->isValid()) {
-            $this->addFlash('circuit_edited', 'Le circuit a été modifié avec succès!!! ');
             $em = $this->getDoctrine()->getManager();
-        
+            
             $em->flush();
+            $this->addFlash('message', 'Le circuit a été modifié avec succès!!! ');
             return $this->redirectToRoute('circuit');
         }
         return $this->render('circuit/edit.html.twig', [
@@ -51,10 +51,10 @@ class CircuitController extends AbstractController
     public function delete($id)
     {
         $circuit = $this->getDoctrine()->getRepository(Circuits::class)->find($id);
-        $this->addFlash('circuit_deleted', 'Circuit supprimé avec succès!!! ');
         $em = $this->getDoctrine()->getManager();
         $em->remove($circuit);
         $em->flush();
+        $this->addFlash('message', 'Circuit supprimé avec succès!!! ');
         return $this->redirectToRoute('circuit');
     }
     /**
@@ -68,10 +68,10 @@ class CircuitController extends AbstractController
         $formCircuit = $this->createForm(CircuitType::class, $circuit);
         $formCircuit->handleRequest($request);
         if ($formCircuit->isSubmitted() && $formCircuit->isValid()) {
-            $this->addFlash('circuit_added', 'Le circuit a été ajouté avec succès! ');
             $em = $this->getDoctrine()->getManager();
             $em->persist($circuit);
             $em->flush();
+            $this->addFlash('message', 'Le circuit a été ajouté avec succès! ');
             return $this->redirectToRoute('circuit');
         }
         return $this->render('circuit/add.html.twig', [

@@ -1,21 +1,29 @@
 {% extends "base.html.twig" %}
 {% block title %}{% endblock %}
 {% block content %}
-<div class="container">
-<h1>Modification du profil  mot de passe de {{app.firstname}}  {{app.lastname}}</h1>
-<form method="post">
-<div class="form-field">
-<label for=""></label>
-<input type="password" id="pass" name="pass" class="form-control">
-</div>
-<div class="form-field">
-    <h1>Confirmation du mot de passe de {{app.firstname}}  {{app.lastname}}</h1>
-<form method="post">
-<div class="form-field">
-<label for=""></label>
-<input type="password" id="pass2" name="pass2" class="form-control">
-<button class="btn blue">Valider</button>
-</div>
-</form>
-</div>
-{% endblock %}
+	<div class="container">
+		{% for message in app.flashes('error' )%}
+			<div class="alert alert-primary" role="alert">
+				{{message}}
+			</div>
+
+		{% endfor %}
+		<div class="passform">
+			<form method="POST">
+
+				<div class="form-field">
+					<label for="">Modification du mot de passe de</label>
+					<input type="password" id="pass" name="pass" class="form-control">
+				</div>
+		
+
+
+					<div class="form-field">
+						<label for="">Confirmation du mot de passe</label>
+						<input type="password" id="pass2" name="pass2" class="form-control">
+						<button class="btn btn-primary">Sauvegarder</button>
+					</div>
+                </form>
+				</div>
+		</div>
+	{% endblock %}
