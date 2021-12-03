@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Merriweather&family=Quicksand&display=swap');
+.card {
+  
+
+    transition: transform .2s; /* Animation */
+ 
+  }
+  
+  .card:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    box-shadow: 1px 8px 20px gold;
+    /* -webkit-transition:  box-shadow .6s  */
+  }
+
+h1,h3{
+    font-family: 'Chakra Petch', sans-serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'Merriweather', serif;
+font-family: 'Quicksand', sans-serif;
+}

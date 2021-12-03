@@ -21,11 +21,13 @@
 				{{ message }}
 			</div>
 		{% endfor %}
+		<div class="container mt-5 mb-5 " >
+<div class ="row  "style="display:flex;justify-content:center;">
+<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
+
 		{{ form_start(formContact) }}
 
-		<div class="row form-control justify-content-center
-				">
-
+			<h1 class="h3 mb-3 font-weight-normal text-center"><strong>Prendre contact</strong></h1>
 			<div class="col">
 				{{form_label(formContact.subject, 'Sujet:')}}
 
@@ -65,8 +67,14 @@
 													{{form_widget(formContact.message)}}
 												</div>
 												<br>
+													<div class ="row" style="justify-content:center;display:flex">
+<div class ="col-md-6" style="justify-content:center;display:flex">
+
 												<input class="btn btn-warning  align-center" type="submit" value="Envoyer le mail.">
 
 												{{form_end(formContact)}}
 											</div>
+											</div>
+											</div>
+											
 										{% endblock %}

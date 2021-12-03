@@ -3,21 +3,36 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block content %}
-<div class="container mt-5 mb-5 form-control">
+<div class="container mt-5 mb-5">
+<div class ="row  "style="display:flex;justify-content:center;">
+<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
 
-    <h1>S'incrire</h1>
+    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Formulaire d'inscription<strong></h1>
+    <h6> Déjà client, <a href="{{path('app_login')}}">Se connecter</a> ?</h6>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.firstname, {
+            label: 'Prénom(s)'
+        }) }}
+        {{ form_row(registrationForm.lastname, {
+            label: 'Nom'
+        }) }}
+        {{ form_row(registrationForm.phone, {
+            label: 'Téléphone'
+        }) }}
+        {{ form_row(registrationForm.email, {
+            label: 'Email'
+        }) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn btn-success mt-2">Register</button>
+        <div class ="row" style="justify-content:center;display:flex">
+        <div class ="col-md-6" style="justify-content:center;display:flex">
+        <button type="submit" class="btn btn-success mt-2">S'inscrire</button>
+    </div>  </div>
     {{ form_end(registrationForm) }}
+    </div>
+    </div>
     </div>
 {% endblock %}

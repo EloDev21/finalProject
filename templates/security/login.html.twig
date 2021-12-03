@@ -3,20 +3,25 @@
 {% block title %}Se connecter {% endblock %}
 
 {% block content %}
-<div class="container mt-5 mb-5 form-control">
-<form method="post">
+<div class="container mt-5 mb-5 " >
+<div class ="row  "style="display:flex;justify-content:center;">
+<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
+
+<form method="post" >
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
-            Vous êtes ,connecté avec l'email : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            Vous êtes déjà connecté avec l'email suivant : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Connexion à votre espace personnel!<strong></h1>
-    <label for="inputEmail">Email</label>
+    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
+    <h6> Envie de nous rejoindre ?<a href="{{path('app_register')}}">Créer un compte</a></h6>
+    <h4>Connectez-vous pour découvrir toutes nos fonctionnalités.</h4>
+    <label for="inputEmail">Email</label><br>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
@@ -35,10 +40,23 @@
             </label>
         </div>
     #}
+<br>&nbsp;
+<div class ="row" style="justify-content:center;display:flex">
+<div class ="col-md-6" style="justify-content:center;display:flex">
 
-    <button class="mt-2 btn btn-lg btn-primary btn-center" type="submit">
+    <button class="mt-2 btn btn-md btn-primary center" type="submit">
         Se connecter
     </button>
+</div>
+</div>
+
+
+
+  
+
+    
 </form>
+</div>
+</div>
 </div>
 {% endblock %}

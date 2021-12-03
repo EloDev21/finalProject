@@ -10,12 +10,12 @@
 <div class="container mb-5">
 
 <h2 class="lead">A envoyer en FTP</h2>
-
+{# 
 {% if (is_granted('ROLE_ADMIN') ) %}
 <span style:color="green">Bonjour et Bienvenue Administratuer</span>
-{% endif %}
+{% endif %} #}
 {% if app.user %}
-    Bonjour {{app.user.firstname | upper}}
+Bonjour<strong> {{app.user.firstname | upper}}{{app.user.lastname | upper}}</strong>
 {% endif %}
 
 
