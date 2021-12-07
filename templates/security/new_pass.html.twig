@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau mot de passe {% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5 " >
+<div class ="row  "style="display:flex;justify-content:center;">
+<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
+
+<form method="post" >
+
+
+    
+
+    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
+ 
+    <h4>Entrez votre mot de passe.</h4>
+        <label> Mot de passe
+        </label>   
+        <input type="password" name="password" id="pass"> Entrez votre nouveau mot de passe
+               <label>
+            <input type="hidden" name="token" value="{{token}}">
+        </label>
+    <button>Valider</button>
+
+
+
+    
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

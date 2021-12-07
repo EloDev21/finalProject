@@ -3,6 +3,7 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block content %}
+<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Inscription</h1>
 <div class="container mt-5 mb-5">
 <div class ="row  "style="display:flex;justify-content:center;">
 <div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
@@ -24,12 +25,13 @@
             label: 'Email'
         }) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.agreeTerms,{
+        label: 'Accepter les CGU'}) }}
         <div class ="row" style="justify-content:center;display:flex">
         <div class ="col-md-6" style="justify-content:center;display:flex">
-        <button type="submit" class="btn btn-success mt-2">S'inscrire</button>
+        <button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
     </div>  </div>
     {{ form_end(registrationForm) }}
     </div>
