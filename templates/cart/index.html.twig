@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Votre panier{% endblock %}
+{% block css %}
+<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+
+{#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block js %}
+{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock %}
 
 {% block content %}
+
 
 <div class="container mt-5 mb-5" style="display:flex;justify-content:center">
 
@@ -33,7 +47,7 @@ Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</s
         <td><img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/> {{item.circuit.title}} </td>
         {# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
         <td> {{item.quantity}} 
-        <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
+        <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" me-1 btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> 
         <a href="{{path('cart_remove', {'id':item.circuit.id})}}" class=" btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i>
         </td>
         <td> {{item.circuit.price}} </td>

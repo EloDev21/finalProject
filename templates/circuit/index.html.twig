@@ -1,68 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Circuits SENE'Safari{% endblock %}
+{% block title %}Circuits SENE'Safari
+{% endblock %}
 {% block css %}
-<link href="{{ asset('assets/css/circuit.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+	<link href="{{ asset('assets/css/circuit.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
 
 
-<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nos circuits</h1>
-<div class="container">
-<h2 class ="text-center"> Liste de tous nos circuits actuellement disponibles</h2>
-{% for message in app.flashes('message' )%}
+	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nos circuits</h1>
+	<div class="container">
+		<h2 class="text-center">
+			Liste de tous nos circuits actuellement disponibles</h2>
+		{% for message in app.flashes('message' )%}
 
-<div class="alert alert-primary" role="alert">
-{{message}}
-</div>
-{% endfor %}
+			<div class="alert alert-primary" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
 
 
-<section class="mt-5">
-{% if( is_granted('ROLE_EDITOR') ) %}
-<a href="{{ path('circuit_add') }}" class="btn btn-success">
-<i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter un circuit</a>&nbsp;&nbsp;
-{% endif %}
-<div class="container">
-<div class="row">
-        {% for circuit in circuits %}
-				<div class="col-md-4">
-					<div class="card" style="margin:30px">
-					<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+		<section class="mt-5">
+			{% if( is_granted('ROLE_EDITOR') ) %}
+				<a href="{{ path('circuit_add') }}" class="btn btn-success">
+					<i class="fa fa-plus-square" aria-hidden="true"></i>
+					Ajouter un circuit</a>&nbsp;&nbsp;
+			{% endif %}
 
-						{# <img src="{{circuit.picture}}" class="card-img-top" alt="..."/></a> #}
-						{# <img src="{{asset('/images/circuits' ~ circuit.image)}}" class="card-img-top" alt="..."/></a> #}
-						<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top" alt="..." width="100%" height="250px"/></a>
-						<div class="card-body">
-							{# <h5 class="{{circuit.title}}"></h5> #}
-							<h3 class="card-title text-center" >
-							<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
-								{{circuit.title}}</a>
-						</h3>
-							{# <p class="card-text">Article {{circuit.id}}</p> #}
-						 <p class="card-text">{{circuit.minidescription}}</p> 
+			<div class="container-fluid">
+		
+				<div class="row d-inline-flex">
+					<!-- Gallery Item 1 -->
+					{% for circuit in circuits %}
+						<div class="col mt-2 mb-4 ">
+							<div class="card h-100">
+								<img class="card-img-top"  src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px"/>
+								<h4 class="card-title text-center">
+									<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+										{{circuit.title}}</a>
+								</h4>
 
-						<p class="card-text text-center" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
-					<small style="font-style:italic;color:red"> Tarif par nuit et par personne.<br>Petit déjeuner inclus dans la formule.</small><br>	
-						{% if( is_granted('ROLE_EDITOR') ) %}
-					
-				
-						 <a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
-						<i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;
-					<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-				{% endif %}	 
+								<p class="card-text text-center"style="height:200px"/>{{circuit.minidescription}}</p>
+								<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+							
+								<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						 </p>
+
+							{% if( is_granted('ROLE_EDITOR') ) %}
+
+
+								<a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
+									<i class="fa fa-pencil" aria-hidden="true"></i>
+								</a>&nbsp;&nbsp;
+								<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
+									<i class="fa fa-trash" aria-hidden="true"></i>
+								</a>
+							{% endif %}
 						</div>
+							</div>
+						{% endfor %}
 					</div>
 				</div>
 
-            {% endfor %}
-			</div>
-			</div>
-		</section>
-
+		</div>
 	</div>
-	</div>
-
-{% endblock %}
+</section></div></div>{% endblock %}

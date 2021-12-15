@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Merriweather&family=Quicksand&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     background-image: url(https://viago.ca/wp-content/uploads/2017/09/Quoi-amener-en-safari.jpg);
     background-repeat: no-repeat;
@@ -46,4 +52,8 @@ body{
 .carousel-item img {
     width: 100%;
     height: auto;
+}
+.rowfoot{
+    display: flex;
+    justify-content: space-between;
 }

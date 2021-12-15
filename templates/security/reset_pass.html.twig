@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Mot de passe oublié {% endblock %}
+{% block css %}
 
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+{% endblock %}
 {% block content %}
 <div class="container mt-5 mb-5 " >
 <div class ="row  "style="display:flex;justify-content:center;">

@@ -1,5 +1,10 @@
 {% extends "base.html.twig" %}
 {% block title %}{% endblock %}
+{% block css %}
+
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+{% endblock %}
 {% block content %}
 	<div class="container">
 		{% for message in app.flashes('error' )%}

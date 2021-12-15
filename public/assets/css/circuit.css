@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Merriweather&family=Quicksand&display=swap');
+*{
+  box-sizing: border-box;
+}
 .card {
   
 
@@ -11,10 +14,68 @@
     box-shadow: 1px 8px 20px gold;
     /* -webkit-transition:  box-shadow .6s  */
   }
+  .price{
+    color: goldenrod;
+  }
 
 h1,h3{
     font-family: 'Chakra Petch', sans-serif;
 font-family: 'Indie Flower', cursive;
 font-family: 'Merriweather', serif;
 font-family: 'Quicksand', sans-serif;
+}
+@media  screen and (max-width:600px) {
+  /* css pour ecran de - de 600px  */
+  .row{
+    display: flex;
+    flex:wrap;
+
+    /* col l'une au dessus de l'autre */
+  }
+  .row .col{
+    flex:1;
+    
+    min-width: 50%;
+    margin: 10px;
+  }
+  
+  p{
+   
+    font-size: larger;
+    font-weight: bold;
+  }
+  
+  
+}
+@media screen and (min-width: 602px) and (max-width: 990px) {
+
+  /* css pour ecran de 600px minimum */
+  .row{
+    display: flex;
+    flex:wrap;
+    /* col l'une au dessus de l'autre */
+  }
+  .row .col{
+    flex:1;
+    min-width: 45%;
+    margin: 10px;
+  }
+  
+  
+}
+
+@media screen and (min-width: 993px) and (max-width: 1500px) {
+
+  /* css pour ecran de 600px minimum */
+  .row{
+    display: flex;
+    flex:wrap;
+    /* col l'une au dessus de l'autre */
+  }
+  .row .col{
+    flex:1;
+    min-width: 25%;
+    margin: 10px;
+  }
+
 }

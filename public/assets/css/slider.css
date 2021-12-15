@@ -1,0 +1,28 @@
+
+.item img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;}
+/* .item img {
+    width: auto;
+
+    height: 225px;
+    
+    max-height: 225px;
+    } */
+    /* @media (max-width: 688px) {
+        .carousel-item>img {
+            max-height: 300px;
+        } */
+/*     
+    .item img {
+        float: left;
+        width:  100px;
+        height: 100px;
+        object-fit: cover;
+    } */
+    /* img{
+    width:100px;
+    height:100px;
+ 
+ /*Scale down will take the necessary specified space that is 100px x 100px without stretching the image*/

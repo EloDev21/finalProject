@@ -16,42 +16,92 @@
         <link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            {#{{ encore_entry_link_tags('app') }}#}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
         {% block js %}
-    <script src="{{  asset('assets/js/navbar.js') }}" type="text/javascript"></script>
+    {# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
     
     
     <body>
         {# mise en place de la navbar dans le fichier base pour l'avoir sur toutes les templates #}
-        
-<div class="topnav" id="myTopnav"style="background: linear-gradient(75deg, #7f5539, gray),linear-gradient(142deg, transparent, white),linear-gradient(108deg, gray, transparent);font-weight:bold;font-color:black">
-<a href="{{ path('home') }}" class="" ><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
-<a href="{{ path('circuit') }}"><i class="fa fa-plane"></i> Circuits</a>
-<a href="{{path('app_login')}}"><i class="fa fa-user-plus"></i> Sign IN</a>
-{% if app.user %}
-<a href="{{path('cart_index')}}"><i class="fa fa-shopping-cart"></i> Panier</a>
-
-<a href="{{path('app_logout')}}"><i class="fa fa-sign-out"></i> Log Out</a>
-<a href="{{path('profile_detail')}}"><i class="fa fa-user"></i> Profil</a>
-{% endif %}
-
+      
+   
+        <nav class="navbar navbar-light bg-transparent navbar-expand-lg">
+      <a class="navbar-brand" href="{{path('home')}}">
+    <img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png"  alt="..."/></a> 
+  </a> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="margin-left: auto; margin-right: 0;">
+          <li class="nav-item active me-3">
+            {# <a class="nav-link" href="#">Accueil</a> #}
+          <a href="{{ path('home') }}" class="" ><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+          </li>
+          <li class="nav-item me-3">
+            {# <a class="nav-link" href="#">A propos</a> #}
+          <a href="{{ path('circuit') }}"><i class="fa fa-plane"></i> Circuits</a>
+          </li>
+          <li class="nav-item me-3">
+            {# <a class="nav-link" href="#">Services</a> #}
+          <a href="{{path('app_login')}}"><i class="fa fa-user-plus"></i> Sign IN</a>
+          </li>
+        {# <a class="nav-link" href="#">Contact</a> #}
+        {% if app.user %}
+        <li class="nav-item me-3">
+      <a href="{{path('cart_index')}}"><i class="fa fa-shopping-cart"></i> Panier</a>
+    </li>
+    <li class="nav-item me-3">
+  <a href="{{path('profile_detail')}}"><i class="fa fa-user"></i> Profil</a>
+</li>
+<li class="nav-item me-3">
 {% if(is_granted('ROLE_EDITOR')) %}
 <a href="{{ path('profiles') }}">
 <i class="fa fa-users"></i>Clients</a>
+<li class="nav-item me-3">
+<a href="{{path('app_logout')}}"><i class="fa fa-sign-out"></i> Log Out</a>
+</li>
 {% endif %}
-
+</li>
+<li class="nav-item me-3">
 <a href="{{path('contact')}}"><i class="fa fa-phone"></i> Contact</a>
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars"></i>
-</a>
-</div>
-        {% block content %}
-        {% include('layouts/navbar.html.twig') %}
+</li>
+</div> 
+{% endif %}
+         
+        </ul>
+      </div>
+    </nav>
 
-    {% endblock %}
+
+        {% block content %}
+    
+     {% endblock %} 
+     
+<footer class="footer mt-auto py-3 bg-light">
+<div class="container">
+<div class=" row rowfoot">
+<div class="col-3">
+  <span class="text-muted">Place sticky footer content here.</span>
+</div>
+<div class="col-3">
+  <span class="text-muted">2021 SENE'Safari</span>
+</div>
+<div class="col-3">
+  <span class="text-muted">Place sticky footer content here.</span>
+</div>
+</div>
+</div>
+
+</footer>
+
     </body>
 </html>

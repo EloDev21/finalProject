@@ -78,7 +78,7 @@ class SecurityController extends AbstractController
             $url = $this->generateUrl('reset_pass', ['token' => $token], 
             UrlGeneratorInterface ::ABSOLUTE_URL);
             //    on envoie le mail
-            $message = (new \Swift_Message('Mot de passe oublié '))
+            $message = (new \Swift_Message('Mot de passe oublié ? Réinitialisation !  '))
                 ->setFrom('senesafari@symf.com')
                 ->setTo($user->getEmail())
                 //   on peut mettre un message direct comme on peut use un template
