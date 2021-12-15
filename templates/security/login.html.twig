@@ -22,18 +22,18 @@
 <div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
 
 <form method="post" >
+<h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
         <div class="mb-3">
-            Vous êtes déjà connecté avec l'email suivant : {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            Vous êtes déjà connecté avec l'email suivant : {{ app.user.username }}, <a href="{{ path('app_logout') }}"style="color:red;"><br> Se déconnecter?</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
-    <h6> Envie de nous rejoindre ?<a href="{{path('app_register')}}">Créer un compte</a></h6>
+    <h6> Envie de nous rejoindre ? <a href="{{path('app_register')}}" style="color:blue;text-decoration:underline"> Créer un compte</a></h6>
     <h4>Connectez-vous pour découvrir toutes nos fonctionnalités.</h4>
     <label for="inputEmail">Email</label><br>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
@@ -62,7 +62,7 @@
         Se connecter
     </button>
 </div>
-<h6> <a href="{{path('reset_pass')}}">Mot de passe oublié ?</a></h6>
+<h6> <a href="{{path('reset_pass')}} "style="color:blue;text-decoration:underline">Mot de passe oublié ?</a></h6>
 </div>
 
 

@@ -83,7 +83,7 @@ class SecurityController extends AbstractController
                 ->setTo($user->getEmail())
                 //   on peut mettre un message direct comme on peut use un template
                 //   text/html pour le formay du body
-                ->setBody(`<p>Bonjour<br><br> Une demande de réinitialisation de votre mot de passe vient d'etre effectuée pour le site SENE'Safari.` . $url, 'text.html');
+                ->setBody('<p>Bonjour<br><br> Une demande de réinitialisation de votre mot de passe vient detre effectuée pour le site SENESafari.' . $url, 'text.html');
             $mailer->send($message);
             // on rajoute kle flash message
             $this->addFlash('message', 'Un mail de réinitialisation vient de vous etree envoyé');

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement échoué{% endblock %}
+{% block css %}
+
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+{% endblock %}
+{% block content %}
+{{parent()}}
+<h1>Sorry for your attempted order!</h1>
+    <p>
+      We would appreciate your business!
+     But your payùment failed &#x1F625;
+    <a href="mailto:failure@example.com">orders@example.com</a>.
+    </p>
+{% endblock %}

@@ -9,37 +9,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use Stripe\Stripe;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-class CartController extends AbstractController
+
+
+class PaymentController extends AbstractController
 {
     /**
-     * @Route("/panier", name="cart_index")
+     * @Route("/payment", name="payment")
      */
-    public function index(CartService $cartService)
+    public function index(CartService $cartService): Response
     {
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
-        return $this->render('cart/index.html.twig', [
+       
+        return $this->render('payment/index.html.twig', [
+        
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal()
-
         ]);
-    }
-    /**
-     * @Route("/panier/add/{id}", name="cart_add")
-     */
-    public function add($id, CartService $cartService)
-    {
-
-        $cartService->add($id);
-        return $this->redirectToRoute("cart_index");
-    }
-    /**
-     * @Route("/panier/remove/{id}", name="cart_remove")
-     */
-    public function remove($id, CartService $cartService)
-    {
-        $cartService->remove($id);
-        return $this->redirectToRoute("cart_index");
     }
     /**
      * @Route("/checkout", name="checkout")
@@ -53,9 +39,9 @@ class CartController extends AbstractController
               'price_data' => [
                 'currency' => 'eur',
                 'product_data' => [
-                  'name' => 'Commande chez SENESafari',
+                  'name' => 'T-shirt',
                 ],
-                'unit_amount' => 'Prix total :' .$commande*100,
+                'unit_amount' => $commande*100,
               ],
               'quantity' => 1,
             ]
@@ -69,7 +55,6 @@ class CartController extends AbstractController
         return $this->redirect($session->url,303);
         
     }
-
     /**
      * @Route("/succes-url", name="success_url")
      */

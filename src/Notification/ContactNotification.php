@@ -26,6 +26,7 @@ class ContactNotification
 
     public function notify(Contact $contact)
     {
+        // objet du mail
         $message = (new \Swift_Message('Nouveau message from Safari Website '))
             ->setFrom(['noreply@symf.com' => 'Elo Loel'])
             //   ->setFrom($contact->getEmail())

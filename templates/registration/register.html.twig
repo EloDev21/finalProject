@@ -14,7 +14,7 @@
 <div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
 
     <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Formulaire d'inscription<strong></h1>
-    <h6> Déjà client, <a href="{{path('app_login')}}">Se connecter</a> ?</h6>
+    <h6> Déjà client, <a href="{{path('app_login')}}" style="color:blue;text-decoration:underline">Se connecter</a> ?</h6>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.firstname, {

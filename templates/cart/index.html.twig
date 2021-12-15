@@ -17,15 +17,20 @@
 
 {% block content %}
 
-
+<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Votre panier</h1>
 <div class="container mt-5 mb-5" style="display:flex;justify-content:center">
 
 <div class="col-6"  style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-{% if app.user %}
+{# {% if app.user %}
 Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
+{% endif %} #}
+ 
+{% if (is_granted('ROLE_ADMIN') ) %}
+<h3>
+<span style:color="green">Bonjour et Bienvenue  {{app.user.firstname}}  {{app.user.lastname | upper}} </span>
+</h3>
 {% endif %}
-
-<h2 class="lead"> Récaputilatif de votre commande</h2>
+<h5 class="lead" style="text-decoration:underline dotted"> Récaputilatif de votre commande</h5>
 {# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
 {% if items | length >0  %}
     <table class="table table-striped">
@@ -61,17 +66,16 @@ Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</s
         {% endfor %}
         <tfoot>
             <tr>
-            <td colspan="3">Total : {{total}}€ </td>
+            <td colspan="3"><strong>Total du panier : {{total}}€</strong> </td>
          
             <td> 
-                <a href="#"  class="btn btn-success btn-sm">
+                <a href="{{path('checkout')}}"  class="btn btn-success btn-sm">
                         
             <i class="bi bi-trash"></i>Paiement &#x2714; 
             </a>
       
             <a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
-                                    
-            <i class="bi bi-trash"></i>Circuits &#x2714; 
+        <i class="bi bi-arrow-bar-left"></i><i class="bi bi-arrow-return-left"></i>Circuits &#x2714; 
             </a>
         </td>
             </tr>
@@ -81,7 +85,10 @@ Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</s
 </table>
 {% else %}
     
-<h4>Surprise votre panier est vide !!!</h4>
+<h4>Votre panier est vide !!! Merci de retournex aux  <a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
+                                    
+<i class="bi bi-trash"></i>Circuits &#x2714; 
+</a></h4>
 
 {% endif %}
 </div>

@@ -36,7 +36,10 @@
 					{% for circuit in circuits %}
 						<div class="col mt-2 mb-4 ">
 							<div class="card h-100">
-								<img class="card-img-top"  src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px"/>
+							<a href="{{ path('detail', {id:circuit.id})}}" >
+									
+							<img class="card-img-top"  src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px" />
+								</a>
 								<h4 class="card-title text-center">
 									<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
 										{{circuit.title}}</a>
@@ -45,20 +48,26 @@
 								<p class="card-text text-center"style="height:200px"/>{{circuit.minidescription}}</p>
 								<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
 							
-								<p class="card-text">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						 </p>
+								
 
 							{% if( is_granted('ROLE_EDITOR') ) %}
 
-
+							<div class="row d-flex justify-content-center">
+							<div class="col-4">
+							
 								<a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
 									<i class="fa fa-pencil" aria-hidden="true"></i>
 								</a>&nbsp;&nbsp;
 								<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
 									<i class="fa fa-trash" aria-hidden="true"></i>
 								</a>
+							</div>
+							</div>
+
 							{% endif %}
+							<p class="card-text">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						 </p>
 						</div>
 							</div>
 						{% endfor %}
