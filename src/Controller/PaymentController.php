@@ -27,34 +27,34 @@ class PaymentController extends AbstractController
             'total' => $cartService->getTotal()
         ]);
     }
-    /**
-     * @Route("/checkout", name="checkout")
-     */
-    public function checkout(CartService $cartService ): Response
-    {
-        $commande = $cartService->getTotal();
-        \Stripe\Stripe::setApiKey('sk_test_51K6vbcEZDVyiBY3Z3G7d0fYvGF4aH8nXJAlQRaOpvClbtNt18kPPAdQloWAliIrYbCHdBXgmTGKMllsZNW0CNFs000nevPwgwY');
-        $session = \Stripe\Checkout\Session::create([
-            'line_items' => [[
-              'price_data' => [
-                'currency' => 'eur',
-                'product_data' => [
-                  'name' => 'T-shirt',
-                ],
-                'unit_amount' => $commande*100,
-              ],
-              'quantity' => 1,
-            ]
-        ],
+    // /**
+    //  * @Route("/checkout", name="checkout")
+    //  */
+    // public function checkout(CartService $cartService ): Response
+    // {
+    //     $commande = $cartService->getTotal();
+    //     \Stripe\Stripe::setApiKey('sk_test_51K6vbcEZDVyiBY3Z3G7d0fYvGF4aH8nXJAlQRaOpvClbtNt18kPPAdQloWAliIrYbCHdBXgmTGKMllsZNW0CNFs000nevPwgwY');
+    //     $session = \Stripe\Checkout\Session::create([
+    //         'line_items' => [[
+    //           'price_data' => [
+    //             'currency' => 'eur',
+    //             'product_data' => [
+    //               'name' => 'T-shirt',
+    //             ],
+    //             'unit_amount' => $commande*100,
+    //           ],
+    //           'quantity' => 1,
+    //         ]
+    //     ],
             
-        'mode'                 => 'payment',
-        'success_url'          => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
-        'cancel_url'           => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
-          ]);
+    //     'mode'                 => 'payment',
+    //     'success_url'          => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+    //     'cancel_url'           => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+    //       ]);
      
-        return $this->redirect($session->url,303);
+    //     return $this->redirect($session->url,303);
         
-    }
+    // }
     /**
      * @Route("/succes-url", name="success_url")
      */

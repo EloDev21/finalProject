@@ -1,50 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil de {{app.user.firstname}} {{app.user.lastname}}{% endblock %}
+{% block title %}Profil de
+	{{app.user.firstname}}
+	{{app.user.lastname}}
+{% endblock %}
 {% block css %}
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
+	<link
+	href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 
 {#{{ encore_entry_link_tags('app') }}#}
 {% endblock %}
 
 {% block js %}
-{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 {% endblock %}
 {% block content %}
 
+	<div class="container-fluid">
+		{% for message in app.flashes('message' )%}
+			<div class="col-xs4">
+				<div class="col-p3 my-2 rounded-2 success">{{message}}</div>
 
-    {% for message in app.flashes('message' )%}
-    <div class="col-xs4">
-    <div class="col-p3 my-2 rounded-2 success">{{message}}</div>
-
-    </div>
-
-      
-    {% endfor %}
-  <h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8"> Profil de {{app.user.firstname}} {{app.user.lastname}}</h1>
-  
-    <div class="container mt-5 mb-5 " >
-    <div class ="row  "style="display:flex;justify-content:center;">
-    <div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
-      <div class="grix xs4 container">
-  <div class="col-xs1">Prénom : {{app.user.firstname}}</div>
-  <div class="col-xs1">Nom : {{app.user.lastname}}</div>
-  <div class="col-xs1">Email: {{app.user.email}}</div>
-  <div class="col-xs1">Téléphone: {{app.user.phone}}</div><br>
-<div class="col-xs3"><a href="{{path('profile_edit')}}" class="btn btn-primary btn-md  ">Modifier le profil</a></div><br>
-<div class="col-xs3"><a href="{{path('pass_edit')}}"class="btn btn-primary btn-md ">Modifier le mot de passe</a></div>
+			</div>
 
 
-  </div>
+		{% endfor %}
+		<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8">
+			Profil de
+			{{app.user.firstname}}
+			{{app.user.lastname}}</h1>
 
-    </main>
+		<div class="container mt-5 mb-5 ">
+			<div class="row  " style="display:flex;justify-content:center;">
+				<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+					<div class="grix xs4 container">
+						<div class="col-xs1">Prénom :
+							{{app.user.firstname}}</div>
+						<div class="col-xs1">Nom :
+							{{app.user.lastname}}</div>
+						<div class="col-xs1">Email:
+							{{app.user.email}}</div>
+						<div class="col-xs1">Téléphone:
+							{{app.user.phone}}</div><br>
+						<div class="col-xs3">
+							<a href="{{path('profile_edit')}}" class="btn btn-primary btn-md  ">Modifier le profil</a>
+						</div><br>
+						<div class="col-xs3">
+							<a href="{{path('pass_edit')}}" class="btn btn-primary btn-md ">Modifier le mot de passe</a>
+						</div>
 
-            
 
- 
+					</div>
 
-{% endblock %}
+				</main>
+      </div>
+      </div>
+      </div>
+      </div>
+
+			{% endblock %}

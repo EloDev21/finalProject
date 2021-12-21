@@ -55,7 +55,7 @@ class CartController extends AbstractController
                 'product_data' => [
                   'name' => 'Commande chez SENESafari',
                 ],
-                'unit_amount' => 'Prix total :' .$commande*100,
+                'unit_amount' =>  $commande*100,
               ],
               'quantity' => 1,
             ]
