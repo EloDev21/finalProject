@@ -2,16 +2,12 @@
 {% block title %}Edit a trip{% endblock %}
 {% block content %}
 <main>
+<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Modification  d'un circuit - Sene'Safari</h1>
+<div class="container mt-5 mb-5 ">
+	<div class="row  " style="display:flex;justify-content:center;">
+		<div class="col-6 " style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
-	<div class="container mt-5 align-center form">
-		<h1>Modification d'un circuit </h1>
-			{# {% for message in app.flashes('message' )%}
-			<div class="col-xs4">
-			<div class="col-p3 my-2 rounded-2 success">{{message}}</div>
-		
-			</div>
-			  
-			{% endfor %} #}
+	
 
 		{{form_start(formCircuit)}}
 		<div class="row">
@@ -53,7 +49,7 @@
 							<div class="row">
 
 								<div class="col">
-									{{form_label(formCircuit.picture,'Photo du circuit ')}}
+									{{form_label(formCircuit.picture,'Photo hébérgement ')}}
 
 									<div class="col">
 										{{form_widget(formCircuit.picture)}}
@@ -73,10 +69,14 @@
 
 									</div>
                             
+								</div>
+								</div>
+							</div>
 								<input type="submit" class="btn-btn-success sm" value=" Modifier et sauvegarder">
 								{{form_end(formCircuit)}}
-
+								
 							</div>
-                        </main>
+							</div>
+							</main>
 
 {% endblock %}

@@ -62,18 +62,27 @@ class CircuitController extends AbstractController
      */
     public function add(Request $request)
     {
-
+        // creation d'un nouveau objet circuit grace à l'entité Circuits de notre base de donnees
       $circuit = new Circuits;
  
+    //   creation d'un form grace au formtype importée (circuit type)
         $formCircuit = $this->createForm(CircuitType::class, $circuit);
+        // lance la requete grace à httpfoundation Request
         $formCircuit->handleRequest($request);
+        // si le circuit est valide est est soumis
         if ($formCircuit->isSubmitted() && $formCircuit->isValid()) {
+            // on utilise doctrine pour acceder à l'entité
             $em = $this->getDoctrine()->getManager();
+            // on prépare l'ajout
             $em->persist($circuit);
+            // on l'ajoute à la base
             $em->flush();
+
+            // on redirige l'utilisateur vers la page circuit avec un message de confirmation de l'ajout du circuit
             $this->addFlash('message', 'Le circuit a été ajouté avec succès! ');
             return $this->redirectToRoute('circuit');
         }
+        // sinon on redirige vers le formulaire d'ajout et on récupere notre form pour pouvoir l'utilisier dans la vue twig 
         return $this->render('circuit/add.html.twig', [
             'formCircuit' => $formCircuit->createView()
         ]);

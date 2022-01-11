@@ -27,6 +27,23 @@ class ProfileController extends AbstractController
            
         ]);
     }
+
+    /**
+     * @Route("/profiles/remove/{id}", name="profile_remove")
+     */
+    public function remove($id)
+    {
+      
+         
+        $profil = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($profil);
+        $em->flush();
+        $this->addFlash('message', 'Utilisateur supprimé avec succès!!! ');
+        return $this->redirectToRoute('profiles') ;
+           
+        
+    }
     /**
      * @Route("/profile_detail", name="profile_detail")
      */

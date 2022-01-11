@@ -7,8 +7,11 @@
 {% endblock %}
 {% block content %}
 
-	<div class="container mt-5 align-center">
-		<h1>Formulaire d'ajout  d'un circuit - Sene'Safari</h1>
+<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Ajout  d'un circuit - Sene'Safari</h1>
+<div class="container mt-5 mb-5 ">
+	<div class="row  " style="display:flex;justify-content:center;">
+		<div class="col-6 " style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+
 	
 
 		{{form_start(formCircuit)}}
@@ -29,12 +32,12 @@
 					<div class="col">
 						{{form_widget(formCircuit.description)}}
 					</div>
-					<div class="row">
+					<div class="row ">
 
-						<div class="col">
+						<div class="col ">
 							{{form_label(formCircuit.minidescription,'Mini description du circuit')}}
 
-							<div class="col">
+							<div class="col ">
 								{{form_widget(formCircuit.minidescription)}}
 							</div>
 							<div class="row">
@@ -42,7 +45,7 @@
 								<div class="col">
 									{{form_label(formCircuit.price,'Prix du circuit')}}
 
-									<div class="col">
+									<div class="col form-label">
 										{{form_widget(formCircuit.price)}}
 									</div>
 
@@ -51,27 +54,30 @@
 								<div class="row">
 
 									<div class="col">
-										{{form_label(formCircuit.picture,'Photo du circuit ')}}
+										{{form_label(formCircuit.picture,'Photo hébergement')}}
 
-										<div class="col">
+										<div class="col form-label">
 											{{form_widget(formCircuit.picture)}}
 										</div>
 
 
 									</div>
-								<div class="row">
+								<div class="row ">
 
 									<div class="col">
 										{{form_label(formCircuit.imageFile,'Photo du circuit ')}}
 
-										<div class="col">
+										<div class="col form-control">
 											{{form_widget(formCircuit.imageFile)}}
 										</div>
 
 
 									</div>
-									<input type="submit" class="btn-btn-primary" value=" modifier et sauvegarder">
-									{{form_end(formCircuit)}}
-
+									<input type="submit" class="btn btn-primary" value=" Sauvegarder">
+									
+								</div>
+								{{form_end(formCircuit)}}
+								</div>
+								</div>
 								</div>
 							{% endblock %}
