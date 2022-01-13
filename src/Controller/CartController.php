@@ -53,7 +53,7 @@ class CartController extends AbstractController
               'price_data' => [
                 'currency' => 'eur',
                 'product_data' => [
-                  'name' => 'Commande chez SENESafari',
+                  'name' => 'Récaputilatif de votre commande chez SENESafari',
                 ],
                 'unit_amount' =>  $commande*100,
               ],

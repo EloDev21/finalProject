@@ -32,7 +32,7 @@
 		{# mise en place de la navbar dans le fichier base pour l'avoir sur toutes les templates #}
 
 		<div class="container-fluid">
-			<nav class="navbar navbar-light bg-transparent navbar-expand-lg">
+			<nav class="navbar navbar-light bg-transparent navbar-expand-lg ">
 				<a class="navbar-brand" href="{{path('home')}}">
 					<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="..."/></a>
 			</a>
@@ -42,52 +42,49 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto" style="margin-left: auto; margin-right: 0;">
 					<li
-						class="nav-item active me-4" style="font-size:25px">
+						class="nav-item active me-4" >
 						{# <a class="nav-link" href="#">Accueil</a> #}
 						<a href="{{ path('home') }}" class="">
-							<i class="fa fa-home" aria-hidden="true"></i>
+							Accueil		
 							</a>
 					</li>
 					<li
-						class="nav-item me-4" style="font-size:25px">
+						class="nav-item me-4">
 						{# <a class="nav-link" href="#">A propos</a> #}
 						<a href="{{ path('circuit') }}">
-							<i class="fa fa-plane"></i>
+							Circuits
 							</a>
 					</li>
 					<li
-						class="nav-item me-4 "style="font-size:25px">
+						class="nav-item me-4 ">
 						{# <a class="nav-link" href="#">Services</a> #}
 						<a href="{{path('app_login')}}">
-							<i class="fa fa-user-plus"></i>
+
+							Connexion
 						</a>
 					</li>
 					{# <a class="nav-link" href="#">Contact</a> #}
 					{% if app.user %}
           {# panier #}
-						<li class="nav-item me-4" style="font-size:25px">
+						<li class="nav-item me-4">
 							<a href="{{path('cart_index')}}">
-								<i class="fa fa-shopping-cart"></i>
+							Panier
 								</a>
 						</li>
             {# profil user #}
-						<li class="nav-item me-4" style="font-size:25px">
+						<li class="nav-item me-4" >
 							<a href="{{path('profile_detail')}}">
-								<i class="fa fa-user"></i>
+								Profil
 								</a>
 						</li>
 
           {# se déconnecter #}
-            <li class="nav-item me-4" style="font-size:25px">
-            <a href="{{path('app_logout')}}">
-              <i class="fa fa-sign-out"></i>
-              </a>
-          </li>
-						<li class="nav-item me-4" style="font-size:25px">
+          
+						<li class="nav-item me-4">
             {# si role editor ou au dessus on accede à la liste des users #}
 							{% if(is_granted('ROLE_EDITOR')) %}
 								<a href="{{ path('profiles') }}">
-									<i class="fa fa-users"></i></a>
+									Users</a>
 						
 							{% endif %}
 
@@ -95,32 +92,42 @@
 						{% endif %}
          {# contact us #}
 
-						<li class="nav-item me-4" style="font-size:25px">
+						<li class="nav-item me-4">
 							<a href="{{path('contact')}}">
-								<i class="fa fa-phone"></i>
+								Contact
 								</a>
 						</li>
-
+						{% if app.user %}
+						<li class="nav-item me-4">
+						<a href="{{path('app_logout')}}">
+						  Déconnexion
+						  </a>
+					  </li>
+					  {% endif %}
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 
-   <h5 class="avertissement">Site test</h5>
+   {# <h5 class="avertissement">Site test</h5> #}
 		{% block content %}{% endblock %}
 		<footer class="footer mt-auto py-3 bg-light">
 			<div class="container">
 				<div class=" row rowfoot">
 					<div class="col-3">
 						<a href="#">
-							<i class="fa fa-facebook me-3"></i>
+							<i class="fa fa-facebook me-3"style="font-size:2rem"></i>
 						</a>
 						<a href="#">
-							<i class="fa fa-twitter me-3"></i>
+							{# <i class="fa fa-twitter me-3"></i> #}
+						<i class=" fa fa-cc-mastercard me-3" style="font-size:2rem"></i>
 						</a>
 						<a href="#">
-							<i class="fa fa-youtube me-3"></i>
+							{# <i class="fa fa-youtube me-3"style="font-size:2rem"></i> #}
+						<i class="fa fa-google-pay" style="font-size:2rem"></i>
+					<i class="fab fa-google-pay"></i>
+					
 						</a>
 
 					</div>

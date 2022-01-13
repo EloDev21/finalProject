@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
+use App\Repository\ContactsRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * @ORM\Entity(repositoryClass=ContactsRepository::class)
  */
-class Contact
+class Contacts
 {
     /**
      * @ORM\Id
@@ -18,35 +18,24 @@ class Contact
     private $id;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=100)
+     * @ORM\Column(type="string", length=10)
      */
     private $firstname;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=100)
+     * @ORM\Column(type="string", length=10)
      */
     private $lastname;
 
-   
     /**
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=20)
      */
     private $email;
 
     /**
-     * @Assert\NotBlank()
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="datetime_immutable")
      */
-    private $message;
-    /**
-     * @Assert\NotBlank()
-     * @ORM\Column(type="integer")
-     */
-    private $subject;
+    private $created_at;
 
     public function getId(): ?int
     {
@@ -89,26 +78,14 @@ class Contact
         return $this;
     }
 
-    public function getMessage(): ?string
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->message;
+        return $this->created_at;
     }
 
-    public function setMessage(string $message): self
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    public function getSubject(): ?int
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(int $subject): self
-    {
-        $this->subject = $subject;
+        $this->created_at = $created_at;
 
         return $this;
     }

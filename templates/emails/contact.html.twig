@@ -22,17 +22,17 @@
 			<tbody>
 				<tr>
 					<th scope="row">
-						{{contact.subject}}</th>
+						{{contactF.subject}}</th>
 						
 
-					<td>{{contact.firstname}}</td>
-					<td>{{contact.lastname}}</td>
-					<td>{{contact.email}}</td>
+					<td>{{contactF.firstname}}</td>
+					<td>{{contactF.lastname}}</td>
+					<td>{{contactF.email}}</td>
 				
-					<td>{{contact.message | nl2br}}</td>
+					<td>{{contactF.message | nl2br}}</td>
 				</tr>
 
 			</tbody>
 		</table>
-	
+	<a href="{{url('home')}}">Retournez sur le site Sene'SAFARI</a>
 {% endblock %}

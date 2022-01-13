@@ -18,6 +18,12 @@
 {% endblock %}
 
 {% block content %}
+{% for message in app.flashes('message' )%}
+
+			<div class="alert alert-primary" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
 	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Connexion</h1>
 	<div class="container mt-5 mb-5 ">
 		<div class="row  " style="display:flex;justify-content:center;">
