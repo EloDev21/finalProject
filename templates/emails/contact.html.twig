@@ -5,34 +5,15 @@
 {% endblock %}
 {% block content %}
 	<div class="jumbotron mt-5">
-		<h1>Nouveau message</h1>
-		<p class="lead">Une personne souhaiterait avoir plus d'infos sur les circuits safari et vient de vous laisser un message . </p>
-	</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Sujet :</th>
-					<th scope="col">Prénom(s)</th>
-					<th scope="col">Nom</th>
-					<th scope="col">Email</th>
-			
-					<th scope="col">Message</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">
-						{{contactF.subject}}</th>
-						
-
-					<td>{{contactF.firstname}}</td>
-					<td>{{contactF.lastname}}</td>
-					<td>{{contactF.email}}</td>
-				
-					<td>{{contactF.message | nl2br}}</td>
-				</tr>
-
-			</tbody>
-		</table>
+		<h6>Nouveau message de contact du site SeneSAFARI</h6>
+		</div>
+	<p class="lead">Une personne souhaiterait avoir plus d'infos sur les circuits safari et vient de vous laisser un message . </p>
+<p> Sujet : {{contactF.sujet}}</p>
+<p> Prénom : {{contactF.firstname}}</p>
+<p> Nom : {{contactF.lastname}}</p>
+<p> Email : {{contactF.email}}</p>
+<p> Téléphone : {{contactF.subject}}</p>
+<p> Message : {{contactF.message | nl2br}}</p>
+	
 	<a href="{{url('home')}}">Retournez sur le site Sene'SAFARI</a>
 {% endblock %}

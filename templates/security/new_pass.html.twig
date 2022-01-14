@@ -18,15 +18,15 @@
 
     <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
  
-    <h4>Entrez votre mot de passe.</h4>
-        <label> Mot de passe
+    <h4>Entrez votre nouveau mot de passe.</h4>
+        <label for="pass"> Mot de passe
         </label>   
-        <input type="password" name="password" id="pass"> Confirmez votre nouveau mot de passe
-               <label>
+        <input type="password" name="password" id="pass" required > 
             <input type="hidden" name="token" value="{{token}}">
-        </label>
     <button>Valider</button>
-
+        <div>
+    <small class="text-muted mt-4">Attention, il est recommandé de choisir un fort mot de passe</small>
+</div>
 
 
     

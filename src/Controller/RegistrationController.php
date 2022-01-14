@@ -30,12 +30,12 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setRoles(['ROLE_ADMIN']);
+            $user->setRoles(['ROLE_USER']);
 
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+            $this->addFlash('inscription', 'Bravo et Bienvenue. Votre inscription s\'est deroulée avec succès.|nl2br.');
             return $this->redirectToRoute('home');
         }
 

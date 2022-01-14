@@ -23,7 +23,18 @@
 </div>
 <div
 	class="container mb-5">
+	{% for message in app.flashes('contact_email' )%}
 
+	<div class="alert alert-success" role="alert">
+		{{message}}
+	</div>
+{% endfor %}
+	{% for message in app.flashes('inscription' )%}
+
+	<div class="alert alert-success" role="alert">
+		{{message}}
+	</div>
+{% endfor %}
 	{# 
 				{% if (is_granted('ROLE_ADMIN') ) %}
 				<span style:color="green">Bonjour et Bienvenue Administratuer</span>

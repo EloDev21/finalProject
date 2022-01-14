@@ -75,7 +75,7 @@ Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</s
             </a>
       
             <a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
-        <i class="bi bi-arrow-bar-left"></i><i class="bi bi-arrow-return-left"></i>Circuits &#x2714; 
+        <i class="bi bi-arrow-bar-left"></i><i class="bi bi-arrow-return-left"></i>Circuits
             </a>
         </td>
             </tr>
@@ -85,10 +85,11 @@ Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</s
 </table>
 {% else %}
     
-<h4>Votre panier est vide !!! Merci de retournex aux  <a href="{{path('circuit')}}"  class="btn btn-secondary btn-sm mt-2">
+<h4>Votre panier est vide !!! </h4>
+    <a href="{{path('circuit')}}"  class="btn btn-success btn-sm mt-2">
                                     
-<i class="bi bi-trash"></i>Circuits &#x2714; 
-</a></h4>
+<i class="bi bi-trash"></i>Retour aux Circuits
+</a>
 
 {% endif %}
 </div>

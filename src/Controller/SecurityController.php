@@ -43,7 +43,7 @@ class SecurityController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
     /**
-     * @Route("/reset_pass", name="reset_pass")
+     * @Route("/forgotten_pass", name="forgotten_pass")
      */
     public function forgottenPass(Request $request, UserRepository $userRepo, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator)
     {
@@ -59,10 +59,10 @@ class SecurityController extends AbstractController
             $user = $userRepo->findOneByEmail($donnees['email']);
             // si lutil nexiste pas message flash
             if (!$user) {
-                $this->addFlash('danger', `Un compte avec cet adresse email n''existe pas`);
+                $this->addFlash('danger', 'Un compte avec cet adresse email n\'existe pas');
                 return $this->redirectToRoute('app_login');
             }
-            // si lutil existe on genere notre token 
+            // si lutil existe on genere notre token de récuperationde mdp
             $token = $tokenGenerator->generateToken();
             try {
                 $user->setResetToken($token);
@@ -83,7 +83,10 @@ class SecurityController extends AbstractController
                 ->setTo($user->getEmail())
                 //   on peut mettre un message direct comme on peut use un template
                 //   text/html pour le formay du body
-                ->setBody('<html><body><p>Bonjour<br><br> Une demande de réinitialisation de votre mot de passe vient detre effectuée pour le site SENESafari.</p><a href="' . $url . '">lien</a></body></html>', 'text.html');
+                ->setBody("Bonjour,
+                Une demande de réinitialisation de votre mot de passe vient detre effectuée sur
+                 le site SENESafari.Veuillez cliquer sur le lien suivant :"
+                  . $url );
             $mailer->send($message);
             // on rajoute kle flash message
             $this->addFlash('message', 'Un mail de réinitialisation vient de vous etree envoyé');
@@ -96,10 +99,10 @@ class SecurityController extends AbstractController
         ]);
     }
     /**
-     * @Route("/reset_password/{token}", name="reset_password")
+     * @Route("/reset_password/{token}", name="reset_pass")
      */
-     public function resetPassword(Request $request,  UserPasswordEncoderInterface $userPasswordEncoder, $token)
-     {
+     public function resetPassword(Request $request,  UserPasswordEncoderInterface $userEncoder, $token)
+     { 
         // on cherche l'utilisateur avec le token fourni 
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['reset_token' => $token]);
         if(!$user)
@@ -113,12 +116,12 @@ class SecurityController extends AbstractController
             // on supprime le token
             $user->setResetToken(null);
             // on chiffre le new pass
-            $user->setPassword($userPasswordEncoder->encodePassword($user,$request->request->get('password')));
+            $user->setPassword($userEncoder->encodePassword($user, $request->request->get('password')));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();   
             $this->addFlash('message', 'Mot de passe modifié avec succès.'); 
-            return$this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login');
 
         }
         else

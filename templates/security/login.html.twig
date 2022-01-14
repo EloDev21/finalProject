@@ -20,7 +20,19 @@
 {% block content %}
 {% for message in app.flashes('message' )%}
 
-			<div class="alert alert-primary" role="alert">
+			<div class="alert alert-success" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
+{% for message in app.flashes('warning' )%}
+
+			<div class="alert alert-warning" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
+{% for message in app.flashes('danger' )%}
+
+			<div class="alert alert-danger" role="alert">
 				{{message}}
 			</div>
 		{% endfor %}
@@ -78,7 +90,7 @@
 									</button>
 								</div>
 								<h6>
-									<a href="{{path('reset_pass')}} " style="color:blue;text-decoration:underline">Mot de passe oublié ?</a>
+									<a href="{{path('forgotten_pass')}} " style="color:blue;text-decoration:underline">Mot de passe oublié ?</a>
 								</h6>
 							</div>
 
