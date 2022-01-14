@@ -29,13 +29,14 @@
 					Ajouter un circuit</a>&nbsp;&nbsp;
 			{% endif %}
 
-			<div class="container-fluid">
+			<section>
+				<div class="container">
 
 				<div
-					class="row d-inline-flex">
+					class="row mt-4 mb-4 d-flex justify-content-around">
 					<!-- Gallery Item 1 -->
 					{% for circuit in circuits %}
-						<div class="col-4 mt-2 mb-4 ">
+					<div class="col-xxs-8 col-xxl-8 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
 							<div class="card h-100">
 								<a href="{{ path('detail', {id:circuit.id})}}">
 

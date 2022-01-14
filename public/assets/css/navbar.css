@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Merriweather&family=Quicksand&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Merriweather&family=Quicksand&display=swap');
 .navbar, .navbar-inverse {
 	border-radius: 0;
 	border: none;
@@ -41,4 +41,65 @@ a:hover{
 	background-color: #444444;
 	transition: 0.7s all linear;
 	height: 100%;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;1,600&family=Indie+Flower&family=Merriweather&family=Quicksand&family=Ubuntu:ital@1&display=swap');
+
+* {
+  
+font-family: 'Ubuntu', sans-serif;
+
+
+  box-sizing: border-box;
 }
+.navbar {
+  /* aerer la nvbr */
+  padding: 20px !important;
+}
+/* liens de la navbar */
+.nav-link {
+  color: black !important;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.nav-link:hover {
+  color: goldenrod !important;
+}
+.miss_img {
+  width: 500px !important;
+  height: 300px !important;
+}
+.miss_title {
+  font-size: 40px !important;
+  font-weight: 900;
+  color: darkcyan !important;
+}
+.miss_minidescription {
+  font-size: 25px !important;
+  font-weight: 400;
+
+}
+.rowMissions{
+    
+    border: 2px grey solid;
+    border-radius: 25px;
+
+}
+.rowMissions:hover{
+  
+    box-shadow: 0 10px 10px goldenrod;
+
+}
+.regH{
+    background-color: grey;
+    opacity:0.6;
+    color: goldenrod;
+
+}
+.logo{
+  transition: transform 0.7s;
+ }
+
+.logo:hover { 
+    transform: scale(1.25); 
+}	

@@ -75,13 +75,16 @@ class CartController extends AbstractController
      */
     public function successUrl(): Response
     {
+     
         return $this->render('payment/success.html.twig');
+
+        
     }
     /**
      * @Route("/cancel-url", name="cancel_url")
      */
     public function cancelUrl(): Response
     {
-        return $this->render('payment/success.html.twig');
+        return $this->render('payment/cancel.html.twig');
     }
 }

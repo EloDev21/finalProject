@@ -19,17 +19,30 @@ class ContactForm
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prénom ne peut contenir un chiffre"
+     * )
      */
     private $firstname;
 
-    /**
-     * @ORM\Column(type="string", length=10)
+     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prénom ne peut contenir un chiffre"
+     * )
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *  message = "L'adresse e-mail '{{ value }}' n'est pas valide. Merci de recommencer."
+     * )
      */
     private $email;
 
@@ -49,7 +62,10 @@ class ContactForm
     private $subject;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="digit")
+     * @Assert\Length(
+     * min = 10,
+     * max = 10,
      */
     private $sujet;
 

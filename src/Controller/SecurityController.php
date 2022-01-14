@@ -83,13 +83,20 @@ class SecurityController extends AbstractController
                 ->setTo($user->getEmail())
                 //   on peut mettre un message direct comme on peut use un template
                 //   text/html pour le formay du body
-                ->setBody("Bonjour,
-                Une demande de réinitialisation de votre mot de passe vient detre effectuée sur
-                 le site SENESafari.Veuillez cliquer sur le lien suivant :"
-                  . $url );
+                // ->setBody("Bonjour,
+                // Une demande de réinitialisation de votre mot de passe vient detre effectuée sur
+                //  le site SENESafari.Veuillez cliquer sur le lien suivant :"
+                //   . $url );
+                ->setBody($this->renderView(
+                    // templates/emails/registration.html.twig
+                    'emails/resetPassword.html.twig',
+                    ['url' => $url]
+                ),
+                'text/html'
+            );
             $mailer->send($message);
             // on rajoute kle flash message
-            $this->addFlash('message', 'Un mail de réinitialisation vient de vous etree envoyé');
+            $this->addFlash('message', 'Un mail de réinitialisation de votre mot de passe vient de vous être envoyé par mail.');
             return $this->redirectToRoute('app_login');
         }
 
@@ -107,7 +114,7 @@ class SecurityController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['reset_token' => $token]);
         if(!$user)
         {
-            $this->addFlash('danger','Token inconnu');
+            $this->addFlash('danger','Token inconnu. Réesayez d\'obtenir un autre lien de réinitialisation de votre mot de passe.');
             return $this->redirectToRoute('app_login');
         }
         // si on a le form posté et envoyé
@@ -116,6 +123,11 @@ class SecurityController extends AbstractController
             // on supprime le token
             $user->setResetToken(null);
             // on chiffre le new pass
+            
+            // if($user->getPassword($user,$request->request->get("pass1")) == 
+            //  $user->getPassword($user,$request->request->get("pass2"))){
+
+            //  }
             $user->setPassword($userEncoder->encodePassword($user, $request->request->get('password')));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

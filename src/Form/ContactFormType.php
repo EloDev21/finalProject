@@ -29,6 +29,7 @@ class ContactFormType extends AbstractType
                     'Problème de réservations' => 'Problème de réservations',
                     'Informations' => 'Informations',
                     'Remboursement' => 'Remboursement',
+                    'Autre' => 'Autre',
                 ],
                 'choice_attr' => [
                     'Problème de réservations' => ['data-color' => 'Red'],

@@ -21,16 +21,12 @@
 <div class="container mt-5 mb-5" style="display:flex;justify-content:center">
 
 <div class="col-6"  style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+<h5 class="lead text-center mb-4" style="text-decoration:underline dotted"> Récaputilatif de votre commande  {{app.user.firstname}}  {{app.user.lastname | upper}} </h5>
 {# {% if app.user %}
 Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
 {% endif %} #}
  
-{% if (is_granted('ROLE_ADMIN') ) %}
-<h3>
-<span style:color="green">Bonjour et Bienvenue  {{app.user.firstname}}  {{app.user.lastname | upper}} </span>
-</h3>
-{% endif %}
-<h5 class="lead" style="text-decoration:underline dotted"> Récaputilatif de votre commande</h5>
+
 {# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
 {% if items | length >0  %}
     <table class="table table-striped">

@@ -8,7 +8,14 @@
 	<link href="{{ asset('assets/css/slider.css') }}" rel="stylesheet"/>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 {% endblock %}
+
 {% block content %}
+{% if app.user %}
+<div class="welkom">
+Bonjour et bonne visite sur notre site <strong class="align-center">
+	{{app.user.firstname}} {{app.user.lastname | upper}}</strong>
+</div>
+{% endif %}
 	<div class="enTete" style=" padding: 2rem 1rem;margin-bottom: 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8">
 		<div class="row mb-3" style="display:flex;justify-content:center;">
 			<div
@@ -17,6 +24,7 @@
 				<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="..."/></a>
 		</div>
 	</div>
+	
 	<h1 class="text-center" style='font-weight:bold;color:#7f5539'>SENE'Safari</h1>
 
 	<h4 class="text-center">"Evadez vous dans un endroit idillyque avec des forfaits atypiques ... "</h4>
@@ -39,10 +47,7 @@
 				{% if (is_granted('ROLE_ADMIN') ) %}
 				<span style:color="green">Bonjour et Bienvenue Administratuer</span>
 				{% endif %} #}
-	{% if app.user %}
-		Bonjour<strong>
-			{{app.user.firstname | upper}}{{app.user.lastname | upper}}</strong>
-	{% endif %}
+
 
 	<div class="row">
 		<div
