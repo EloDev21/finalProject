@@ -5,14 +5,17 @@
 {% block css %}
 	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/slider.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/contact.css') }}" rel="stylesheet"/>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
-	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nous contacter
+
+	<main>
+	<section>
+		<div class="row">
+		<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nous contacter
 		</h1>
-		<div class="container-fluid mt-5 mb-5 form">
+		<div class=" form">
 
 			{% if not formContact.vars.valid %}
 				<div class="alert alert-danger">
@@ -26,76 +29,68 @@
 				</div>
 			{% endfor %}
 
-			<div class="container-fluid mt-5 mb-5 ">
+			<div class="formulaire ">
 				<div class="row  " style="display:flex;justify-content:center;">
 					<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 						{{ form_start(formContact) }}
 
-			
-							<div class="row">
-							<div class="col">
-										{{form_label(formContact.sujet, 'Sujet:')}}
-		
-										<div class="col">
-											{{form_widget(formContact.sujet)}}
-										</div>
 
-								<div class="col">
-									{{form_label(formContact.firstname,'Prénom(s) ')}}
+						<div class="mb-3">
+							{{form_label(formContact.sujet, 'Sujet:')}}
 
-									<div class="col">
-										{{form_widget(formContact.firstname)}}
-									</div>
-									<div class="col">
-										{{form_label(formContact.lastname,'Nom ')}}
 
-										<div class="col">
-											{{form_widget(formContact.lastname)}}
-										</div>
-										<div class="col">
-								{{form_label(formContact.subject, 'Numéro de téléphone:')}}
+							{{form_widget(formContact.sujet)}}
+						</div>
 
-								<div class="col">
-									{{form_widget(formContact.subject)}}
-								</div>
-										
-									</div>
-										<div class="row">
+						<div class="mb-3">
+							{{form_label(formContact.firstname,'Prénom(s) ')}}
 
-											<div class="col">
-												{{form_label(formContact.email,'Adresse email')}}
 
-												<div class="col">
-													{{form_widget(formContact.email)}}
-												</div>
+							{{form_widget(formContact.firstname)}}
+						</div>
+						<div class="mb-3">
+							{{form_label(formContact.lastname,'Nom ')}}
 
-												<div class="row">
 
-													<div class="col">
-														{{form_label(formContact.message,'Entrez votre message')}}
+							{{form_widget(formContact.lastname)}}
+						</div>
+						<div class="mb-3">
+							{{form_label(formContact.subject, 'Numéro de téléphone:')}}
 
-														<div class="col">
-															{{form_widget(formContact.message)}}
-														</div>
-                                                        <div class="row" style="justify-content:center;display:flex">
-														<div class="col-md-6" style="justify-content:center;display:flex">
 
-															<input class="btn btn-warning  align-center mt-5" type="submit" value="Envoyer le mail.">
-														{{form_end(formContact)}}
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							{{form_widget(formContact.subject)}}
+						</div>
+
+
+						<div class="mb-3">
+							{{form_label(formContact.email,'Adresse email')}}
+
+
+							{{form_widget(formContact.email)}}
+						</div>
+
+
+						<div class="mb-3">
+							{{form_label(formContact.message,'Entrez votre message')}}
+
+
+							{{form_widget(formContact.message)}}
+						</div>
+						<div class="row" style="justify-content:center;display:flex">
+							<div class="col-6" style="justify-content:center;display:flex">
+
+								<input class="btn btn-warning  align-center mt-5" type="submit" value="Envoyer le mail.">
+								{{form_end(formContact)}}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			</div>
-			</div>
-			</div>	
-		
-	{% endblock %}
+		</div>
+		</div>
+	
+	</section>
+</main>
+	
+
+{% endblock %}

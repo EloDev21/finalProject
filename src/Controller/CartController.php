@@ -25,6 +25,19 @@ class CartController extends AbstractController
         ]);
     }
     /**
+     * @Route("/confirm", name="confirm_checkout")
+     */
+    public function prePayment(CartService $cartService)
+    {
+        $panierWithData = $cartService->getFullCart();
+        $total = $cartService->getTotal();
+        return $this->render('cart/cart_recap.html.twig', [
+            'items' => $cartService->getFullCart(),
+            'total' => $cartService->getTotal()
+
+        ]);
+    }
+    /**
      * @Route("/panier/add/{id}", name="cart_add")
      */
     public function add($id, CartService $cartService)

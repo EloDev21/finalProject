@@ -1,20 +1,86 @@
-/* CONTACT FORM CSS PART  */
-.jumbotron {
-    background: wheat;
-    color: #FFF;
-    border-radius: 25px;
-    opacity: 0.8;
-    width: 50%;
-    }
-    .jumbotron-sm { padding-top: 24px;
-    padding-bottom: 24px; }
-    .jumbotron small {
-    color: #FFF;
-    }
-    .h1 small {
-    font-size: 24px;
-    }
-label{
-    display:flex;
-    justify-content: center;
+:root{
+    font-size: 10px;
+    /* taille par defaut pour appliquer nos rem */
+    --bordure: 1px solid green;
+    --primary:blue;
+    --secondary:yellow;
 }
+
+*{
+    box-sizing: border-box;
+    /* va nous permettre d'inclure le margin et le padding  */
+}
+body{
+    margin:0;
+  
+    
+}
+h1{
+    font-size:1.6rem;
+    /* donc dans notre cas 1.6 * ce quill ya dans :root */
+    /* et le em vaut 1.2 *   son parent  */
+}
+header img{
+    width:100%;
+
+
+}
+main{
+    padding: 8px;
+}
+p{
+    font-size: 1em;
+}
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+
+/* <!-- tablette 600px ou 768 largeur d"écran --> */
+/* et on va faire cote à cote quand cest sup"rieur à 600px */
+@media screen and (min-width:600px) {
+    :root{
+        font-size: 14px;
+        /* pour changer la taille des polices au lieu de changer le h1 le p ... */
+    }
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        /* cote à cpte s'il a la place² */
+    }
+    main section{
+        /* tu prends une portion de ma flexbox */
+        flex:1;
+        min-width: 100%;
+        /* largeur minimale */
+        margin: 10px;
+        padding: 10px;
+        /* border: 1px solid green; */
+        /* border:var(--bordure); */
+    }
+    /* on voudrait qu'a 800 l'image prenne exactement la taille de l'ecran 
+    et que notre container fasse 780px de large 
+    */
+}
+@media screen and (min-width:800px) {
+    main {
+        width: 100%;
+        height: 100vh;
+        margin: auto;
+        /* pour quil soit ni collé à gauche mais au milieu  */
+    }
+  
+        /* cote à cpte s'il a la place² */
+    }
+    @media screen and (min-width:1200px){
+        main{
+            width: 1180px;
+
+        }
+        main section{
+            width:100%;
+        }
+        
+    }

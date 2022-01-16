@@ -22,8 +22,10 @@
 
 	<div class="container-fluid">
 		{% for message in app.flashes('message' )%}
-			<div class="col-xs4">
-				<div class="col-p3 my-2 rounded-2 success">{{message}}</div>
+			
+			<div class="alert alert-success" role="alert">
+			{{message}}
+		
 
 			</div>
 
@@ -41,7 +43,7 @@
 			<div class="row  " style="display:flex;justify-content:center;">
 				<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 					<div class="grix xs4 container">
-						<div class="col-xs1">Prénom :
+						<div class="col-xs1 " >Prénom :
 							{{app.user.firstname}}</div>
 						<div class="col-xs1">Nom :
 							{{app.user.lastname}}</div>

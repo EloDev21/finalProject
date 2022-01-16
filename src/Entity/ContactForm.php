@@ -62,10 +62,7 @@ class ContactForm
     private $subject;
 
     /**
-     * @ORM\Column(type="digit")
-     * @Assert\Length(
-     * min = 10,
-     * max = 10,
+     * @ORM\Column(type="integer")
      */
     private $sujet;
 
