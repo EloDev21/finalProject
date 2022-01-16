@@ -43,18 +43,7 @@ body{
    * background: url(background-photo.jpg) center center cover no-repeat fixed;
    */
 }
-.carousel{
-    border-radius: 60px;
-}
-.carousel-item img {
-    width: 100%;
-  height: 80vh;
-  border-radius: 30px;
-}
-.rowfoot{
-    display: flex;
-    justify-content: space-between;
-}
+
 .avertissement  {
     animation-duration: .8s;
     animation-name: clignoter;

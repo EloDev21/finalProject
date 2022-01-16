@@ -1,0 +1,32 @@
+:root{
+    font-size: 10px;
+    /* taille par defaut pour appliquer nos rem */
+}
+
+*{
+    box-sizing: border-box;
+    /* va nous permettre d'inclure le margin et le padding  */
+}
+body{
+    margin:0;
+  
+    
+}
+h1{
+    font-size:1.6rem;
+    /* donc dans notre cas 1.6 * ce quill ya dans :root */
+    /* et le em vaut 1.2 *   son parent  */
+}
+.carousel{
+    border-radius: 60px;
+}
+.carousel-item img {
+    width: 100%;
+  height: 80vh;
+  border-radius: 30px;
+  object-fit: cover;
+}
+.rowfoot{
+    display: flex;
+    justify-content: space-between;
+}

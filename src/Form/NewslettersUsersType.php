@@ -19,9 +19,9 @@ class NewslettersUsersType extends AbstractType
     {
         $builder
         // enitytype car les categories vont nous venir de l'entité categoriezs
-        ->add('categories',EntityType::class,[
+        ->add('categories', EntityType::class,[
             "class" => Categories::class,
-            "choice-label" => 'name',
+            "choice_label" => 'name',
             "multiple" => true,
             "expanded" => true,
 // pasmultiple mais expanded bouton radio et le contraire liste deroulante les 2 cases a cocher
@@ -36,9 +36,9 @@ class NewslettersUsersType extends AbstractType
 
                     ])
                    ],
-                   "label_attr" =>'J\'accepte la collecte des données personnelles.'
+                   "label" =>'J\'accepte la collecte des données personnelles.'
             ])
-            ->add('ENVOYER',SubmitType::class)
+            ->add('Envoyer',SubmitType::class)
            
          
         ;

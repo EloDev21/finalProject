@@ -24,13 +24,24 @@ font-family: 'Indie Flower', cursive;
 font-family: 'Merriweather', serif;
 font-family: 'Quicksand', sans-serif;
 }
-@media  screen and (max-width:600px) {
+@media  screen and (max-width:1100px) {
   /* css pour ecran de - de 600px  */
-  .row{
+  .rowdetail{
     display: flex;
-    flex:wrap;
+    flex-direction: row;
+
+    
+
 
     /* col l'une au dessus de l'autre */
+  }
+  .imageHebergement{
+    width: 100%;
+    
+  }
+  .imageCircuit{
+    width: 100%;
+    
   }
   .row .col{
     flex:1;

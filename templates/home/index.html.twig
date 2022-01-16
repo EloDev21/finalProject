@@ -5,7 +5,7 @@
 {% block css %}
 	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/slider.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 {% endblock %}
 
@@ -42,6 +42,14 @@ Bonjour et bonne visite sur notre site <strong class="align-center">
 	<div class="alert alert-success" role="alert">
 		{{message}}
 	</div>
+{% endfor %}
+{% for message in app.flashes('activation_newsletter') %}
+<div class=" alert alert-success">{{message}}</div>
+    
+{% endfor %}
+{% for message in app.flashes('attente') %}
+<div class=" alert alert-success">{{message}}</div>
+    
 {% endfor %}
 	{# 
 				{% if (is_granted('ROLE_ADMIN') ) %}
