@@ -20,40 +20,51 @@
 {% block content %}
 
 	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Votre panier</h1>
-	<div class="container mt-5 mb-5" style="display:flex;justify-content:center">
+	<div class="container-fluid">
+		<section class="d-flex justify-content-center flex-column align-items-center">
+			<div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
-		<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-			<h5 class="lead text-center mb-4" style="text-decoration:underline dotted">
-				Récaputilatif de votre commande
-				{{app.user.firstname}}
-				{{app.user.lastname | upper}}
-			</h5>
-			{# {% if app.user %}
-			Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
-			{% endif %} #}
-
-
-			{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
-			{% if items | length >0  %}
-			
-						{% for item in items %}
+				<h5 class="lead text-center mb-4" style="text-decoration:underline dotted">
+					Récaputilatif de votre commande
+					{{app.user.firstname}}
+					{{app.user.lastname | upper}}
+				</h5>
+				{# {% if app.user %}
+							Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
+							{% endif %} #}
 
 
-							<div class="recapPanier">
+				{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
+				{% if items | length >0  %}
+
+					{% for item in items %}
+
+
+						<div class="recapPanier">
 							<div class="row">
-							<div class="col-6">
-                            
-							<img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/> <p> C ircuit :  {{item.circuit.title}} (x {{item.quantity}})<p>
-                              
-                            </div>
-                                <p> Sous-total:  {{item.circuit.price * item.quantity}} € 
-							</div>
-							
-                        </div>
-                     
-                    {% endfor %}
+								<div class="col-6">
 
-                <p style="font-size:larger;font-weight:bold; color:red"> Total de votre commande : <span style="color:black">{{total}}€</span>
+									<img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/>
+									<p>
+										C ircuit :
+										{{item.circuit.title}}
+										(x
+										{{item.quantity}})</p>
+									<p></p>
+								</div>
+								<p>
+									Sous-total:
+									{{item.circuit.price * item.quantity}}€
+								</p>
+							</div>
+
+						</div>
+
+					{% endfor %}
+
+					<p style="font-size:larger;font-weight:bold; color:red">
+						Total de votre commande :
+						<span style="color:black">{{total}}€</span>
 
 						<a href="{{path('checkout')}}" class="btn d-flex float-end btn-success btn-md">
 
@@ -61,10 +72,9 @@
 						</a>
 
 
-				
-
-			{% endif %}
+					{% endif %}
+				</div>
+			</section>
 		</div>
-	</div>
 
-{% endblock %}
+	{% endblock %}

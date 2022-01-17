@@ -2,33 +2,41 @@
 {% block title %}{% endblock %}
 {% block css %}
 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
-	<div class="container">
-		{% for message in app.flashes('error' )%}
-			<div class="alert alert-primary" role="alert">
-				{{message}}
-			</div>
 
-		{% endfor %}
-		<div class="passform">
-			<form method="POST">
-
-				<div class="form-field">
-					<label for="">Modification du mot de passe de</label>
-					<input type="password" id="pass" name="pass" class="form-control">
-				</div>
-		
-
-
-					<div class="form-field">
-						<label for="">Confirmation du mot de passe</label>
-						<input type="password" id="pass2" name="pass2" class="form-control">
-						<button class="btn btn-primary">Sauvegarder</button>
-					</div>
-                </form>
-				</div>
+	{% for message in app.flashes('error' )%}
+		<div class="alert alert-primary" role="alert">
+			{{message}}
 		</div>
-	{% endblock %}
+
+	{% endfor %}
+	
+		<div class="container-fluid">
+			<h1 class="text-center " style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Modification de mon mot de passe</h1>
+			<section class="d-flex justify-content-center flex-column align-items-center">
+				<div class="col-xxl-4 col-xl-5 col-lg-6 col-9 col-md-7" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+		<h4 class="text-center">Changement de mot de passe</h4>	
+				<form method="POST">
+
+						<div class="form-field">
+							<label for="">Nouveau mot de passe de</label>
+							<input type="password" id="pass" name="pass" class="form-control">
+						</div>
+
+
+						<div class="form-field">
+							<label for="">Confirmation du mot de passe</label>
+							<input type="password" id="pass2" name="pass2" class="form-control">
+						<small class="text-muted"> Attention les 2 mots de passes doivent etre identiques.</small>
+						<div class="d-flex justify-content-center flex-column align-items-center">
+							<button class="btn btn-primary mt-4">Sauvegarder</button>
+						</div>
+						</div>
+					</form>
+				</div>
+			</section>
+			</div>
+		{% endblock %}
