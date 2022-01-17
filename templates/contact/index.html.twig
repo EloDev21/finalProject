@@ -10,87 +10,67 @@
 {% endblock %}
 {% block content %}
 
-	<main>
-	<section>
-		<div class="row">
-		<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nous contacter
-		</h1>
-		<div class=" form">
-
-			{% if not formContact.vars.valid %}
-				<div class="alert alert-danger">
-					Erreur dans l'ajout du formulaire
-				</div>
-			{% endif %}
-
-			{% for message in app.flashes('message_envoye') %}
-				<div class="alert alert-success">
-					{{ message }}
-				</div>
-			{% endfor %}
-
-			<div class="formulaire ">
-				<div class="row  " style="display:flex;justify-content:center;">
-					<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-						{{ form_start(formContact) }}
+<h1 class="text-center " style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Nous contacter</h1>
+<div class="container-fluid">
+<section class="d-flex justify-content-center flex-column align-items-center">
 
 
-						<div class="mb-3">
-							{{form_label(formContact.sujet, 'Sujet:')}}
+
+	{% if not formContact.vars.valid %}
+		<div class="alert alert-danger">
+			Erreur dans l'ajout du formulaire
+		</div>
+	{% endif %}
+
+	{% for message in app.flashes('message_envoye') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	
+		<div class="col-xxl-8 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+			{{ form_start(formContact) }}
+			<div class="mb-3">
+				{{form_label(formContact.sujet, 'Sujet:')}}
+				{{form_widget(formContact.sujet)}}
+			</div>
+
+			<div class="mb-3">
+				{{form_label(formContact.firstname,'Prénom(s) ')}}
+				{{form_widget(formContact.firstname)}}
+			</div>
+			<div class="mb-3">
+				{{form_label(formContact.lastname,'Nom ')}}
+				{{form_widget(formContact.lastname)}}
+			</div>
+			<div class="mb-3">
+				{{form_label(formContact.subject, 'Numéro de téléphone:')}}
+				{{form_widget(formContact.subject)}}
+			</div>
+
+			<div class="mb-3">
+				{{form_label(formContact.email,'Adresse email')}}
+				{{form_widget(formContact.email)}}
+			</div>
+
+			<div class="mb-3">
+				{{form_label(formContact.message,'Entrez votre message')}}
 
 
-							{{form_widget(formContact.sujet)}}
-						</div>
+				{{form_widget(formContact.message)}}
+			</div>
+			<div class="row" style="justify-content:center;display:flex">
+				<div class="col-6" style="justify-content:center;display:flex">
 
-						<div class="mb-3">
-							{{form_label(formContact.firstname,'Prénom(s) ')}}
-
-
-							{{form_widget(formContact.firstname)}}
-						</div>
-						<div class="mb-3">
-							{{form_label(formContact.lastname,'Nom ')}}
-
-
-							{{form_widget(formContact.lastname)}}
-						</div>
-						<div class="mb-3">
-							{{form_label(formContact.subject, 'Numéro de téléphone:')}}
-
-
-							{{form_widget(formContact.subject)}}
-						</div>
-
-
-						<div class="mb-3">
-							{{form_label(formContact.email,'Adresse email')}}
-
-
-							{{form_widget(formContact.email)}}
-						</div>
-
-
-						<div class="mb-3">
-							{{form_label(formContact.message,'Entrez votre message')}}
-
-
-							{{form_widget(formContact.message)}}
-						</div>
-						<div class="row" style="justify-content:center;display:flex">
-							<div class="col-6" style="justify-content:center;display:flex">
-
-								<input class="btn btn-warning  align-center mt-5" type="submit" value="Envoyer le mail.">
-								{{form_end(formContact)}}
-							</div>
-						</div>
-					</div>
+					<input class="btn btn-warning  align-center mt-5" type="submit" value="Envoyer le mail.">
+					{{form_end(formContact)}}
 				</div>
 			</div>
 		</div>
 		</div>
-	
-	</section>
-</main>
+</section>
+</div>
 	
 
 {% endblock %}

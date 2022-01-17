@@ -9,45 +9,46 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Inscription</h1>
-	<div class="container mt-5 mb-5">
-		<div class="row  " style="display:flex;justify-content:center;">
-			<div class="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Inscription</h1>
+<div class="container-fluid">
+	<section class="d-flex justify-content-center flex-column align-items-center">
 
-				<h1 class="h3 mb-3 font-weight-normal text-center">
-					<strong>Formulaire d'inscription<strong></h1>
-						<h6>
-							Déjà client,
-							<a href="{{path('app_login')}}" style="color:blue;text-decoration:underline">Se connecter</a>
-							?</h6>
+		<div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
-						{{ form_start(registrationForm) }}
-						{{ form_row(registrationForm.firstname, {
-            label: 'Prénom(s)'
-        }) }}
-						{{ form_row(registrationForm.lastname, {
-            label: 'Nom'
-        }) }}
-						{{ form_row(registrationForm.phone, {
-            label: 'Téléphone'
-        }) }}
-						{{ form_row(registrationForm.email, {
-            label: 'Email'
-        }) }}
-						{{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
-						{{ form_row(registrationForm.agreeTerms,{
-        label: 'Accepter les CGU'}) }}
-						<div class="row" style="justify-content:center;display:flex">
-							<div class="col-md-6" style="justify-content:center;display:flex">
-								<button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
-							</div>
+			<h1 class="h3 mb-3 font-weight-normal text-center">
+				<strong>Formulaire d'inscription<strong></h1>
+					<h5>
+						Déjà client,
+						<a href="{{path('app_login')}}" style="color:blue;text-decoration:underline">Se connecter</a>
+						?</h5>
+
+					{{ form_start(registrationForm) }}
+					{{ form_row(registrationForm.firstname, {
+           			 label: 'Prénom(s)'
+       				 }) }}
+					{{ form_row(registrationForm.lastname, {
+           			 label: 'Nom'
+      				  }) }}
+					{{ form_row(registrationForm.phone, {
+            		label: 'Téléphone'
+       				 }) }}
+					{{ form_row(registrationForm.email, {
+      		      label: 'Email'
+     			   }) }}
+					{{ form_row(registrationForm.plainPassword, {
+          			  label: 'Mot de passe'
+      					  }) }}
+					{{ form_row(registrationForm.agreeTerms,{
+      				  label: 'J\'accepte les CGU.'}) }}
+					
+						<div class="col d-flex justify-content-center">
+							<button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
 						</div>
-						{{ form_end(registrationForm) }}
-					</div>
+					
+					{{ form_end(registrationForm) }}
+
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
-{% endblock %}
+	{% endblock %}

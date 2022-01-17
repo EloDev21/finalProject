@@ -1,5 +1,5 @@
 :root{
-    font-size: 10px;
+    font-size: 13px;
     /* taille par defaut pour appliquer nos rem */
 }
 
@@ -13,10 +13,16 @@ body{
     
 }
 h1{
+    font-size:2rem;
+    /* donc dans notre cas 1.6 * ce quill ya dans :root */
+    /* et le em vaut 1.2 *   son parent  */
+}
+p{
     font-size:1.6rem;
     /* donc dans notre cas 1.6 * ce quill ya dans :root */
     /* et le em vaut 1.2 *   son parent  */
 }
+
 .carousel{
     border-radius: 60px;
 }
@@ -25,8 +31,4 @@ h1{
   height: 80vh;
   border-radius: 30px;
   object-fit: cover;
-}
-.rowfoot{
-    display: flex;
-    justify-content: space-between;
 }

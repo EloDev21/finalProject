@@ -112,11 +112,12 @@ class NewslettersController extends AbstractController
          {
              
              $users = $newsletters->getCategories()->getUsers();
-           
-               
-                foreach ($users as $user) {
-                    if($user->getIsValid())
-                    {
+             
+             
+             foreach ($users as $user) {
+                 if($user->getIsValid())
+                 {
+                        $newsltr = $newsletters->findBy($user);
                         $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
                         ->setSubject('Inscription à la newsletter')
                         ->setFrom('senesafari@example.com')
@@ -127,7 +128,7 @@ class NewslettersController extends AbstractController
                                 'emails/newsletter.html.twig',
                                 ['user' => $user,
 
-                                'newsletters' =>$newsletters
+                                'newsletters' => $newsltr
                                   
                                 ]
                             ),

@@ -1,37 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau mot de passe {% endblock %}
+{% block title %}Nouveau mot de passe
+{% endblock %}
 {% block css %}
 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
+	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
 {% endblock %}
 {% block content %}
-<div class="container mt-5 mb-5 " >
-<div class ="row  "style="display:flex;justify-content:center;">
-<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
+	<div class="container mt-5 mb-5 ">
+		<section class="d-flex justify-content-center flex-column align-items-center">
 
-<form method="post" >
+			<div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
-
-    
-
-    <h1 class="h3 mb-3 font-weight-normal text-center"><strong>Bonjour!<strong></h1>
- 
-    <h4>Entrez votre nouveau mot de passe.</h4>
-        <label for="pass"> Mot de passe
-        </label>   
-        <input type="password" name="password" id="pass" required > 
-            <input type="hidden" name="token" value="{{token}}">
-    <button class="btn btn-primary text-center">Enregistrer</button>
-        <div>
-    <small class="text-muted mt-4">Attention, il est recommandé de choisir un fort mot de passe</small>
-</div>
+				<form method="post">
 
 
-    
-</form>
-</div>
-</div>
-</div>
-{% endblock %}
+					<h1 class="h3 mb-3 font-weight-normal text-center">
+						<strong>Bonjour!<strong></h1>
+							<h4>Vous avez demandé un nouveau mot de passe pour votre compte chez SENE'Safari
+							</h4>
+
+							<label for="pass">
+								Nouveau mot de passe
+							</label>
+							<input type="password" name="password" id="pass" required>
+							<input type="hidden" name="token" value="{{token}}"><br>
+							<button class="btn btn-primary">Enregistrer</button>
+							{# <div>
+															<small class="text-muted mt-4">Attention, il est recommandé de choisir un fort mot de passe</small>
+														</div> #}
+
+
+						</form>
+					</section>
+				</div>
+			{% endblock %}
