@@ -4,18 +4,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 {% endblock %}
 {% block content %}
+<h1> {{ newsletter.name}}</h1>
 	<div class="jumbotron mt-5">
-		<h6>Vous faites maintenant partie de notre grande famille. Bienvenue à notre newsletter</h6>
-		<h1>{{newsletters.name}}</h1>
-		</div>
-		<div>
-			{{newsletters.content|raw}}
-		</div>
-{# 
-<p> Pour vous désinscrire de notre newsletter &#x1F631; Cliquez sur ce lien
-	<a href="{{absolute_url(path('newsletters_confirm',{id: user.id,token:token}))}}">	
-	{{absolute_url(path('newsletters_confirm',{id: user.id,token:token}))}}">
+    {{newsletter.content|raw}}
+
+<p>Pour vous désinscrire de la newsletter, merci de cliquer sur le lien suivant :
+	<a href="{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token: user.validationToken }))}}">	
+	{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token:user.validationToken  }))}}">
 
 </a>
-</p> #}
+</p> 
 {% endblock %}

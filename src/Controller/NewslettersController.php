@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Newsletters\Newsletters;
 use App\Entity\Newsletters\Users;
-use App\Form\NewslettersType;
+use App\Entity\Newsletters\Categories;
+use App\Entity\User;
+use App\Form\NewslettersType;   
 use App\Form\NewslettersUsersType;
 use App\Repository\Newsletters\NewslettersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,15 +39,16 @@ class NewslettersController extends AbstractController
             ->setBody(
                 $this->renderView(
                     // templates/emails/registration.html.twig
-                    'emails/newsletter.html.twig',
+                    'emails/inscription.html.twig',
                     ['user' => $user,
-                        'token' =>$token
+                        'token' =>$token,
+                         'form' => $form
                     ]
                 ),
                 'text/html'
             );
             $mailer->send($message);
-            $this->addFlash('activation_newsletter','Bravo votre compte vient d\'être acitvé.Nous sommes ravis de vous compter parmis nos memebres.');
+          
             // on garde le token . on le supprime pas pour le désabonnement
             $this->addFlash('attente','Votre inscription à la Newsletter en attente de validation. Merci de consulter votre courriel.');
             return $this->redirectToRoute('home');
@@ -62,7 +65,7 @@ class NewslettersController extends AbstractController
     /**
      * @Route("newsletters_confirm/{id}/{token}", name="newsletters_confirm")
      */
-    public function confirm(Users $user , $token, \Swift_Mailer $mailer): Response
+    public function confirm(Users $user , $token): Response
     {
         // si il na pas de validationtoken on le cree
         if($user->getValidationToken() != $token ){
@@ -71,7 +74,8 @@ class NewslettersController extends AbstractController
             $user->setIsValid(true);
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
-          
+            $em->flush();
+            $this->addFlash('activation_newsletter','Bravo votre compte vient d\'être acitvé.Nous sommes ravis de vous compter parmis nos memebres.');
             return $this->redirectToRoute('home'); 
         }
     /**
@@ -108,16 +112,16 @@ class NewslettersController extends AbstractController
     /**
     * @Route("newsletters/send/{id}", name="newsletters_send")
     */
-    public function send (NewslettersRepository $newsletters, \Swift_Mailer $mailer):Response
+    public function send (NewslettersRepository $newsletter, \Swift_Mailer $mailer):Response
          {
              
-             $users = $newsletters->getCategories()->getUsers();
+             $users = $newsletter->getCategories()->getUsers();
              
              
              foreach ($users as $user) {
                  if($user->getIsValid())
                  {
-                        $newsltr = $newsletters->findBy($user);
+                        // $newsltr = $newsletters->findBy($user);
                         $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
                         ->setSubject('Inscription à la newsletter')
                         ->setFrom('senesafari@example.com')
@@ -127,8 +131,9 @@ class NewslettersController extends AbstractController
                                 // templates/emails/registration.html.twig
                                 'emails/newsletter.html.twig',
                                 ['user' => $user,
+                                'newsletter' => $newsletter
 
-                                'newsletters' => $newsltr
+                             
                                   
                                 ]
                             ),
@@ -138,10 +143,37 @@ class NewslettersController extends AbstractController
 
                     }
                 }
+                $newsletter->setIsSent(true);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($newsletter);
+                $em->flush();
                 return $this->redirectToRoute('newsletters_list');
+                // le bouton envoyer doit disparaitree puisque le isSent sera a 1
          }
           
-        
+    /**
+    * @Route("newsletters/unsubscribe/{id}/{newsletter}/{token}", name="newsletters_unsubscribe")
+    */
+    public function unsubscribe (NewslettersRepository $newsletter, Users $user,  $token):Response   
+    {
+        if($user->getValidationToken() != $token){
+            throw $this->createNotFoundException('Page non trouvée.');
+        }
+        $em = $this->getDoctrine()->getManager();
+        if(count($user->getCategories())>1){
+            // on le remove de la categorie selectionnee sil est aboonné a plusieurs newsL
+            $user->removeCategory($newsletter->getCategories());
+            $em->persist($user);
+        }
+        // sil est abonné qu'à une seule categorie de newsletter on le deszinscrit 
+        else{
+            $em->remove($user);
+
+        }
+        $em->flush();
+        $this->addFlash('delete', 'Newslettre supprimée!');
+        return$this->redirectToRoute('home');
+    } 
 
 }
 

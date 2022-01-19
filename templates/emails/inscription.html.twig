@@ -1,0 +1,17 @@
+{% block title %}Contact us
+{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+<h1> Votre inscription</h1>
+	<div class="jumbotron mt-5">
+<p>Vous etes inscrit à la newxsletter de SENE'Safari. Pour confirmer votre inscription, merci de cliquer sur le lien ci-dessous :
+
+
+	<a href="{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">	
+	{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">
+
+</a>
+</p> 
+{% endblock %}

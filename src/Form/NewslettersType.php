@@ -19,18 +19,16 @@ class NewslettersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',TextType::class )
-            ->add('categories', EntityType::class,[
-                "class" => Categories::class ,
-                "choice_label" => "name" ,
-                "multiple" => true,
-                "expanded" => true,
+            ->add('name', TextType::class)
+            ->add('categories', EntityType::class, [
+                "class" => Categories::class,
+                "choice_label" => "name",
+              
             ])
-            ->add('content',TextareaType    ::class)
-           
-         
-            ->add ('Enregistrer',SubmitType::class)
-        ;
+            ->add('content', TextareaType::class)
+
+
+            ->add('Enregistrer', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

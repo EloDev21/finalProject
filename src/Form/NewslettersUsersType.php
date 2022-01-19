@@ -38,7 +38,7 @@ class NewslettersUsersType extends AbstractType
                    ],
                    "label" =>'J\'accepte la collecte des données personnelles.'
             ])
-            ->add('Envoyer',SubmitType::class)
+            ->add('Envoyer', SubmitType::class)
            
          
         ;
