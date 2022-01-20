@@ -51,6 +51,10 @@ Bonjour et bonne visite sur notre site <strong class="align-center">
 <div class=" alert alert-success">{{message}}</div>
     
 {% endfor %}
+{% for message in app.flashes('delete') %}
+<div class=" alert alert-warning">{{message}}</div>
+    
+{% endfor %}
 	{# 
 				{% if (is_granted('ROLE_ADMIN') ) %}
 				<span style:color="green">Bonjour et Bienvenue Administratuer</span>

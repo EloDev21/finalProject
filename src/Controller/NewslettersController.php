@@ -112,10 +112,12 @@ class NewslettersController extends AbstractController
     /**
     * @Route("newsletters/send/{id}", name="newsletters_send")
     */
-    public function send (NewslettersRepository $newsletter, \Swift_Mailer $mailer):Response
+    public function send (Newsletters $newsletter, \Swift_Mailer $mailer):Response
          {
              
-             $users = $newsletter->getCategories()->getUsers();
+            //  $users = $newsletter->getCategories()->getUsers();
+            $users = $newsletter->getCategories()->getUsers();
+            //  dd($users);
              
              
              foreach ($users as $user) {
@@ -154,7 +156,7 @@ class NewslettersController extends AbstractController
     /**
     * @Route("newsletters/unsubscribe/{id}/{newsletter}/{token}", name="newsletters_unsubscribe")
     */
-    public function unsubscribe (NewslettersRepository $newsletter, Users $user,  $token):Response   
+    public function unsubscribe (Newsletters $newsletter, Users $user,  $token):Response   
     {
         if($user->getValidationToken() != $token){
             throw $this->createNotFoundException('Page non trouvée.');
@@ -168,10 +170,10 @@ class NewslettersController extends AbstractController
         // sil est abonné qu'à une seule categorie de newsletter on le deszinscrit 
         else{
             $em->remove($user);
-
         }
         $em->flush();
-        $this->addFlash('delete', 'Newslettre supprimée!');
+
+        $this->addFlash('delete', 'Newsletter supprimée!');
         return$this->redirectToRoute('home');
     } 
 
