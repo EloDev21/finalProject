@@ -11,32 +11,31 @@
 {% block content %}
 	<div class="container mt-4 mb-4">
 		<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">{{circuit.title}}</h1>
-	
-			<div class="row mt-2 mb-4" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+
+		<div class="row mt-2 mb-4" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
 
-				<div class="col md-6">
-					<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top mt-4" alt="..." width="100%" height="40%"/></a>
-				{# <img src="{{circuit.picture}}" class="card-img-top" alt="..."> #}
+		<div class="col-xxs-8 col-xxl-6 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
+				<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top mt-4" alt="..." width="100%" height="40%"/></a>
+			{# <img src="{{circuit.picture}}" class="card-img-top" alt="..."> #}
 
 
-				{# <img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top mt-4" alt="..." width="100%" height="40%"/></a>   #}
-				<img src="{{circuit.picture}}" class="card-img-top  mt-4" alt="..." width="100%" height="40%">
+			{# <img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top mt-4" alt="..." width="100%" height="40%"/></a>   #}
+			<img src="{{circuit.picture}}" class="card-img-top  mt-4" alt="..." width="100%" height="40%">
 
-				</div>
-				<div class="col md-6 jumbotron " style="height:100vh">
-				<h1 class="text-center text-warning" style="font-size: 3rem;font-weight:bold;">{{circuit.title}}</h1>
-				<p>{{circuit.description |nl2br}}</p>
-				<div class="text-warning text-center" style="font-size: 4rem;font-weight:bold; " style="height:100vh">{{circuit.price}}€
-
-				</div>
-				<div class=" text-center ">
-					<a href="{{ path('cart_add', {id:circuit.id}) }}" class="btn btn-lg btn-success">Ajouter au panier</a><br>
-					<a href="{{ path('circuit')}}" class="btn mt-2 btn-lg btn-secondary">Retour aux circuits</a><br>
-
-				</div>
+		</div>
+		<div class="col-xxs-8 col-xxl-6 col-sm-6  col-xs-8 col-xl-4 col mt-4 py-5">
+			<h1 class="text-center text-warning" style="font-size: 3rem;font-weight:bold;">{{circuit.title}}</h1>
+			<p>{{circuit.description |nl2br}}</p>
+			<div class="text-warning text-center" style="font-size: 4rem;font-weight:bold; " style="height:100vh">{{circuit.price}}€
 
 			</div>
+			<div class=" text-center ">
+		<a href="{{ path('cart_add', {id:circuit.id}) }}" class="btn btn-lg btn-success">Ajouter au panier</a><br>
+		<a href="{{ path('circuit')}}" class="btn mt-2 btn-lg btn-secondary">Retour aux circuits</a><br>
 		</div>
 	</div>
-{% endblock %}
+
+
+	</div>
+</div>{% endblock %}

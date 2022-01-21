@@ -1,96 +1,124 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre panier{% endblock %}
+{% block title %}Votre panier
+{% endblock %}
 {% block css %}
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
+	<link
+	href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 
 {#{{ encore_entry_link_tags('app') }}#}
 {% endblock %}
 
 {% block js %}
-{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 {% endblock %}
 
 {% block content %}
 
-<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Votre panier</h1>
-<div class="container mt-5 mb-5" style="display:flex;justify-content:center">
+	<h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Votre panier</h1>
+	<div class="container mt-5 mb-5 ">
 
-<div class="col-6"  style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-<h5 class="lead text-center mb-4" style="text-decoration:underline dotted"> Récaputilatif de votre commande  {{app.user.firstname}}  {{app.user.lastname | upper}} </h5>
-{# {% if app.user %}
-Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
-{% endif %} #}
- 
+		<h5 class="lead text-center mb-4" style="text-decoration:underline dotted">
+			Récaputilatif de votre commande
+			{{app.user.firstname}}
+			{{app.user.lastname | upper}}
+		</h5>
+		{# {% if app.user %}
+				Bonjour<strong> {{app.user.firstname | upper}}  {{app.user.lastname | upper}}</strong>
+				{% endif %} #}
 
-{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
-{% if items | length >0  %}
-    <table class="table table-striped">
-    <thead> 
-        <tr>
-        <th>Circuit(s) </th>
-        <th>Nbre de personnes </th>
-        <th> Prix Unitaire </th>
-        <th>Total </th>
-        
-            {# dernier th vide pour pouvoir mettre des buttons dans le table #}
-        <th>  </th>
-        </tr>
+		<section class="d-flex justify-content-center flex-column align-items-center ">
+			<div
+				class="col-xxl-6 col-xl-6 col-lg-6 col-6 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 
-    </thead>
-    <tbody>
-        {% for item in items %}
-        <tr>
-        <td><img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/> {{item.circuit.title}} </td>
-        {# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
-        <td> {{item.quantity}} 
-        <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" me-1 btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> 
-        <a href="{{path('cart_remove', {'id':item.circuit.id})}}" class=" btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i>
-        </td>
-        <td> {{item.circuit.price}} </td>
-        {# <td>  {{item.quantity}}</td> #}
-        <td>{{item.circuit.price * item.quantity}} €  </td>
-        <td>
-      
-        </td>
-        </tr>
-            
-        {% endfor %}
-        <tfoot>
-            <tr>
-            <td colspan="3"><strong>Total du panier : {{total}}€</strong> </td>
-         
-            <td> 
-                <a href="{{path('confirm_checkout')}}"  class="btn btn-success btn-md">
-                        
-            <i class="bi bi-trash"></i>Valider votre &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-          </svg>
-            </a>
-      
-            <a href="{{path('circuit')}}"  class="btn btn-secondary btn-md mt-2">
-        <i class="bi bi-arrow-bar-left"></i><i class="bi bi-arrow-return-left"></i>Circuits
-            </a>
-        </td>
-            </tr>
-        </tfoot>
-    </tbody>
+				{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
+				{% if items | length >0  %}
+					<table class="table table-striped" >
+						<thead>
+							<tr>
+								<th>Circuit(s)
+								</th>
+								<th>Nbre de personnes
+								</th>
+								<th>
+									Prix Unitaire
+								</th>
+								<th>Total
+								</th>
 
-</table>
-{% else %}
-    
-<h4>Votre panier est vide !!! </h4>
-    <a href="{{path('circuit')}}"  class="btn btn-success btn-sm mt-2">
-                                    
-<i class="bi bi-trash"></i>Retour aux Circuits
-</a>
+								{# dernier th vide pour pouvoir mettre des buttons dans le table #}
+								<th></th>
+							</tr>
 
-{% endif %}
-</div>
-</div>
+						</thead>
+						<tbody>
+							<tr>
+								{% for item in items %}
+									<td><img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="20px" height="130"/>
+										{{item.circuit.title}}
+									</td>
+									{# <td> <a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" btn btn-success btn-sm"> </td> #}
+									<td>
+										{{item.quantity}}
+										<a href="{{path('cart_add', {'id':item.circuit.id})}}" class=" me-1 btn btn-success btn-sm">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+											<a href="{{path('cart_remove', {'id':item.circuit.id})}}" class=" btn btn-danger btn-sm">
+												<i class="fa fa-minus" aria-hidden="true"></i>
+											</td>
+											<td>
+												{{item.circuit.price}}
+											</td>
+											{# <td>  {{item.quantity}}</td> #}
+											<td>{{item.circuit.price * item.quantity}}
+												€
+											</td>
+											<td></td>
+										</tr>
+
+									{% endfor %}
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<strong>Total du panier :
+													{{total}}€</strong>
+											</td>
+
+											<td>
+												<a href="{{path('confirm_checkout')}}" class="btn btn-success btn-md">
+
+													<i class="bi bi-trash"></i>Valider votre &nbsp;
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewbox="0 0 16 16">
+														<path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+													</svg>
+												</a>
+
+												<a href="{{path('circuit')}}" class="btn btn-secondary btn-md mt-2">
+													<i class="bi bi-arrow-bar-left"></i>
+													<i class="bi bi-arrow-return-left"></i>Circuits
+												</a>
+											</td>
+										</tr>
+									</tfoot>
+								</tbody>
+							</tr>
+						</tbody>
+					</table>
+				{% else %}
+
+					<h4>Votre panier est vide !!!
+					</h4>
+					<a href="{{path('circuit')}}" class="btn btn-success btn-sm mt-2">
+
+						<i class="bi bi-trash"></i>Retour aux Circuits
+					</a>
+
+				{% endif %}
+			</div>
+		</section>
+	</div>
 
 {% endblock %}
