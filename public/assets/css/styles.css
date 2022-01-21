@@ -61,7 +61,7 @@ body{
    100% { opacity:1; }
  }
  :root{
-    font-size: 13px;
+    font-size: 14px;
     /* taille par defaut pour appliquer nos rem */
 }
 
@@ -76,10 +76,16 @@ h1{
     /* et le em vaut 1.2 *   son parent  */
 }
 p{
-    font-size:1.6rem;
+    font-size:1.4rem;
     /* donc dans notre cas 1.6 * ce quill ya dans :root */
     /* et le em vaut 1.2 *   son parent  */
 }
 footer{
     flex-grow:1;
+}
+.news{
+    transition: none;
+}
+.btn{
+    transition: none;
 }

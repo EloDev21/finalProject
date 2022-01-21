@@ -13,6 +13,8 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
+        // on génére une exception
+        // throw $this->createNotFoundException('Page perdue ou inexistante!');
         return $this->render('home/index.html.twig');
     }
 }

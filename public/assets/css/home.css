@@ -34,11 +34,12 @@ p{
 }
 
 
-@media screen and  (max-width: 998px) {
+@media screen and  (max-width: 600px) {
 
     /* css pour ecran de 600px minimum */
     .columnFoot{
         display : none;
+        
      
       /* col l'une au dessus de l'autre */
     }

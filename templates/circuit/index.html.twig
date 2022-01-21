@@ -14,7 +14,7 @@
 	<div class="container">
 		<h2 class="text-center">
 			Liste de tous nos circuits actuellement disponibles</h2>
-			
+
 		{% for message in app.flashes('message' )%}
 
 			<div class="alert alert-primary" role="alert">
@@ -23,58 +23,59 @@
 		{% endfor %}
 
 
-		<section class="mt-5">
+		<div class="mt-5">
 			{% if( is_granted('ROLE_EDITOR') ) %}
 				<a href="{{ path('circuit_add') }}" class="btn btn-success">
 					<i class="fa fa-plus-square" aria-hidden="true"></i>
 					Ajouter un circuit</a>&nbsp;&nbsp;
 			{% endif %}
 
-			<section>
+		</div>
 				<div class="container">
 
-				<div
-					class="row mt-4 mb-4 d-flex justify-content-around">
-					<!-- Gallery Item 1 -->
-					{% for circuit in circuits %}
-					<div class="col-xxs-8 col-xxl-4 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
-							<div class="card h-100">
-								<a href="{{ path('detail', {id:circuit.id})}}">
+					<div
+						class="row mt-4 mb-4 d-flex justify-content-around">
+						<!-- Gallery Item 1 -->
+						{% for circuit in circuits %}
+							<div class="col-xxs-8 col-xxl-4 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
+								<div class="card h-100">
+									<a href="{{ path('detail', {id:circuit.id})}}">
 
-									<img class="card-img-top" src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px"/>
-								</a>
-								<h4 class="card-title text-center">
-									<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
-										{{circuit.title}}</a>
-								</h4>
+										<img class="card-img-top" src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px"/>
+									</a>
+									<h4 class="card-title text-center">
+										<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+											{{circuit.title}}</a>
+									</h4>
 
-								<p class="card-text text-center" style="height:200px"/>{{circuit.minidescription}}</p>
-							<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+									<p class="card-text text-center" style="height:200px"/>{{circuit.minidescription}}</p>
+								<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
 
 
-							{% if( is_granted('ROLE_EDITOR') ) %}
+								{% if( is_granted('ROLE_EDITOR') ) %}
 
-								<div class="row d-flex justify-content-center">
-									<div class="col-4">
+									<div class="row d-flex justify-content-center">
+										<div class="col-4">
 
-										<a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
-											<i class="fa fa-pencil" aria-hidden="true"></i>
-										</a>&nbsp;&nbsp;
-										<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
-											<i class="fa fa-trash" aria-hidden="true"></i>
-										</a>
+											<a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</a>&nbsp;&nbsp;
+											<a href="{{path('circuit_delete', {id:circuit.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
+												<i class="fa fa-trash" aria-hidden="true"></i>
+											</a>
+										</div>
 									</div>
-								</div>
 
-							{% endif %}
-							<p class="card-text">
-								<small class="text-muted">Prix journalier/adulte</small>
-							</p>
+								{% endif %}
+								<p class="card-text">
+									<small class="text-muted">Prix journalier/adulte</small>
+								</p>
+							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
 			</div>
-		</div>
 
+		</div>
 	</div>
-</div></section></div></div>{% endblock %}
+</section></div></div>{% endblock %}

@@ -3,17 +3,17 @@
 {% block title %}SENE'Safari
 {% endblock %}
 {% block css %}
-	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 {% endblock %}
 
 {% block content %}
 {% if app.user %}
 <div class="welkom">
-Bonjour et bonne visite sur notre site <strong class="align-center">
-	{{app.user.firstname}} {{app.user.lastname | upper}}</strong>
+<h5 class="mt-2 mb-2">Bonjour et bonne visite sur notre site <strong class="align-center">
+	{{app.user.firstname}} {{app.user.lastname | upper}}</strong></h5>
 </div>
 {% endif %}
 	<div class="enTete" style=" padding: 2rem 1rem;margin-bottom: 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8">
