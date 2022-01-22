@@ -16,71 +16,46 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 {% endblock %}
-
 {% block content %}
 
 	<h1 class="text-center mt-5">Liste de tous nos utilisateurs</h1>
-	<div class="container-fluid">
-		<section class="d-flex justify-content-center flex-column align-items-center">
-			<div class="col-xxl-4 col-xl-5 col-lg-6 col-8 col-md-7" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-				{# si le length du tableau est  > 0 on a uin elt sinn on n'a rien #}
-				{% if profiles | length >0  %}
-					<table class="table table-striped">
-						<thead>
+	{# <div class="container"> #}
+
+
+		<section class="d-flex justify-content-center flex-column align-items-center border-success ">
+			{% if profiles | length >0  %}
+			<div class="col-xxl-9 col-xl-8 col-lg-7 col-6 col-md-5 col-xs-4 col-xxs-4 border-success" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+				<table class="table">
+				{% for profile in profiles %}
+				<thead>
+						<tr>
+
+							<th scope="col">Prénom</th>
+							<th scope="col">Nom</th>
+
+							<th scope="col">Email</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
 							<tr>
-								<th>Prénom
-								</th>
-								<th>Nom
-								</th>
-								<th>
-									Téléphone
-								</th>
-								<th>Email
-								</th>
-								{# <th>Role  </th> #}
-								<th>Supprimer
-								</th>
 
+								<td>{{profile.firstname}}</td>
+								<td>{{profile.lastname}}</td>
 
+								<td>{{profile.email}}</td>
+								<td>
+									<a href="{{path('profile_remove', {id:profile.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
+										<i class="fa fa-trash" aria-hidden="true"></i>
+									</a>
+								</td>
 							</tr>
+						{% endfor %}
 
-						</thead>
-						<tbody>
-							{% for profile in profiles %}
-                          
-								<tr>
-									<td>{{profile.firstname}}
-									</td>
-
-
-									<td>
-										{{profile.lastname}}
-									</td>
-									<td>
-										{{profile.phone}}
-									</td>
-
-									{# <td> {{profile.roles}} </td> #}
-
-									<td>{{profile.email}}
-									</td>
-									{# <td>{{profile.roles}}  </td> #}
-									<td>
-										<a href="{{path('profile_remove', {id:profile.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer le circuit ? Cette action est irreversible!');" class="btn btn-danger">
-											<i class="fa fa-trash" aria-hidden="true"></i>
-										</a>
-									</td>
-                                </tr>
-                          
-								{% endfor %}
-							</tbody>
-						
-					</table>
-
-				</div>
-            </section>
+					</tbody>
+				</table>
+				<div>
+			{% endif %}
+			</section>
 			</div>
-
-		{% endif %}
-
-	{% endblock %}
+{% endblock %}

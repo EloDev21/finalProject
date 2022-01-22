@@ -18,12 +18,7 @@
     color: goldenrod;
   }
 
-h1,h3{
-    font-family: 'Chakra Petch', sans-serif;
-font-family: 'Indie Flower', cursive;
-font-family: 'Merriweather', serif;
-font-family: 'Quicksand', sans-serif;
-}
+ 
 @media  screen and (max-width:1100px) {
   /* css pour ecran de - de 600px  */
   .rowdetail{
@@ -49,12 +44,12 @@ font-family: 'Quicksand', sans-serif;
     min-width: 50%;
     margin: 10px;
   }
-  
+/*   
   p{
    
     font-size: larger;
     font-weight: bold;
-  }
+  } */
   
   
 }

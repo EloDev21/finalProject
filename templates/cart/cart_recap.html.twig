@@ -44,17 +44,16 @@
 							<div class="row">
 								<div class="col-6">
 
-									<img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/>
+									<img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top d-none d-md-none d-xl-block d-xxl-block" alt="..." width="50px" height="130"/>
 									<p>
-										C ircuit :
-										{{item.circuit.title}}
-										(x
-										{{item.quantity}})</p>
-									<p></p>
+									Nom du circuit :<strong> {{item.circuit.title}}</strong>
+									</p>
+									<p>Quantité:<strong>	* {{item.quantity}}</strong></p>
+									
 								</div>
 								<p>
 									Sous-total:
-									{{item.circuit.price * item.quantity}}€
+								<strong>	{{item.circuit.price * item.quantity}}€</strong>
 								</p>
 							</div>
 
@@ -70,7 +69,7 @@
 
 							<i class="bi bi-trash"></i>Valider et payer &#x2714;
 						</a>
-
+					
 
 					{% endif %}
 				</div>
