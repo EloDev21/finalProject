@@ -5,11 +5,13 @@ use App\Notification\ChangePassword;
 use App\Entity\User;
 use App\Form\EditProfileType;
 use App\Form\ProfileType;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 class ProfileController extends AbstractController
 {
@@ -20,8 +22,11 @@ class ProfileController extends AbstractController
     public function index(): Response
     {
         $profiles = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $total= count($profiles);
+       
         return $this->render('profile/index.html.twig', [
-            'profiles' => $profiles
+            'profiles' => $profiles,
+            'total' => $total
          
             
            
