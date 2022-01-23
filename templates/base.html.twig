@@ -110,39 +110,14 @@
 	
 				<section class=" px-3 d-flex align-items-center">
 				
-						<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 newsB">
-							<a href="{{path('newsletters')}}" class="btn news btn-transparent btn-lg border border-warning text-dark">
+						<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 ">
+							<a href="{{path('newsletters')}}" class=" newsB btn news btn-transparent btn-lg border border-warning text-dark">
 								<i class="fa fa-envelope-square ">
 									&nbsp;
 								</i>S'inscrire à la newsletter
 							</a>
 						</div>
-							{# <h6 class="text-uppercase mb-4 font-weight-bold" style="font-weight:bold;color:black">
-								Sene'SAFARI
-							</h6> #}
-							{# <p style="color:black">
-												Here you can use rows and columns to organize your footer
-												              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-												              elit.
-											</p>
-											
-							
-											<hr class="w-100 clearfix d-md-none"/>
-											<p class="d-flex justify-content-center">
-												<strong>
-													<h4 class="mt-2 mb-4 s" style="font-weight:bold;color:gold">Paiement sécurisé &nbsp;
-													</h4>
-												</strong>
-												<div class="cardIcons mt-3">
-													<i class="fa fa-credit-card-alt me-5" style="font-size:1.7em;color:black;" aria-hidden="true"></i>
-													<i class="fa fa-cc-mastercard me-5" style="font-size:1.7em;color:black" aria-hidden="true"></i>
-													<strong>
-														<i class="fa fa-google me-5" style="font-size:1.7em;color:black" aria-hidden="true"></i>
-													</strong>
-												</p>
-											</p>
-										</div> #}
-							{# <i class="fa fa-envelope-square  fa-2x"></i><button class="btn btn-transparent btn-md text-dark"> <span class="font-size:1.2 em !important">S'inscrire à la newsletter </span> </button> #}
+						
 						<!-- Grid column -->
 						<hr class="w-100 mt-3 clearfix d-md-none"/>
 						<!-- Grid column -->
@@ -195,22 +170,22 @@
 						<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-start d-flex align-items-center">
 							 <!-- Facebook -->
 							<a href="www.facebook.fr" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" style="transition: inherit !important" class="" role="button">
-								<i class="fa fa-facebook-f" style="color:black"></i>
+								<i class="fa fa-facebook-f" id="sn" style="color:black"></i>
 							</a>
 							<!-- Twitter -->
 							<a href="www.google.fr" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" class="" role="button">
-								<i class="fa fa-twitter" style="color:black"></i>
+								<i class="fa fa-twitter" id="sn" style="color:black"></i>
 							</a>
 							<!-- Instagram -->
 							<a href="www.instagram.fr" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" class="" role="button">
-								<i class="fa fa-instagram" style="color:black"></i>
+								<i class="fa fa-instagram" id="sn" style="color:black"></i>
 							</a>
 						</div>
 						{# <div class="col-md-7 col-lg-8 text-center text-md-end" style="border : 1px solid purple"> #}
 							<!-- Copyright -->
 						<div>
-							© 2022 Copyright:
-							<a class="" href="{{path('mentions_legales')}}">Mentions légales</a>
+							© 2022 Copyright - 
+							<a class="" style="color:gold" href="{{path('mentions_legales')}}">Mentions légales</a>
 						</div>
 							<!-- Copyright -->
 						{# </div> #}
