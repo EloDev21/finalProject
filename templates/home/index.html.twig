@@ -3,110 +3,121 @@
 {% block title %}SENE'Safari
 {% endblock %}
 {% block css %}
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
-{% if app.user %}
-<div class="welkom">
-<h5 class="mt-2 mb-2">Bonjour et bonne visite sur notre site <strong class="align-center">
-	{{app.user.firstname}} {{app.user.lastname | upper}}</strong></h5>
-</div>
-{% endif %}
-	<div class="enTete" style=" padding: 2rem 1rem;margin-bottom: 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8">
+	{% if app.user %}
+		<div class="welkom">
+			<h5 class="mt-2 mb-2">Bonjour et bonne visite sur notre site
+				<strong class="align-center">
+					{{app.user.firstname}}
+					{{app.user.lastname | upper}}</strong>
+			</h5>
+		</div>
+	{% endif %}
+	<div class="enTete" style=" padding: 2rem 1rem;background-color: #e9ecef;border-radius: .3rem;">
 		<div class="row mb-3" style="display:flex;justify-content:center;">
 			<div
 				class="col-6 mb-5 " style="width:50px; height:50px;margin-RIGHT: 5em;">
 				{# <link href="{{ asset('assets/images/circuits/logo2.png') }}" rel="stylesheet" />  #}
 				<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="..."/></a>
 		</div>
-	</div>
 	
+
 	<h1 class="text-center mt-3-mt-2" style='font-weight:bold;color:#7f5539'>SENE'Safari</h1>
 
 	<h4 class="text-center">"Evadez vous dans un endroit idyllique avec des forfaits atypiques ... "</h4>
 </div>
-<div
-	class="container mb-5">
+<div class="container mb-5">
 	{% for message in app.flashes('contact_email' )%}
 
-	<div class="alert alert-success" role="alert">
-		{{message}}
-	</div>
-{% endfor %}
+		<div class="alert alert-success" role="alert">
+			{{message}}
+		</div>
+	{% endfor %}
 	{% for message in app.flashes('inscription' )%}
 
-	<div class="alert alert-success" role="alert">
-		{{message}}
-	</div>
-{% endfor %}
-{% for message in app.flashes('activation_newsletter') %}
-<div class=" alert alert-success">{{message}}</div>
-    
-{% endfor %}
-{% for message in app.flashes('attente') %}
-<div class=" alert alert-success">{{message}}</div>
-    
-{% endfor %}
-{% for message in app.flashes('delete') %}
-<div class=" alert alert-warning">{{message}}</div>
-    
-{% endfor %}
+		<div class="alert alert-success" role="alert">
+			{{message}}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('activation_newsletter') %}
+		<div class=" alert alert-success">{{message}}</div>
+
+	{% endfor %}
+	{% for message in app.flashes('attente') %}
+		<div class=" alert alert-success">{{message}}</div>
+
+	{% endfor %}
+	{% for message in app.flashes('delete') %}
+		<div class=" alert alert-warning">{{message}}</div>
+
+	{% endfor %}
 	{# 
-				{% if (is_granted('ROLE_ADMIN') ) %}
-				<span style:color="green">Bonjour et Bienvenue Administratuer</span>
-				{% endif %} #}
+					{% if (is_granted('ROLE_ADMIN') ) %}
+					<span style:color="green">Bonjour et Bienvenue Administratuer</span>
+					{% endif %} #}
 
 
-	<div class="rowCaroussel">
+	<div class="rowCarousel">
 		<div
 			class="col-sm-12 col-xs-12 col-xxl-12 col-xl-12 col-md-12">
 			<!-- Carousel wrapper -->
-			<div
-				id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-	
+			<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+
 				<div
 					class="carousel-inner">
 					<!-- Single item -->
 					<div class="carousel-item active ">
-						<img  src="https://res.cloudinary.com/dqdoissmb/image/upload/v1639537437/safariSaly/bandia_nvbcao.jpg" class="" alt="..."/>
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Réserve naturelle de Bandia</h5>
-							<p>En parfaite communion avec la nature ...</p>
-						</div>
+						<img src="{{asset('/images/circuits/zoo.jpg')}}" class="" alt="..."/>
+
+					</div>
+					
+					
+					
+					
+				
+					
+					
+					<!-- Single item -->
+					<div class="carousel-item">
+						<img src="{{asset('/images/circuits/lams.jpg')}}"/>
+
 					</div>
 
 					<!-- Single item -->
 					<div class="carousel-item">
 						<img src="https://www.kayak.fr/rimg/himg/64/5d/8b/hotelsdotcom-435331-fe70194f_w-113046.jpg?width=1366&height=768&crop=true" alt="..."/>
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Saly</h5>
-							<p>Saly Portudal, côte balnéaire.</p>
-						</div>
+
 					</div>
+
 
 					<!-- Single item -->
 					<div class="carousel-item">
-						<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1639537437/safariSaly/cap_zmoi86_ldmdgd.jpg" class="" alt="..."/>
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Banjul ...</h5>
-							<p>Let's visit sweet gambia</p>
-						</div>
+						<img src="{{asset('/images/circuits/goree.jpg')}}" />
+
+					</div>
+						<!-- Single item -->
+						<div class="carousel-item">
+						<img src="{{asset('/images/circuits/zebra.jpg')}}"/>
+
 					</div>
 				</div>
+
 				<!-- Inner -->
 
 				<!-- Controls -->
 				<button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
+					<span class="carousel-control-prev-icon" ></span>
+					
 				</button>
-				<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
+				<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next"  >
+					{# <span  class="carousel-control-next-icon " aria-hidden="true"></span> #}
+				
 				</button>
 			</div>
 
