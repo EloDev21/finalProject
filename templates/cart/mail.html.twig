@@ -1,0 +1,19 @@
+{% block title %}Contact us
+{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+	<div class="jumbotron mt-5">
+		<h6>Nouveau message de contact du site SeneSAFARI</h6>
+		</div>
+	<p class="lead">Une personne souhaiterait avoir plus d'infos sur les circuits safari et vient de vous laisser un message . </p>
+
+<p> Prénom : {{user.firstname}}</p>
+<p> Nom : {{user.lastname}}</p>
+<p> Email : {{user.email}}</p>
+<p> Total : {{commande}}</p>
+{# <p> nom du circuit : {{item.circuit.title}}</p> #}
+	
+	<a href="{{url('home')}}">Retournez sur le site Sene'SAFARI</a>
+{% endblock %}

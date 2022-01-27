@@ -31,7 +31,6 @@ class NewslettersController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $em->flush();
             $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
             ->setSubject('Inscription à la newsletter')
             ->setFrom('senesafari@example.com')

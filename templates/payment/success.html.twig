@@ -8,9 +8,10 @@
 {% endblock %}
 {% block content %}
 {{parent()}}
-<div class="recap">
-<h5> Nous vous remercions de votre commande effectuée sur le site SeneSAFARI. </h5>
-<p>Veuillez trouvez ci-dessous un Récaputilatif de votre paiement ainsi qu'un exemplaire dans votre bo^te mail. </p>
+<div class="recap container">
+<h5> Nous vous remercions de votre commande effectuée sur le site SeneSAFARI.</h5>
+<p>Veuillez trouvez ci-dessous un Récaputilatif de votre paiement ainsi qu'un exemplaire dans votre boîte mail.</p>
+<a href="">Télécharger votre facture.</a>
 {# <div class="row">
 {% for item in items %}
     
@@ -24,7 +25,7 @@
     
 <p>Total du panier : {{total}}€</p>
 </div>
-{% endfor %}
-</div> #}
+{% endfor %} #}
+</div>
 
 {% endblock %}

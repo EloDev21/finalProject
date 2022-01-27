@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Controller;
+
+use App\Entity\Cart;
 use App\Service\Cart\CartService;
 use App\Entity\Circuits;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,9 +60,12 @@ class CartController extends AbstractController
     /**
      * @Route("/checkout", name="checkout")
      */
-    public function checkout(CartService $cartService ): Response
+    public function checkout(CartService $cartService , \Swift_Mailer $mailer): Response
     {
+       $cart =new Cart();
         $commande = $cartService->getTotal();
+        $user = $this->getUser();
+        
         \Stripe\Stripe::setApiKey('sk_test_51K6vbcEZDVyiBY3Z3G7d0fYvGF4aH8nXJAlQRaOpvClbtNt18kPPAdQloWAliIrYbCHdBXgmTGKMllsZNW0CNFs000nevPwgwY');
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [[
@@ -78,7 +84,36 @@ class CartController extends AbstractController
         'success_url'          => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
         'cancel_url'           => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
-     
+          
+          $recap = (new \Swift_Message('SDFDSFHFJFGDGRDJHGF de contact - SeneSAFARI'))
+          ->setSubject(' Récaputilatif de votre commande ')
+          ->setFrom('senesafari@example.com')
+          ->setTo($user->getEmail())
+          ->setBody(
+              $this->renderView(
+              
+                  'cart/mail.html.twig',
+                  ['user' => $user,
+                      'commande' =>$commande,
+                       
+                  ]
+              ),
+              'text/html'
+          );
+          
+          $em=$this->getDoctrine()->getManager();
+          $cart->setFirstname($user->getFirstname());
+          $cart->setLastname($user->getLastname());
+          $cart->setTotal($commande);
+          $cart->setCircuitName('voili');
+        //   $cart->setCreatedAt( new \DateTime('now'));
+        $em->persist($cart);
+        $em->flush();
+          $mailer->send($recap);
+
+        // //   $cartService->remove($panierWithData);
+        // $panierWithData = $cartService->getFullCart();
+        // $panierWithData=[];
         return $this->redirect($session->url,303);
         
     }
@@ -88,7 +123,7 @@ class CartController extends AbstractController
      */
     public function successUrl(): Response
     {
-     
+        
         return $this->render('payment/success.html.twig');
 
         

@@ -1,0 +1,2 @@
+#/bin/sh
+rsync -av ./ u107228342@access899084179.webspace-data.io --include=public/build --include=vendor  --exclude=".*"
