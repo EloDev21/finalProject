@@ -106,7 +106,7 @@ class CartController extends AbstractController
           $cart->setFirstname($user->getFirstname());
           $cart->setLastname($user->getLastname());
           $cart->setTotal($commande);
-          $cart->setCircuitName('voili');
+          $cart->setCircuitName('voili voilouuu');
         //   $cart->setCreatedAt( new \DateTime('now'));
         $em->persist($cart);
         $em->flush();
