@@ -105,10 +105,10 @@ class Cart
     
     }
 
-    public function setCreatedAt(\DateTime $created_at ,$date): self
+    public function setCreatedAt(\DateTime $created_at ): self
     {
         
-        $this->created_at = $date;
+        $this->created_at = $created_at;
 
         return $this;
     }

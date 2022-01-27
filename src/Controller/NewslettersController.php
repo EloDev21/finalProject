@@ -33,7 +33,7 @@ class NewslettersController extends AbstractController
             $em->flush();
             $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
             ->setSubject('Inscription à la newsletter')
-            ->setFrom('senesafari@example.com')
+            ->setFrom('contact@senesafari.com')
             ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
@@ -125,7 +125,7 @@ class NewslettersController extends AbstractController
                         // $newsltr = $newsletters->findBy($user);
                         $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
                         ->setSubject('Inscription à la newsletter')
-                        ->setFrom('senesafari@example.com')
+                        ->setFrom('contact@senesafari.com')
                         ->setTo($user->getEmail())
                         ->setBody(
                             $this->renderView(

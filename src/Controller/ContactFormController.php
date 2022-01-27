@@ -27,7 +27,7 @@ class ContactFormController extends AbstractController
             // snding the message with swiftmailer to the admin-team
             $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
             ->setFrom($contactF->getEmail())
-            ->setTo('senesafari@example.com')
+            ->setTo('contact@senesafari.com')
             ->setBody(
                 $this->renderView(
                     // templates/emails/registration.html.twig

@@ -63,6 +63,7 @@ class CartController extends AbstractController
     public function checkout(CartService $cartService , \Swift_Mailer $mailer): Response
     {
        $cart =new Cart();
+       $cart->setCreatedAt(new \DateTime());
         $commande = $cartService->getTotal();
         $user = $this->getUser();
         
@@ -87,7 +88,7 @@ class CartController extends AbstractController
           
           $recap = (new \Swift_Message('SDFDSFHFJFGDGRDJHGF de contact - SeneSAFARI'))
           ->setSubject(' Récaputilatif de votre commande ')
-          ->setFrom('senesafari@example.com')
+          ->setFrom('contact@senesafari.com')
           ->setTo($user->getEmail())
           ->setBody(
               $this->renderView(
