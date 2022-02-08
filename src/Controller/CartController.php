@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 // Include Dompdf required namespaces
+
+use App\Entity\Cart;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Entity\Order;
@@ -39,15 +41,7 @@ class CartController extends AbstractController
         $orders = $cartrepo->findAll();
         $user = $this->getUser();
 
-        // $panierWithData = $cartService->getFullCart();
-        // $total = $cartService->getTotal();
-        // return $this->render('cart/facture.html.twig', [
-        //     'items' => $cartService->getFullCart(),
-        //     'total' => $cartService->getTotal(),
-        //     'orders' => $orders,
-        //     'user' => $user
 
-        // ]);
         $options = new Options();
         $options->set('defaultFont', 'Arial');
 
@@ -108,8 +102,8 @@ class CartController extends AbstractController
      */
     public function checkout(CartService $cartService , \Swift_Mailer $mailer): Response
     {
-       $order =new Order();
-       $order->setCreatedAt(new \DateTime());
+       $cart =new Cart();
+       $cart->setCreatedAt(new \DateTime());
         $commande = $cartService->getTotal();
         $user = $this->getUser();
         
@@ -132,7 +126,7 @@ class CartController extends AbstractController
         'cancel_url'           => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
           
-          $recap = (new \Swift_Message('SDFDSFHFJFGDGRDJHGF de contact - SeneSAFARI'))
+          $recap = (new \Swift_Message('Résérvation contact - SeneSAFARI'))
           ->setSubject(' Récaputilatif de votre commande ')
           ->setFrom('contact@senesafari.com')
           ->setTo($user->getEmail())
@@ -148,21 +142,21 @@ class CartController extends AbstractController
               'text/html'
           );
       
-          
+          $items = $cartService->getFullCart();
   
-        return $this->redirect($session->url,303);
-        $panierWithData = [];
-        $em=$this->getDoctrine()->getManager();
-        $order->setFirstname($user->getFirstname());
-        $order->setLastname($user->getLastname());
-        $order->setTotal($commande);
-         $order->setName('voili voilouuu');
+          $panierWithData = [];
+          $em=$this->getDoctrine()->getManager();
+        $cart->setFirstname($user->getFirstname());
+        $cart->setLastname($user->getLastname());
+        $cart->setTotal($commande);
+         $cart->setCircuitName('voili voilouuu à modifier');
       //   $cart->setCircuitName($commande->getCircuitName());
-      //   $cart->setCreatedAt( new \DateTime('now'));
-      $em->persist($order);
+      //   $cart->setCreatedAt( new \DateTime('now')=);
+      $em->persist($cart);
       $em->flush();
         $mailer->send($recap);
 
+          return $this->redirect($session->url,303);
         
     }
 
