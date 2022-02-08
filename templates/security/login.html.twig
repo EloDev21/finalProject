@@ -31,13 +31,15 @@
 	{% endfor %}
 	{% for message in app.flashes('danger' )%}
 
+
+
 		<div class="alert alert-danger" role="alert">
 			{{message}}
 		</div>
 	{% endfor %}
 	{% for message in app.flashes('inscription' )%}
 
-	<div class="alert alert-success" role="alert">
+	<div class="alert alert-success " role="alert">
 		{{message}}
 	</div>
 {% endfor %}
