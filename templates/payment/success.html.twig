@@ -11,21 +11,8 @@
 <div class="recap container">
 <h5> Nous vous remercions de votre commande effectuée sur le site SeneSAFARI.</h5>
 <p>Veuillez trouvez ci-dessous un Récaputilatif de votre paiement ainsi qu'un exemplaire dans votre boîte mail.</p>
-<a href="">Télécharger votre facture.</a>
-{# <div class="row">
-{% for item in items %}
-    
+<a href="{{ path('facture') }}">Télécharger votre facture.</a>
 
-<div class="col">
-<h4  class="text-center mt-5" style='font-weight:bold;color:#7f5539'>L'équipe SENE'Safari vous remercie de votre commande  et vous dit à très vite dans le pays de la Teranga &#x1F590;&#x1F64F;</h4>
-<p> circuits:
-{{item.circuit.title}}</p>
-<img src="{{ vich_uploader_asset(item.circuit,'imageFile') }}" class="card-img-top" alt="..." width="50px" height="130"/> 
-<p>Nbre de personnes : {{item.quantity}}</p>
-    
-<p>Total du panier : {{total}}€</p>
-</div>
-{% endfor %} #}
 </div>
 
 {% endblock %}

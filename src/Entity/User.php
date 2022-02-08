@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -63,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Regex("/^[0-9]{10}")
+     * @Assert\Regex("/^[0-9]{10}/")
      */
     private $phone;
 
@@ -81,6 +83,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $adresse;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="user_id")
+     */
+    private $cart_id;
+
+    public function __construct()
+    {
+        $this->cart_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -239,6 +251,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cart[]
+     */
+    public function getCartId(): Collection
+    {
+        return $this->cart_id;
+    }
+
+    public function addCartId(Cart $cartId): self
+    {
+        if (!$this->cart_id->contains($cartId)) {
+            $this->cart_id[] = $cartId;
+            $cartId->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartId(Cart $cartId): self
+    {
+        if ($this->cart_id->removeElement($cartId)) {
+            // set the owning side to null (unless already changed)
+            if ($cartId->getUserId() === $this) {
+                $cartId->setUserId(null);
+            }
+        }
 
         return $this;
     }

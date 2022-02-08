@@ -2,17 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CartRepository;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CartRepository::class)
+ * @ORM\Entity(repositoryClass=OrderRepository::class)
+ * @ORM\Table(name="`order`")
  */
-class Cart
+class Order
 {
-    public function __construct(){
-        $date =new \DateTime('now');
-       }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -23,7 +21,7 @@ class Cart
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $circuit_name;
+    private $name;
 
     /**
      * @ORM\Column(type="integer")
@@ -41,33 +39,23 @@ class Cart
     private $lastname;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $date_reservation;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cart_id")
-     */
-    private $user_id;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCircuitName(): ?string
+    public function getName(): ?string
     {
-        return $this->circuit_name;
+        return $this->name;
     }
 
-    public function setCircuitName(string $circuit_name): self
+    public function setName(string $name): self
     {
-        $this->circuit_name = $circuit_name;
+        $this->name = $name;
 
         return $this;
     }
@@ -108,43 +96,14 @@ class Cart
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        
-        return $this->created_at; 
-        
-    
+        return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTime $created_at ): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
-        
         $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getDateReservation(): ?\DateTimeInterface
-    {
-        return $this->date_reservation;
-    }
-
-    public function setDateReservation(?\DateTimeInterface $date_reservation): self
-    {
-        $this->date_reservation = $date_reservation;
-
-        return $this;
-    }
-
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?User $user_id): self
-    {
-        $this->user_id = $user_id;
-        
 
         return $this;
     }

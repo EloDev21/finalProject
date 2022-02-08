@@ -4,10 +4,12 @@ namespace App\Controller;
 // Include Dompdf required namespaces
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use App\Entity\Cart;
+use App\Entity\Order;
 use App\Service\Cart\CartService;
 use App\Entity\Circuits;
 use App\Entity\User;
+use App\Repository\CartRepository;
+use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,6 +30,48 @@ class CartController extends AbstractController
             'total' => $cartService->getTotal()
 
         ]);
+    }
+       /**
+     * @Route("/facture", name="facture")
+     */
+    public function facture(CartRepository $cartrepo, CartService $cartService)
+    {
+        $orders = $cartrepo->findAll();
+        $user = $this->getUser();
+
+        // $panierWithData = $cartService->getFullCart();
+        // $total = $cartService->getTotal();
+        // return $this->render('cart/facture.html.twig', [
+        //     'items' => $cartService->getFullCart(),
+        //     'total' => $cartService->getTotal(),
+        //     'orders' => $orders,
+        //     'user' => $user
+
+        // ]);
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($options);
+
+        $html = $this->renderView('cart/facture.html.twig', [
+            'items' => $cartService->getFullCart(),
+            'total' => $cartService->getTotal(),
+            'orders' => $orders,
+            'user' => $user
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("Votre facture chez SENE'Safari", [
+            "Attachment" => true
+        ] );
     }
     /**
      * @Route("/confirm", name="confirm_checkout")
@@ -64,8 +108,8 @@ class CartController extends AbstractController
      */
     public function checkout(CartService $cartService , \Swift_Mailer $mailer): Response
     {
-       $cart =new Cart();
-       $cart->setCreatedAt(new \DateTime());
+       $order =new Order();
+       $order->setCreatedAt(new \DateTime());
         $commande = $cartService->getTotal();
         $user = $this->getUser();
         
@@ -103,33 +147,37 @@ class CartController extends AbstractController
               ),
               'text/html'
           );
-          $item = $cartService->getFullCart();
+      
           
-          $em=$this->getDoctrine()->getManager();
-          $cart->setFirstname($user->getFirstname());
-          $cart->setLastname($user->getLastname());
-          $cart->setTotal($commande);
-        //   $cart->setCircuitName('voili voilouuu');
-          $cart->setCircuitName($item->getTitle());
-        //   $cart->setCreatedAt( new \DateTime('now'));
-        $em->persist($cart);
-        $em->flush();
-          $mailer->send($recap);
-
-        // //   $cartService->remove($panierWithData);
-        // $panierWithData = $cartService->getFullCart();
-        // $panierWithData=[];
+  
         return $this->redirect($session->url,303);
+        $panierWithData = [];
+        $em=$this->getDoctrine()->getManager();
+        $order->setFirstname($user->getFirstname());
+        $order->setLastname($user->getLastname());
+        $order->setTotal($commande);
+         $order->setName('voili voilouuu');
+      //   $cart->setCircuitName($commande->getCircuitName());
+      //   $cart->setCreatedAt( new \DateTime('now'));
+      $em->persist($order);
+      $em->flush();
+        $mailer->send($recap);
+
         
     }
 
     /**
-     * @Route("/succes-url", name="success_url")
+     * @Route("/success-url", name="success_url")
      */
-    public function successUrl(): Response
+    public function successUrl(CartService $cartService): Response
     {
+        $panierWithData = $cartService->getFullCart();
+        $total = $cartService->getTotal();
   
-        return $this->render('payment/success.html.twig');
+        return $this->render('payment/success.html.twig',[
+            'items' => $cartService->getFullCart(),
+            'total' => $cartService->getTotal()
+        ]);
         
 
         
