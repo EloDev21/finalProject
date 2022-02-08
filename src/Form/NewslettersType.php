@@ -19,13 +19,18 @@ class NewslettersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
+            ->add('name', TextType::class, [
+                "label" => "Titre de la newsletter",
+            ])
             ->add('categories', EntityType::class, [
                 "class" => Categories::class,
                 "choice_label" => "name",
+                
               
             ])
-            ->add('content', TextareaType::class)
+            ->add('content', TextareaType::class,[
+                "label" => "Contenu de la newsletter",
+            ])
 
 
             ->add('Enregistrer', SubmitType::class);

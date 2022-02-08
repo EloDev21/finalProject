@@ -30,9 +30,9 @@ class NewslettersUsersType extends AbstractType
            
             ->add('is_confirmed',CheckboxType::class,[
                 "constraints" => [
-                    // on oblige la personne a cocher
+                    // on oblige la personne a cocher les CGU
                    new  IsTrue([
-                        "message" => "Vous devez acce^peter la collecte de vos données personnelles."
+                        "message" => "Vous devez accepeter la collecte de vos données personnelles."
 
                     ])
                    ],

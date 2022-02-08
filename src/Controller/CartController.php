@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
-
+// Include Dompdf required namespaces
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Entity\Cart;
 use App\Service\Cart\CartService;
 use App\Entity\Circuits;
@@ -101,12 +103,14 @@ class CartController extends AbstractController
               ),
               'text/html'
           );
+          $item = $cartService->getFullCart();
           
           $em=$this->getDoctrine()->getManager();
           $cart->setFirstname($user->getFirstname());
           $cart->setLastname($user->getLastname());
           $cart->setTotal($commande);
-          $cart->setCircuitName('voili voilouuu');
+        //   $cart->setCircuitName('voili voilouuu');
+          $cart->setCircuitName($item->getTitle());
         //   $cart->setCreatedAt( new \DateTime('now'));
         $em->persist($cart);
         $em->flush();
@@ -124,8 +128,9 @@ class CartController extends AbstractController
      */
     public function successUrl(): Response
     {
-        
+  
         return $this->render('payment/success.html.twig');
+        
 
         
     }

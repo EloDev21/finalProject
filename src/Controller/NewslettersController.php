@@ -49,12 +49,9 @@ class NewslettersController extends AbstractController
             $mailer->send($message);
           
             // on garde le token . on le supprime pas pour le désabonnement
-            $this->addFlash('attente','Votre inscription à la Newsletter en attente de validation. Merci de consulter votre courriel.');
+            $this->addFlash('attente','Votre inscription à la Newsletter est en attente de validation. Merci de consulter votre courriel.');
             return $this->redirectToRoute('home');
         }
-
-        
-
         return $this->render('newsletters/index.html.twig', [
             'form' => $form->createView()
         ]);
@@ -74,11 +71,11 @@ class NewslettersController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $this->addFlash('activation_newsletter','Bravo votre compte vient d\'être acitvé.Nous sommes ravis de vous compter parmis nos memebres.');
+            $this->addFlash('activation_newsletter','Bravo votre compte vient d\'être acitvé.Nous sommes ravis de vous compter parmi nos membres ...');
             return $this->redirectToRoute('home'); 
         }
     /**
-     * @Route("newsletters/prepare", name="newletters_prepare")
+     * @Route("newsletters/prepare", name="newsletters_prepare")
      */
     public function prepare(Request $request): Response
     {

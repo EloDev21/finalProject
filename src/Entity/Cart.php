@@ -45,6 +45,11 @@ class Cart
      */
     private $created_at;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date_reservation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +115,18 @@ class Cart
     {
         
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getDateReservation(): ?\DateTimeInterface
+    {
+        return $this->date_reservation;
+    }
+
+    public function setDateReservation(?\DateTimeInterface $date_reservation): self
+    {
+        $this->date_reservation = $date_reservation;
 
         return $this;
     }

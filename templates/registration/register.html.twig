@@ -3,9 +3,9 @@
 {% block title %}S'inscrire
 {% endblock %}
 {% block css %}
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 <link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+{# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}
 {% endblock %}
 
 {% block content %}
@@ -35,6 +35,9 @@
 					{{ form_row(registrationForm.email, {
       		      label: 'Email'
      			   }) }}
+					{{ form_row(registrationForm.adresse, {
+      		      label: 'Adresse'
+     			   }) }}
 					{{ form_row(registrationForm.plainPassword, {
           			  label: 'Mot de passe'
       					  }) }}
@@ -42,7 +45,7 @@
       				  label: 'J\'accepte les CGU.'}) }}
 					
 						<div class="col d-flex justify-content-center">
-							<button type="submit" class="btn btn-primary mt-2">S'inscrire</button>
+							<button type="submit" style="decoration:none; transition:none" class="btn btn-primary mt-2">S'inscrire</button>
 						</div>
 					
 					{{ form_end(registrationForm) }}

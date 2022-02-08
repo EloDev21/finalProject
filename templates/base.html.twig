@@ -67,11 +67,17 @@
 									</li>
 									<li class="nav-item">
 										{% if(is_granted('ROLE_EDITOR')) %}
-											<a class="nav-link" href="{{path('profiles') }}">
-												Users
-											</a>
-										{% endif %}
+										<a class="nav-link" href="{{path('profiles') }}">
+											Users
+										</a>
 									</li>
+									<li class="nav-item">
+
+										<a class="nav-link" href="{{path('newsletters_list') }}">
+											News
+										</a>
+									</li>
+									{% endif %}
 								{% endif %}
 								{# 
 								<li class="nav-item">
@@ -143,22 +149,7 @@
 							<a href="{{path('about')}}" class="nav-link" style="font-size:1.3rem">A propos</a>
 							<a href="{{ path('conditions_d_utilisation') }}" class="nav-link" style="font-size:1.3rem">CGU-CGV</a>
 						</div>
-						<!-- Grid column -->
-						{# <hr class="w-100 clearfix d-md-none"/>s #}
-						<!-- Grid column -->
-						{# <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 columnFoot border border-warning">
-							<h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-							<p>
-								<i class="fa fa-home mr-3"></i>
-								New York, NY 10012, US
-							</p>
-							<p>
-								<i class="fa fa-envelope mr-3"></i>
-								info@gmail.com
-							</p>
-						</div> #}
-						<!-- Grid column -->
-					{# </div> #}
+	
 					<!--Grid row-->
 				</section>
 				<!-- Section: Links -->

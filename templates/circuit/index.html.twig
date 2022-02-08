@@ -14,7 +14,7 @@
 	<div
 		class="container">
 		{# <h2 class="text-center">
-					Liste de tous nos circuits actuellement disponibles</h2> #}
+									Liste de tous nos circuits actuellement disponibles</h2> #}
 
 		{% for message in app.flashes('message' )%}
 
@@ -38,7 +38,7 @@
 				class="row mt-4 mb-4 d-flex justify-content-around">
 				<!-- Gallery Item 1 -->
 				{% for circuit in circuits %}
-					<div class="col-xxs-8 col-xxl-4 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
+					<div class="col-xxs-8 col-xs-8 col-sm-4 col-md-4   col-xl-4 col-xxl-4  mt-4 py-5">
 						<div class="card h-100">
 							<a href="{{ path('detail', {id:circuit.id})}}">
 
@@ -49,8 +49,11 @@
 									{{circuit.title}}</a>
 							</h4>
 
-							<p class="card-text text-center" />{{circuit.minidescription}}</p>
+							<p class="card-text text-center"/>{{circuit.minidescription}}</p>
 						<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+						<p class="card-text text-center">
+							<small class="text-muted">Prix journalier/adulte</small>
+						</p>
 
 
 						{% if( is_granted('ROLE_EDITOR') ) %}
@@ -69,27 +72,32 @@
 							</div>
 
 						{% endif %}
-						<p class="card-text">
-							<small class="text-muted">Prix journalier/adulte</small>
-						</p>
+						
 					</div>
 				</div>
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Suppression d'un utilisateur</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body">
-Êtes vous sûr(e) de vouloir supprimer ce circuit ? Cette action est irrevocable !</div><div class="modal-footer">
-<a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</a>
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">ATTENTION -- Suppression d'un utilisateur -- ATTENTION
+								</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								Êtes vous sûr(e) de vouloir supprimer ce circuit ? Cette action est irrevocable !</div>
+							<div class="modal-footer">
+								<a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</a>
 
-<a href="{{path('circuit_delete', {id:circuit.id})}} btn btn-xs" class="btn btn-danger">Supprimer</a></div></div></div></div>
+								<a href="{{path('circuit_delete', {id:circuit.id})}} btn btn-xs" class="btn btn-danger">Supprimer</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			{% endfor %}
 		</div>
 	</div>
 
-</div></div></section></div></div>
-<!-- Modal -->
-<script type="text/javascript">
-
-var myModal = document.getElementById('myModal')
+</div></div></section></div></div><!-- Modal --><script type="text/javascript">var myModal = document.getElementById('myModal')
 var myInput = document.getElementById('myInput')
 
 myModal.addEventListener('shown.bs.modal', function () {

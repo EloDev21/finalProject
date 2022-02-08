@@ -55,13 +55,16 @@
 									Sous-total:
 								<strong>	{{item.circuit.price * item.quantity}}€</strong>
 								</p>
+								{# <td><input type="date" id="start" name="trip-start"
+									value="2022-01-01"
+									></td> #}
 							</div>
 
 						</div>
 
 					{% endfor %}
 
-					<p style="font-size:larger;font-weight:bold; color:red">
+					<p style="font-size:larger;font-weight:bold; color:green">
 						Total de votre commande :
 						<span style="color:black">{{total}}€</span>
 

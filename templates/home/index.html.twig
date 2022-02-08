@@ -4,9 +4,9 @@
 {% endblock %}
 {% block css %}
 	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
@@ -26,102 +26,96 @@
 				{# <link href="{{ asset('assets/images/circuits/logo2.png') }}" rel="stylesheet" />  #}
 				<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="..."/></a>
 		</div>
-	
-
-	<h1 class="text-center mt-3-mt-2" style='font-weight:bold;color:#7f5539'>SENE'Safari</h1>
-
-	<h4 class="text-center">"Evadez vous dans un endroit idyllique avec des forfaits atypiques ... "</h4>
-</div>
-<div class="container mb-5">
-	{% for message in app.flashes('contact_email' )%}
-
-		<div class="alert alert-success" role="alert">
-			{{message}}
-		</div>
-	{% endfor %}
-	{% for message in app.flashes('inscription' )%}
-
-		<div class="alert alert-success" role="alert">
-			{{message}}
-		</div>
-	{% endfor %}
-	{% for message in app.flashes('activation_newsletter') %}
-		<div class=" alert alert-success">{{message}}</div>
-
-	{% endfor %}
-	{% for message in app.flashes('attente') %}
-		<div class=" alert alert-success">{{message}}</div>
-
-	{% endfor %}
-	{% for message in app.flashes('delete') %}
-		<div class=" alert alert-warning">{{message}}</div>
-
-	{% endfor %}
-	{# 
-					{% if (is_granted('ROLE_ADMIN') ) %}
-					<span style:color="green">Bonjour et Bienvenue Administratuer</span>
-					{% endif %} #}
 
 
-	<div class="rowCarousel">
-		<div
-			class="col-sm-12 col-xs-12 col-xxl-12 col-xl-12 col-md-12">
-			<!-- Carousel wrapper -->
-			<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+		<h1 class="text-center mt-3-mt-2" style='font-weight:bold;color:#7f5539'>SENE'Safari</h1>
 
-				<div
-					class="carousel-inner">
-					<!-- Single item -->
-					<div class="carousel-item active ">
-						<img src="{{asset('/images/circuits/zoo.jpg')}}" class="" alt="..."/>
+		<h4 class="text-center">"Evadez vous dans un endroit idyllique avec des forfaits atypiques ... "</h4>
+	</div>
+	<div class="container mb-5">
+		{% for message in app.flashes('contact_email' )%}
 
-					</div>
-					
-					
-					
-					
-				
-					
-					
-					<!-- Single item -->
-					<div class="carousel-item">
-						<img src="{{asset('/images/circuits/lams.jpg')}}"/>
+			<div class="alert alert-success" role="alert">
+				{{message}}
+			</div>
+		{% endfor %}
 
-					</div>
+		{% for message in app.flashes('activation_newsletter') %}
+			<div class=" alert alert-success">{{message}}</div>
 
-					<!-- Single item -->
-					<div class="carousel-item">
-						<img src="https://www.kayak.fr/rimg/himg/64/5d/8b/hotelsdotcom-435331-fe70194f_w-113046.jpg?width=1366&height=768&crop=true" alt="..."/>
+		{% endfor %}
+		{% for message in app.flashes('attente') %}
+			<div class=" alert alert-success">{{message}}</div>
 
-					</div>
+		{% endfor %}
+		{% for message in app.flashes('delete') %}
+			<div class=" alert alert-warning">{{message}}</div>
+
+		{% endfor %}
+		{# 
+							{% if (is_granted('ROLE_ADMIN') ) %}
+							<span style:color="green">Bonjour et Bienvenue Administratuer</span>
+							{% endif %} #}
 
 
-					<!-- Single item -->
-					<div class="carousel-item">
-						<img src="{{asset('/images/circuits/goree.jpg')}}" />
+		<div class="rowCarousel">
+			<div
+				class="col">
+				<!-- Carousel wrapper -->
+				<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
 
-					</div>
+					<div
+						class="carousel-inner">
+						<!-- Single item -->
+						<div class="carousel-item active ">
+							<img src="{{asset('/images/circuits/zoo.jpg')}}" class="" alt="imageZoo"/>
+
+						</div>
+
+
 						<!-- Single item -->
 						<div class="carousel-item">
-						<img src="{{asset('/images/circuits/zebra.jpg')}}"/>
+							<img src="{{asset('/images/circuits/lams.jpg')}}" class="" alt="hebergementLamantin"/>
 
+						</div>
+
+						<!-- Single item -->
+						<div class="carousel-item">
+							<img src="https://www.kayak.fr/rimg/himg/64/5d/8b/hotelsdotcom-435331-fe70194f_w-113046.jpg?width=1366&height=768&crop=true" alt="heberg2"/>
+
+						</div>
+
+
+						<!-- Single item -->
+						<div class="carousel-item">
+							<img src="{{asset('/images/circuits/goree.jpg')}}" class="" alt="ileDeGoree"/>
+
+						</div>
+						<!-- Single item -->
+						<div class="carousel-item">
+							<img src="{{asset('/images/circuits/zebra.jpg')}}" class="" alt="zebre"/>
+
+						</div>
 					</div>
+
+					<!-- Inner -->
+
+					<!-- Controls -->
+					<button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+
+					</button>
+					<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+						<span class="carousel-control-next-icon " aria-hidden="true"></span>
+
+					</button>
 				</div>
 
-				<!-- Inner -->
-
-				<!-- Controls -->
-				<button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-					<span class="carousel-control-prev-icon" ></span>
-					
-				</button>
-				<button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next"  >
-					<span  class="carousel-control-next-icon " aria-hidden="true"></span>
-				
-				</button>
+				<!-- Carousel wrapper -->
 			</div>
-
-			<!-- Carousel wrapper -->
 		</div>
 	</div>
-</div></div><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>{% endblock %}
+</div>
+
+{# {# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}
+{% endblock %}

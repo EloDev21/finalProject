@@ -41,7 +41,7 @@ security:
          - { path: ^/circuit/add, roles: ROLE_EDITOR}
          - { path: ^/circuit/edit, roles: ROLE_EDITOR}
          - { path: ^/circuit/delete, roles: ROLE_EDITOR}
-         - { path: ^/newsletters/list, roles: ROLE_EDITOR}
+         - { path: ^/newsletters/list, roles: IS_AUTHENTICATED_FULLY}
          - { path: ^/newsletters/prepare, roles: ROLE_EDITOR}
          - { path: ^/newsletters/send, roles: ROLE_EDITOR}
          - { path: ^/newsletters/unsubscribe, roles: IS_AUTHENTICATED_FULLY}
