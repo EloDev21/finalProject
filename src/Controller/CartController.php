@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Stripe\Stripe;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class CartController extends AbstractController
 {
@@ -24,12 +25,20 @@ class CartController extends AbstractController
      * @Route("/panier", name="cart_index")
      */
     public function index(CartService $cartService)
+
+    
     {
+       
+        $cart = new Cart();
+        
+
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
+  
         return $this->render('cart/index.html.twig', [
             'items' => $cartService->getFullCart(),
-            'total' => $cartService->getTotal()
+            'total' => $cartService->getTotal(),
+            
 
         ]);
     }
@@ -71,7 +80,19 @@ class CartController extends AbstractController
      * @Route("/confirm", name="confirm_checkout")
      */
     public function prePayment(CartService $cartService)
+
     {
+        $cart = new Cart();
+        // if (isset($_POST['date_1'])) {   // si on a reçu une valeur du formulaire
+        //     $date = htmlentities($_POST['date_1']);
+        //     if ($date !== FALSE) {  // si on a pu créer l'objet
+        //      $cart->setRsv($date);
+           
+           
+        //     }else{
+        //         echo 'error';
+        //     }
+        // }
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
         return $this->render('cart/cart_recap.html.twig', [
@@ -100,8 +121,9 @@ class CartController extends AbstractController
     /**
      * @Route("/checkout", name="checkout")
      */
-    public function checkout(CartService $cartService , \Swift_Mailer $mailer): Response
+    public function checkout(CartService $cartService , \Swift_Mailer $mailer, SessionInterface $session): Response
     {
+        $this->session= $session;
        $cart =new Cart();
        $cart->setCreatedAt(new \DateTime());
         $commande = $cartService->getTotal();
@@ -142,9 +164,8 @@ class CartController extends AbstractController
               'text/html'
           );
       
-          $items = $cartService->getFullCart();
-  
-          $panierWithData = [];
+        
+          return $this->redirect($session->url,303);
           $em=$this->getDoctrine()->getManager();
         $cart->setFirstname($user->getFirstname());
         $cart->setLastname($user->getLastname());
@@ -155,9 +176,9 @@ class CartController extends AbstractController
       $em->persist($cart);
       $em->flush();
         $mailer->send($recap);
-
-          return $this->redirect($session->url,303);
-        
+        $panier = $this->session->get('panier', []);
+      unset(  $panier);
+      
     }
 
     /**

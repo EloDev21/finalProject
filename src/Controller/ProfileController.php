@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Controller;
+
+use App\Entity\Cart;
 use App\Notification\ChangePassword;
 use App\Entity\User;
 use App\Form\EditProfileType;
 use App\Form\ProfileType;
+use App\Service\Cart\CartService;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,10 +55,18 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile_detail", name="profile_detail")
      */
-    public function profile(): Response
+    public function profile(CartService $cartService, User $user): Response
     {
-        $profiles = $this->getDoctrine()->getRepository(User::class)->findAll();
-        return $this->render('profile/profile_detail.html.twig');
+        $user = $this->getUser();
+        $id = $user->getId();
+        $carts = $this->getDoctrine()->getRepository(Cart::class);
+        $one = $carts->findOneBy( $id);
+    
+
+    
+        return $this->render('profile/profile_detail.html.twig',[
+            'carts' => $carts
+        ]);
     }
     /**
      * @Route("/profile/edit", name="profile_edit")

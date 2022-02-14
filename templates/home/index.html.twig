@@ -3,9 +3,6 @@
 {% block title %}SENE'Safari
 {% endblock %}
 {% block css %}
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
-	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 	<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
 {% endblock %}
 
@@ -22,7 +19,7 @@
 	<div class="enTete" style=" padding: 2rem 1rem;background-color: #e9ecef;border-radius: .3rem;">
 		<div class="row mb-3" style="display:flex;justify-content:center;">
 			<div
-				class="col-6 mb-5 " style="width:50px; height:50px;margin-RIGHT: 5em;">
+				class="col-6 mb-	 " style="width:50px; height:50px;margin-RIGHT: 5em;">
 				{# <link href="{{ asset('assets/images/circuits/logo2.png') }}" rel="stylesheet" />  #}
 				<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="..."/></a>
 		</div>
@@ -52,11 +49,6 @@
 			<div class=" alert alert-warning">{{message}}</div>
 
 		{% endfor %}
-		{# 
-							{% if (is_granted('ROLE_ADMIN') ) %}
-							<span style:color="green">Bonjour et Bienvenue Administratuer</span>
-							{% endif %} #}
-
 
 		<div class="rowCarousel">
 			<div
@@ -116,6 +108,8 @@
 		</div>
 	</div>
 </div>
-
-{# {# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}
+{% block js %}
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 {% endblock %}
+
+{# {# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}{% endblock %}

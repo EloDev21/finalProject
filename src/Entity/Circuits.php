@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CircuitsRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -20,6 +21,11 @@ class Circuits
     private $image;
 
     /**
+     * @Assert\File(
+        *     maxSize = "3000k",
+        *     mimeTypes={"image/png", "image/jpeg", "image/jpg"},
+        *     mimeTypesMessage = "Merci de choisir une image valide."
+     * )
      * @Vich\UploadableField(mapping="circuits_img", fileNameProperty="image")
      * @var File
      */

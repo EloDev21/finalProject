@@ -2,56 +2,40 @@
 
 {% block title %}S'inscrire
 {% endblock %}
-{% block css %}
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-{# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}
-{% endblock %}
 
 {% block content %}
 <h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Inscription</h1>
 <div class="container-fluid">
 	<section class="d-flex justify-content-center flex-column align-items-center">
-
 		<div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-
-			<h1 class="h3 mb-3 font-weight-normal text-center">
-				<strong>Formulaire d'inscription<strong></h1>
-					<h5>
-						Déjà client,
-						<a href="{{path('app_login')}}" style="color:blue;text-decoration:underline">Se connecter</a>
-						?</h5>
-
+			<h1 class="h3 mb-3 font-weight-normal text-center"><strong>Formulaire d'inscription<strong></h1>
+					<h5>Déjà client,<a href="{{path('app_login')}}" style="color:blue;text-decoration:underline">Se connecter</a>?</h5>
 					{{ form_start(registrationForm) }}
-					{{ form_row(registrationForm.firstname, {
-           			 label: 'Prénom(s)'
-       				 }) }}
-					{{ form_row(registrationForm.lastname, {
-           			 label: 'Nom'
-      				  }) }}
-					{{ form_row(registrationForm.phone, {
-            		label: 'Téléphone'
-       				 }) }}
-					{{ form_row(registrationForm.email, {
-      		      label: 'Email'
-     			   }) }}
-					{{ form_row(registrationForm.adresse, {
-      		      label: 'Adresse'
-     			   }) }}
-					{{ form_row(registrationForm.plainPassword, {
-          			  label: 'Mot de passe'
-      					  }) }}
-					{{ form_row(registrationForm.agreeTerms,{
-      				  label: 'J\'accepte les CGU.'}) }}
-					
-						<div class="col d-flex justify-content-center">
+							{{ form_row(registrationForm.firstname, {
+           			 		label: 'Prénom(s)'
+       						 }) }}
+							{{ form_row(registrationForm.lastname, {
+           					 label: 'Nom'
+      				 		 }) }}
+							{{ form_row(registrationForm.phone, {
+            				label: 'Téléphone'
+       						 }) }}
+							{{ form_row(registrationForm.email, {
+      		     			 label: 'Email'
+     			  			 }) }}
+							{{ form_row(registrationForm.adresse, {
+      		     			 label: 'Adresse'
+     			  			 }) }}
+							{{ form_row(registrationForm.plainPassword, {
+          			 		 label: 'Mot de passe'
+      						  }) }}
+							{{ form_row(registrationForm.agreeTerms,{
+      				 		 label: 'J\'accepte les CGU.'}) }}
+							<div class="col d-flex justify-content-center">
 							<button type="submit" style="decoration:none; transition:none" class="btn btn-primary mt-2">S'inscrire</button>
-						</div>
-					
+							</div>
 					{{ form_end(registrationForm) }}
-
-				</div>
-			</div>
-		</section>
-	</div>
-	{% endblock %}
+		</div>
+	</section>
+</div>
+{% endblock %}

@@ -13,10 +13,11 @@ color:black;
 .navbar {
   /* aerer la nvbr */
   padding: 20px !important;
+
 }
 /* liens de la navbar */
 .nav-link {
-  color: black !important;
+  color: #7f6048 !important;
   font-weight: bold;
   font-size: 1.3rem;
 }

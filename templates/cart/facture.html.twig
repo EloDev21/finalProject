@@ -1,14 +1,6 @@
-
-
 {% block title %}Facture SENE'Safari
 {% endblock %}
-{% block css %}
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link
-	href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
 
-{#{{ encore_entry_link_tags('app') }}#}
-{% endblock %}
 
 {% block js %}
 	{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
@@ -22,41 +14,20 @@
 
 	<div class="container-fluid">
 		<section class="d-flex justify-content-center flex-column align-items-center">
-
-        <h5 class="lead text-center mb-4" style="text-decoration:underline dotted">
-            Merci pour votre réservation effectuée sur le site SENE'Safari . En souhaitant vous voir bientôt.
-           
-        </h5>
-    <div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-    
-    <img src="{{asset('images/circuits/logo2.png')}}" alt="Logo Sene'Safari" class="mb-5"/>
-			
-			
-
-             
-                        
-                        <p> Prénom :    <strong>   {{user.firstname}}     </strong></p>
-                        <p> Nom :    <strong>   {{user.lastname}}     </strong></p>
-                 {% for item in items %}
-                     
-                <p> Nom circuit :    <strong>  {{item.circuit.title}}  </strong></p>
-                <p> Nombre de personnes :    <strong>* {{item.quantity}}  </strong></p>
-                
-                {% endfor %}
-            <p> Total payée :    <strong>   {{total}}€     </strong></p>
-            <p> Date de réservation  </strong></p>
-       
-
-            <p> Paris,  le  {{ "now"|format_datetime('full', 'none')}}</p>             
-                   
-                        
-          
-			
-                            
-						</div>
-
-				</div>
-			</section>
-		</div>
-
-	{% endblock %}
+			<h5 class="lead text-center mb-4" style="text-decoration:underline dotted">
+				Merci pour votre réservation effectuée sur le site SENE'Safari . En souhaitant vous voir bientôt. Notre équipe reste à votre entière disposition. N'hésitez pas à</h5>
+			<div class="col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+				<img src="{{asset('images/circuits/logo2.png')}}" alt="LogoSene'Safari" class="mb-5"/>
+				<p>Prénom :<strong>{{user.firstname}}</strong></p>
+				<p>	Nom :<strong>	{{user.lastname}}</strong></p>
+				{% for item in items %}
+					<p>Nom circuit :<strong>{{item.circuit.title}}	</strong></p>
+					<p>Nombre de personnes :<strong>*	{{item.quantity}}	</strong></p>
+				{% endfor %}
+				<p>Total payée :<strong>{{total}}€</strong></p>
+				<strong>	<p>Date de réservation</p></strong>
+						<p>Paris,  le	{{ "now"|format_datetime('full', 'none')}}</p>
+			</div>
+		</section>
+  </div>
+{% endblock %}

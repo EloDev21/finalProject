@@ -45,6 +45,7 @@ security:
          - { path: ^/newsletters/prepare, roles: ROLE_EDITOR}
          - { path: ^/newsletters/send, roles: ROLE_EDITOR}
          - { path: ^/newsletters/unsubscribe, roles: IS_AUTHENTICATED_FULLY}
+         - { path: ^/newsletters/success-url, roles: ROLE_USER}
         #  - { path: ^/profiles, roles: ROLE_EDITOR }
          - { path: ^/user, roles: ROLE_ADMIN }
         #  - { path: ^/profile, roles: ROLE_EDITEUR }

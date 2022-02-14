@@ -1,106 +1,90 @@
 {% extends "base.html.twig" %}
 {% block title %}Mentions légales
 {% endblock %}
-{% block css %}
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-{% endblock %}
 {% block content %}
 <h3 class="text-center " style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Mentions légales</h3>
 <div class="container">
-<section class="d-flex justify-content-center flex-column align-items-center mb-3">	
-    <div class="col-xs-9 col-sm-9 col-md-8 col-xl-8 col-xxl-6 bg-white" style="border-radius:20px;padding:10px">
-<div class="MAT8BG">
+		<section class="d-flex justify-content-center flex-column align-items-center mb-3">	
+  			  <div class="col-xs-9 col-sm-9 col-md-8 col-xl-8 col-xxl-6 bg-white" style="border-radius:20px;padding:10px">
+					<div class="mentions">
+						<h3 class="mt-2 mb-2 text-center">Mentions  légales</h3>
+						Vous trouverez le détail sur la page suivante :
+						<a href="{{ path('conditions_d_utilisation') }}">CGU</a>
+						<p><h3>Dispositions liées à loi informatique et liberté</h3>Ce site utilise des cookies.</p>
+						<h3>Editeur</h3>
+							<table class="two_colors">
+								<tbody class="two_colors">
+									<tr class="two_colors ">
+										<td class="two_colors">Société</td>
+										<td class="two_colors">TRAORE CORP</td>
+									</tr>
+									<tr class="two_colors even">
+										<td class="two_colors">Adresse</td>
+										<td class="two_colors">9 rue Maurice Ravel<br>91560 CROSNE<br>FRANCE</td>
+									</tr>
+									<tr class="two_colors ">
+										<td class="two_colors">Téléphone</td>
+										<td class="two_colors">Sur demande
+									<b>
+										<a href="{{ path('contact') }}">Contact direct et gratuit par email</a>
+									</b>
+										</td>
+									</tr>
+									<tr class="two_colors even ">
+										<td class="two_colors">Numéro de TVA</td>
+										<td class="two_colors">------</td>
+									</tr>
+									<tr class="two_colors ">
+										<td class="two_colors">Statut</td>
+										<td class="two_colors">S.A.R.L.</td>
+									</tr>
+									<tr class="two_colors even">
+										<td class="two_colors">Email</td>
+										<td class="two_colors">contact@senesafari.com</td>
+									</tr>
+									<tr class="two_colors ">
+										<td class="two_colors">Adresse du siège social</td>
+										<td class="two_colors">9 rue Maurice Ravel<br>91560 CROSNE</td>
+									</tr>
+									<tr class="two_colors even">
+										<td class="two_colors">Capital social</td>
+										<td class="two_colors">15000 Euros</td>
+									</tr>
+
+								</tbody>
+							</table>
+						<h3 class="mt-2">Hébergement</h3>
+							<table class="two_colors">
+								<tbody class="two_colors">
+									<tr class="two_colors ">
+										<td class="two_colors">Raison sociale</td>
+										<td class="two_colors">1&1 Internet SARL - IONOS</td>
+									</tr>
+									<tr class="two_colors even">
+										<td class="two_colors">Adresse du siège social</td>
+										<td class="two_colors">7 place de la Gare<br>57200 SARREGUEMINES</td>
+									</tr>
+									<tr class="two_colors ">
+										<td class="two_colors">Numéro de téléphone</td>
+										<td class="two_colors">0970 808 911 (appel non surtaxé) 24h/24 7j/7</td>
+									</tr>
+
+								</tbody>
+							</table>
 	
-		<h3 class="mt-2 mb-2 text-center">Mentions  légales</h3>
-		Vous trouverez le détail sur la page suivante :
-		<a href="{{ path('conditions_d_utilisation') }}">CGU</a>
-		<p>
-			<h3>Dispositions liées à loi informatique et liberté</h3>
-			Ce site utilise des cookies.
-		</p>
-
-
-		<h3>Editeur</h3>
-		<table class="two_colors">
-			<tbody class="two_colors">
-				<tr class="two_colors ">
-					<td class="two_colors">Société</td>
-					<td class="two_colors">TRAORE CORP</td>
-				</tr>
-				<tr class="two_colors even">
-					<td class="two_colors">Adresse</td>
-					<td class="two_colors">9 rue Maurice Ravel<br>91560 CROSNE<br>FRANCE</td>
-				</tr>
-				<tr class="two_colors ">
-					<td class="two_colors">Téléphone</td>
-					<td class="two_colors">Sur demande
-						<b>
-							<a href="{{ path('contact') }}">Contact direct et gratuit par email</a>
-						</b>
-					</td>
-				</tr>
-
-				<tr class="two_colors even ">
-					<td class="two_colors">Numéro de TVA</td>
-					<td class="two_colors">------</td>
-				</tr>
-				<tr class="two_colors ">
-					<td class="two_colors">Statut</td>
-					<td class="two_colors">S.A.R.L.</td>
-				</tr>
-				<tr class="two_colors even">
-					<td class="two_colors">Email</td>
-					<td class="two_colors">contact@senesafari.com</td>
-				</tr>
-
-				<tr class="two_colors ">
-					<td class="two_colors">Adresse du siège social</td>
-					<td class="two_colors">9 rue Maurice Ravel<br>91560 CROSNE</td>
-				</tr>
-
-				<tr class="two_colors even">
-					<td class="two_colors">Capital social</td>
-					<td class="two_colors">15000 Euros</td>
-				</tr>
-
-			</tbody>
-		</table>
-		<h3 class="mt-2">Hébergement</h3>
-		<table class="two_colors">
-			<tbody class="two_colors">
-				<tr class="two_colors ">
-					<td class="two_colors">Raison sociale</td>
-					<td class="two_colors">1&1 Internet SARL - IONOS
-					</td>
-				</tr>
-				<tr class="two_colors even">
-					<td class="two_colors">Adresse du siège social</td>
-					<td class="two_colors">
-						7 place de la Gare
-						<br>57200 SARREGUEMINES</td>
-				</tr>
-				<tr class="two_colors ">
-					<td class="two_colors">Numéro de téléphone</td>
-					<td class="two_colors">0970 808 911 (appel non surtaxé) 24h/24 7j/7
-
-					</td>
-				</tr>
-
-			</tbody>
-		</table>
-	
-		<h3 style="clear:both">Dispositions liées au code de la propriété intelectuelle</h3>
-		Toute représentation ou reproduction intégrale ou partielle faite sans notre consentement est illicite. 
-				    Il en est de même pour la traduction, l'adaptation ou la transformation, l'arrangement ou la reproduction par un art 
-				    ou un procédé quelconque (hors conditions prévues par l'article L122-5 du code de la propriété intellectuelle).
-		<br>
-		Toutes les marques citées sont la propriété de leurs détenteurs respectifs.
-		<br>
-		Photos et vidéos non contractuelles.
+						<h3 style="clear:both">Dispositions liées au code de la propriété intelectuelle</h3>
+								Toute représentation ou reproduction intégrale ou partielle faite sans notre consentement est illicite. 
+				    			Il en est de même pour la traduction, l'adaptation ou la transformation, l'arrangement ou la reproduction par un art 
+				   				 ou un procédé quelconque (hors conditions prévues par l'article L122-5 du code de la propriété intellectuelle).
+							<br>
+							Toutes les marques citées sont la propriété de leurs détenteurs respectifs.
+							<br>
+							Photos et vidéos non contractuelles.
+				</div>
+			</div>
+		</section>
 	</div>
-</div>
 <div style="width:897px;float:right;display:none;background:#fff" id="form_content">
 	<div style='padding:20px 0'></div>
 </div></div><div style="clear:both"></div></div><script>function loadCSS(e, t, n, s) {
@@ -144,4 +128,5 @@ minimal_css_node.parentNode.removeChild(minimal_css_node);
 
 
 })</script><div class='notifications_panel -shadowXL'><div class='__header'>
-</div></div></div></div></section>{% endblock %}
+</div>
+{% endblock %}

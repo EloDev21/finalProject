@@ -1,19 +1,15 @@
 {% block title %}Contact us
 {% endblock %}
-{% block css %}
-	<link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-{% endblock %}
+
 {% block content %}
 	<div class="jumbotron mt-5">
 		<h6>Nouvelle commande effectuée sur le site SENE'Safari</h6>
-		</div>
-	<p class="lead">Nous sommes ravis de compter une nouvelle commande effectuée sur notre site .Trouvez ci-dessous le détail de cette dernière. </p>
-
-<p> Prénom : {{user.firstname}}</p>
-<p> Nom : {{user.lastname}}</p>
-<p> Email : {{user.email}}</p>
-<p> Total : {{commande}}</p>
-{# <p> nom du circuit : {{item.circuit.title}}</p> #}
 	
-	<a href="{{url('home')}}">Retournez sur le site Sene'SAFARI</a>
+		<p class="lead">Nous sommes ravis de compter une nouvelle commande effectuée sur notre site .Trouvez ci-dessous le détail de cette dernière. </p>
+		<p> Prénom : {{user.firstname}}</p>
+		<p> Nom : {{user.lastname}}</p>
+		<p> Email : {{user.email}}</p>
+		<p> Total : {{commande}}</p>
+		<a href="{{url('home')}}">Retournez sur le site Sene'SAFARI</a>
+	</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -40,6 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @RollerworksPassword\PasswordStrength(minLength=7, minStrength=4)
      */
     private $password;
 

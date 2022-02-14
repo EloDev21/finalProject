@@ -4,12 +4,12 @@
 {% block content %}
 <h1> {{ newsletter.name}}</h1>
 	<div class="jumbotron mt-5">
-    {{newsletter.content|raw}}
-
-<p>Pour vous désinscrire de la newsletter, merci de cliquer sur le lien suivant :
-	<a href="{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token: user.validationToken }))}}">	
-	{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token:user.validationToken  }))}}">
+   		 {{newsletter.content|raw}}
+		<p>Pour vous désabonner de la newsletter, merci de cliquer sur le lien suivant :
+		<a href="{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token: user.validationToken }))}}">	
+		{{ absolute_url(path('newsletters_unsubscribe',{id: user.id, newsletter:newsletter.id, token:user.validationToken  }))}}">
 
 </a>
 </p> 
+</div>
 {% endblock %}

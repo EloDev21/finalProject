@@ -10,26 +10,25 @@ body{
     margin: 0;
     padding: 0;
    
-    background-image: url(https://viago.ca/wp-content/uploads/2017/09/Quoi-amener-en-safari.jpg) ;
-   filter: drop-shadow(8px 8px 10px gray);;
+    /* background-image: url(https://viago.ca/wp-content/uploads/2017/09/Quoi-amener-en-safari.jpg) ; */
+    background: url(../../images/circuits/lion.jpg) no-repeat center center     ;
+   
     background-repeat: no-repeat;
-    background-size: content;
-    
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+  
 
     font-family: 'Chakra Petch', sans-serif;
     font-family: 'Indie Flower', cursive;
     font-family: 'Merriweather', serif;
     font-family: 'Quicksand', sans-serif;
 
-   background-size: cover;
-
+  
 
   
-  /* Image is centered vertically and horizontally at all times */
-  background-position: center center;
-  
-  /* Image doesn't repeat */
-  background-repeat: no-repeat;
+
   
   /* Makes the image fixed in the viewport so that it doesn't move when 
      the content height is greater than the image height */
@@ -47,21 +46,12 @@ body{
    * background: url(background-photo.jpg) center center cover no-repeat fixed;
    */
 }
+header{
+  background
+  : #4e3d16;
+}
 
 
-.avertissement  {
-    animation-duration: .8s;
-    animation-name: clignoter;
-    animation-iteration-count: infinite;
-    transition: none;
-    color:maroon
- }
- 
- @keyframes clignoter {
-   0%   { opacity:1; }
-   40%   {opacity:0; }
-   100% { opacity:1; }
- }
  :root{
     font-size: 14px;
     /* taille par defaut pour appliquer nos rem */
@@ -91,52 +81,11 @@ h1{
     font-size:1.4rem;
 } */
 
-.newsB{
-    transition: none;
+.clignote {
+  color:red;
+  animation: clignote 2s linear infinite;
 }
-.btn{
-    transition: none;
+@keyframes clignote {  
+  50% { opacity: 0; }
 }
-.newsB:hover {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 0.5s;
-  
-    /* When the animation is finished, start again */
-    animation-iteration-count: infinite;
-  }
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
-  
-#sn:hover {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 0.5s;
-  
-    /* When the animation is finished, start again */
-    animation-iteration-count: infinite;
-  }
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+/* footer */

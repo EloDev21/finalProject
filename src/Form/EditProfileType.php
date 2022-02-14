@@ -15,8 +15,11 @@ class EditProfileType extends AbstractType
     {
         $builder
            
-            ->add('firstname', TextType::class)
+            ->add('firstname', TextType::class,[
+                'widget' => 'single_text'
+            ])
             ->add('lastname', TextType::class)
+            ->add('adresse', TextType::class)
             ->add('phone', TextType::class)
             ->add('Valider', SubmitType::class)
         ;

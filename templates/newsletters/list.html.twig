@@ -1,46 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Newsletters
-{% endblock %}
-{% block css %}
-	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link
-	href="{{ asset('assets/css/slider.css') }}" rel="stylesheet"/>
-{# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script> #}
+{% block title %}News
 {% endblock %}
 {% block content %}
-	<div class="container">
+<div class="container">
 	
 	{% if( is_granted('ROLE_EDITOR') ) %}
-<a class="btn btn-success" href="{{ path('newsletters_prepare') }}">Créer une newsletter</a>
-{% endif %}
-		<div class="row d-flex flex-row justify-content-around">
-	<h1 class="text-center mb-3 mt-3">
-		Liste des  newsletter(s).</h1>
-		{% for newsletter in newsletters %}
-			<div class="col-3" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;margin:10px">
-
-
-					<div class="card" style="width: 18rem;">
-						<img src="{{asset('/images/circuits/newsl.jpg')}}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title" style ="color:goldenrod">{{newsletter.name}}</h5>
-							<h6 class="card-title"> Catégorie : {{newsletter.categories.name }}</h6>
-							<p class="card-text">{{newsletter.content}}</p>
-							{% if newsletter.isSent == false %}
-								<a href="{{path('newsletters_send',{id:newsletter.id})}}">Mettre en ligne</a>
-							{% endif %}
-						</div>
+			<a class="btn btn-success" href="{{ path('newsletters_prepare') }}">Créer une newsletter</a>
+	{% endif %}
+	
+		<div class="row mt-4 mb-4 d-flex justify-content-around">
+				<h1 class="text-center mb-3 mt-3">News</h1>
+			{% for newsletter in newsletters %}
+				<div class="col-xxs-7 col-xs-7 col-md-7 col-lg-6 col-6 col-xl-3 col-xxl-4" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;margin:10px">
+					<div class="card h-100">
+						<img src="{{asset('/images/circuits/newsl.jpg')}}" class="card-img-top" alt="imageNewsletter" style="height:200px">
+							<div class="card-body">
+								<h5 class="card-title" style ="color:goldenrod">{{newsletter.name}}</h5>
+								<h6 class="card-title"> Catégorie : {{newsletter.categories.name }}</h6>
+								<p class="card-text">{{newsletter.content}}</p>
+								{% if newsletter.isSent == false %}
+									<a href="{{path('newsletters_send',{id:newsletter.id})}}">Mettre en ligne</a>
+								{% endif %}
+							</div>
 					</div>
 
 				</div>
 			{% endfor %}
 		</div>
 	</div>
-
-{% endblock %}
-{% block js %}
-	<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
-	<script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 {% endblock %}

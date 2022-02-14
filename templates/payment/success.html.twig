@@ -1,18 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Paiement effectué avec succès &#x1F44F;&#x1F44F;&#x1F44F;{% endblock %}
-{% block css %}
 
-<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" /> 
-<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet" /> 
-{% endblock %}
 {% block content %}
 {{parent()}}
-<div class="recap container">
-<h5> Nous vous remercions de votre commande effectuée sur le site SeneSAFARI.</h5>
-<p>Veuillez trouvez ci-dessous un Récaputilatif de votre paiement ainsi qu'un exemplaire dans votre boîte mail.</p>
-<a href="{{ path('facture') }}">Télécharger votre facture.</a>
+    <div class="recap container" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">
+            <h5> Nous vous remercions de votre commande effectuée sur le site SeneSAFARI.</h5>
+            <p>Veuillez trouvez ci-dessous un Récaputilatif de votre paiement ainsi qu'un exemplaire dans votre boîte mail.</p>
+            <a href="{{ path('facture') }}">Télécharger votre facture.</a>
 
-</div>
+    </div>
 
 {% endblock %}

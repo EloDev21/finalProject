@@ -2,61 +2,9 @@
 
 {% block title %}Liste des utilisateurs
 {% endblock %}
-{% block css %}
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-	<link
-	href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-
-{#{{ encore_entry_link_tags('app') }}#}
-{% endblock %}
-
-{% block js %}
-	{# <script src="{{ asset('assets/js/navbar.js') }}"></script> #}
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
-{% endblock %}
-{# {% block content %}
-
-	<h1 class="text-center mt-5">Liste de tous nos utilisateurs</h1>
-	{# <div class="container"> #}
 
 
-{# <section class="d-flex justify-content-center flex-column align-items-center border-success ">
-			{% if profiles | length >0  %}
-			<div class="col-xxl-9 col-xl-8 col-lg-7 col-6 col-md-5 col-xs-4 col-xxs-4 border-success" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-				<table class="table">
-				{% for profile in profiles %}
-				<thead>
-						<tr>
 
-							<th scope="col">Prénom</th>
-							<th scope="col">Nom</th>
-
-							<th scope="col">Email</th>
-							<th scope="col">Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-							<tr>
-
-								<td>{{profile.firstname}}</td>
-								<td>{{profile.lastname}}</td>
-
-								<td>{{profile.email}}</td>
-								<td>
-									
-								</td>
-							</tr>
-						{% endfor %}
-
-					</tbody>
-				</table>
-				<div>
-			{% endif %}
-			</section>
-			</div>
-{% endblock %} #}
 
 {% block content %}
 
@@ -65,74 +13,49 @@
 
 
 		<div class="row ">
-		{% if profiles | length >0  %}
-		<section class="d-flex justify-content-center flex-row align-items-center">
-		<div class="col-xxl-4 col-xl-5 col-lg-6 col-8 col-md-7 bg-white" style="border-radius: .3rem;padding:10px">
-	<p class="text-center bg-warning"style="font-weight: bold"> Nombre d'utilisateurs : {{total}}</p>
-					{% for profile in profiles %}
-						<div class="">
-							<p>Prénom :
-								<strong>
-									{{profile.firstname}}</strong>
-							</p>
-							<div class="col-xs1 mt-2 mb-2">Nom :
-								<strong>
-									{{profile.lastname}}</strong>
+			{% if profiles | length >0  %}
+				<section class="d-flex justify-content-center flex-row align-items-center">
+					<div class="col-xxl-4 col-xl-5 col-lg-6 col-8 col-md-7 bg-white" style="border-radius: .3rem;padding:10px">
+						<p class="text-center bg-warning" style="font-weight: bold">
+							Nombre d'utilisateurs :
+							{{total}}</p>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Prénom</th>
+									<th scope="col">Nom</th>
+									<th scope="col">email</th>
 
-								<div class="col-xs1 mt-2 mb-2">Email:
-									<strong>
-										{{profile.email}}</strong>
+									<th scope="col">Adresse</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							{% for profile in profiles %}
+								<tbody>
+									<tr>
+										<td>
 
-									<div class="col-xs1 mt-2 mb-2">Téléphone:
-										<strong>
-											{{profile.phone}}</strong>
-
-										{# <div class="d-flex justify-content-center flex-column align-items-center "> #}
-										<div
-											class="d-flex justify-content-center">
-
-
-											<!-- Button trigger modal -->
-											<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+											{{profile.firstname}}
+										</td>
+										<td>{{profile.lastname}}</td>
+										<td>{{profile.email}}</td>
+										<td>
+											{{profile.adresse}}</td>
+										<td>
+											<a class="btn btn-danger" href="{{path('profile_remove', {id:profile.id})}}" onclick="return confirm('Êtes vous sûr(e) de vouloir supprimer cet utilisateur? Cette action est irréversible!')">
 												<i class="fa fa-trash" aria-hidden="true"></i>
 											</button>
-										</div>
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel">Suppression d'un utilisateur</h5>
-															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-														</div>
-														<div class="modal-body">
-															Êtes vous sûr(e) de vouloir supprimer cet utilisateur ? Cette action est irrevocable !
-														</div>
-														<div class="modal-footer">
-													<a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</a>
-														
-																<a href="{{path('profile_remove', {id:profile.id})}} btn btn-xs" class="btn btn-danger">Supprimer</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<hr>
-										{% endfor %}
-									</div>
-								</section>
-								{% endif %}
-							</div>
-							</div>
-							
-								<script type="text/javascript">
-									// Mettre Ton Script Ici
+										</td>
+									</tr>
+								</tbody>
+							{% endfor %}
+						</table>
+						<hr>
+					</div>
+				</section>
+			{% endif %}
+		</div>
+	</div>
 
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-myInput.focus()
-})
-
-								</script>
-							{% endblock %}
+{% endblock %}

@@ -6,12 +6,12 @@
 {% block content %}
 <h1> Votre inscription</h1>
 	<div class="jumbotron mt-5">
-<p>Vous etes inscrit à la newxsletter de SENE'Safari. Pour confirmer votre inscription, merci de cliquer sur le lien ci-dessous :
-
-
-	<a href="{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">	
-	{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">
-
-</a>
-</p> 
+		<p>Félicitations ! Vous êtes bien inscrit à la newsletter de SENE'Safari.
+			Plus qu'une étape pour que votre inscription soit définitive.
+			Merci de cliquer sur le lien suivant :
+			<a href="{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">	
+			{{ absolute_url(path('newsletters_confirm',{id: user.id, token:token }))}}">
+			</a>
+		</p> 
+	</div>
 {% endblock %}

@@ -3,38 +3,29 @@
 {% endblock %}
 {% block content %}
 	 
-{# <div class="home-header container mt-3 border-0">
-<div class="row">
-<div class="col-8 d-flex justify-content-start  flex-column p-0" style="background-color:white"> #} 
 
-<section class="d-flex justify-content-center flex-column align-items-center">
 <div class="container-fluid">
-<div class="row">
-<h1 class="text-center" style=" padding: 2rem 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Accès interdit</h1>
-		<div class="col-xxl-5 col-xl-6 col-lg-6 col-6 col-md-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-			<div id="header-txt" class="text-center">
-
-				<img src="{{ asset('images/circuits/rob3.jpg')}}" class="w-100" alt="background">
-			</div>
-		</div>
-			<div class="col-xxl-5 col-xl-6 col-lg-6 col-6 col-md-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-				<p>
-					La page que vous cherchez n'a pas été trouvée..
-				</p>
-				<strong>
-					<p>Code de l'erreur :
-						{{status_code}}</p>
-					<p>Message de l'erreur :
-						{{status_text}}</p>
-					<p>Message personnalisé :
-						{{exception.message}}</p>
-				</strong>
-				<p>
-					<a class="btn btn-rounded btn-secondary" href="{{path('app_login')}}">Accueil
-					</a>
-				</p>
-			</div>
-
+	<section class="d-flex justify-content-center flex-column align-items-center">
+			<div class="row">
+				<h1 class="text-center" style=" padding: 2rem 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Page non trouvée</h1>
+				<div class="col-xxl-5 col-xl-6 col-lg-6 col-6 col-md-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+					<div id="header-txt" class="text-center">
+						<img src="{{ asset('images/circuits/rob3.jpg')}}" class="w-100" alt="error404">
+					</div>
+				</div>
+				<div class="col-xxl-5 col-xl-6 col-lg-6 col-6 col-md-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+					<p>
+						La page que vous cherchez n'a pas été trouvée..
+					</p>
+					<strong>
+						<p>Code de l'erreur :{{status_code}}</p>
+						<p>Message de l'erreur :	{{status_text}}</p>
+						<p>Message personnalisé :{{exception.message}}</p>
+					</strong>
+					<p>
+						<a class="btn btn-rounded btn-secondary" href="{{path('app_login')}}">Accueil</a>
+					</p>
+				</div>
 		</section>
 	</div>
 {% endblock %}

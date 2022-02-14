@@ -55,6 +55,21 @@ class Cart
      */
     private $user_id;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reserv;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $Rsv;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -145,6 +160,42 @@ class Cart
     {
         $this->user_id = $user_id;
         
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getReserv(): ?string
+    {
+        return $this->reserv;
+    }
+
+    public function setReserv(?string $reserv): self
+    {
+        $this->reserv = $reserv;
+
+        return $this;
+    }
+
+    public function getRsv(): ?\DateTimeInterface
+    {
+        return $this->Rsv;
+    }
+
+    public function setRsv(?\DateTimeInterface $Rsv): self
+    {
+        $this->Rsv = $Rsv;
 
         return $this;
     }

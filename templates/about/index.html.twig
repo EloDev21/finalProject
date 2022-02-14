@@ -2,32 +2,19 @@
 
 {% block title %}A propos
 {% endblock %}
-{% block css %}
-	<link href="{{ asset('assets/css/circuit.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet"/>
-{% endblock %}
 {% block content %}
-	<h1 class="text-center" style=" padding: 2rem 1rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Qui sommes nous ?</h1>
-
-	<section class="d-flex justify-content-center  align-items-center" >
-		{# <div class="col-xxl-6 col-xl-5 col-lg-6 col-6 col-md-9" style="border-radius:20px">
-			<img src="{{ asset('images/circuits/baobab.jpg')}}" class="w-100" alt="background " style="border-radius:20px" >
-		</div> #}
-		<div class="col-xxl-8 col-xl-8 col-lg-9 col-9 col-md-9 col-sm-10 col-xs-12 col-xxs-12 bg-white mt-5 mb-5 " style="border-radius:20px">
-	
-{# <p style=";margin:10px"> C'est sans doute que vous voulez savoir <strong>ce qu'on fait, pourquoi</strong> ou tout simplement<strong> découvrir qui on est</strong>.</p> #}
-<p style="color:black;margin:10px" ><strong>SENE'Safari </strong>est une entreprise familiale crée en 2021 dans le but de promouvoir <strong>le pays de la Teranga</strong>. 
-
-<br><br><strong>Au départ de Dakar</strong>, nous vous proposons de découvrir <strong>la flore et la faune sauvage</strong>  à travers un panel de circuits touristiques à faire en groupe, en couple ou seul à travers tout le <strong>Sénégal</strong>. !<br><br> De la réserve naturelle de Bandia, jusqu'à celle de Sangalkam, vous rencontrerez des personnes qui œuvrent pour préserver la biodiversité du Sénégal, et disposer d'un moment de détente en passant par le lac Rose, même le temps d'une journée. 
-<br><br> Notre équipe vous aide à élaborer vos séjours à la carte avec  <strong>le meilleur rapport qualité/prix</strong>  et vous garantit un accompagnement administratif et personnel.<br><br> <strong>SENE'Safari</strong> propose un service de qualité pour que vos rêves deviennent réalité !!!
-			<br>
-				<br> Pour être  au courant de nos dernières offres, inscrivez vous à notre <a href="{{path('newsletters')}}"> newsletter</a>.<br><br>
+<h1 class="text-center" style=" padding: 2.5rem ;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Qui sommes nous ?</h1>
+		<div class="container-fluid">
+		<section class="d-flex justify-content-center  align-items-center" >
+					<div class="col-xxl-8 col-xl-8 col-lg-9 col-9 col-md-9 col-sm-10 col-xs-12 col-xxs-12 bg-white mt-5 mb-5 " style="border-radius:20px">
+					    <p style="color:black;margin:10px" ><strong>SENE'Safari </strong>est une entreprise familiale crée en 2021 dans le but de promouvoir <strong>le pays de la Teranga</strong>. 
+						<br><br><strong>Au départ de Dakar</strong>, nous vous proposons de découvrir <strong>la flore et la faune sauvage</strong>  à travers un panel de circuits touristiques à faire en groupe, en couple ou seul à travers tout le <strong>Sénégal</strong>. !<br><br> De la réserve naturelle de Bandia, jusqu'à celle de Sangalkam, vous rencontrerez des personnes qui œuvrent pour préserver la biodiversité du Sénégal, et disposer d'un moment de détente en passant par le lac Rose, même le temps d'une journée. 
+						<br><br> Notre équipe vous aide à élaborer vos séjours à la carte avec  <strong>le meilleur rapport qualité/prix</strong>  et vous garantit un accompagnement administratif et personnel.<br><br> <strong>SENE'Safari</strong> propose un service de qualité pour que vos rêves deviennent réalité !!!
+						<br><br> Pour être  au courant de nos dernières offres, inscrivez vous à notre <a href="{{path('newsletters')}}"> newsletter</a>.<br><br>
 						A bientôt.<br><br>
 						L'équipe <strong>SENE'Safari</strong>
-		
+				</section>	
 		</div>
-	</div>
-</section>	
+	
 
 {% endblock %}

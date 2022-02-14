@@ -1,3 +1,13 @@
+# App\Entity\User:
+#     properties:
+#         plainPassword:
+#              - Rollerworks\Bundle\PasswordStrengthBundle\Validator\Constraints\PasswordStrength:
+#                  minLength: 8
+#                  minStrength: 4
+# App\Entity\User:
+#     properties:
+#         rawPassword:
+#             - NotCompromisedPassword
 framework:
     validation:
         email_validation_mode: html5
