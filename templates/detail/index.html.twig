@@ -8,18 +8,18 @@
 	<div class="container mt-4 mb-4">
 
 		<div class="row mt-2 mb-4" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
-			<div class="col-xxs-8 col-xxl-6 col-sm-6  col-xs-8 col-xl-8 col mt-4 py-5">
+			<div class="col-xxs-8 col-xxl-4 col-sm-6  col-xs-8 col-xl-5  col mt-4 py-5">
 			{# imageCircuit #}
 				<img src="{{ vich_uploader_asset(circuit,'imageFile') }}" class="card-img-top mt-4" alt="imageCircuit" width="100%" height="50%"/></a>
 				{# imageHebergement #}
-				<img src="{{circuit.picture}}" class="card-img-top  mt-4" alt="hébergement" width="100%" height="40%">
+				<img src="{{circuit.picture}}" class="card-img-top  mt-4" alt="hébergement" width="100%" height="50%">
 
 			</div>
-			<div class="col-xxs-8 col-xxl-6 col-sm-6  col-xs-8 col-xl-4 col mt-4 py-5">
-				<h1 class="text-center text-warning" style="font-size: 3rem;font-weight:bold;">{{circuit.title}}</h1>
+			<div class="col-xxs-8 col-xxl-8 col-sm-6  col-xs-8 col-xl-6 col mt-4 py-5">
+				<h1 class="text-center " style="font-size: 3rem;color :#4e3d16;font-weight:bold;">{{circuit.title}}</h1>
 				<p>{{circuit.description |nl2br}}</p>
 			
-				<div class="text-warning text-center" style="font-size: 4rem;font-weight:bold; " style="height:100vh">{{circuit.price}}€
+				<div class=" text-center" style="font-size: 4rem;font-weight:bold;color :#4e3d16; " style="height:100vh">{{circuit.price}}€
 
 			</div>
 			<div class=" text-center ">

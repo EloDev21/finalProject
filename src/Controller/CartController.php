@@ -10,12 +10,14 @@ use App\Entity\Order;
 use App\Service\Cart\CartService;
 use App\Entity\Circuits;
 use App\Entity\User;
+use App\Form\CartType;
 use App\Repository\CartRepository;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Stripe\Stripe;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -24,13 +26,12 @@ class CartController extends AbstractController
     /**
      * @Route("/panier", name="cart_index")
      */
-    public function index(CartService $cartService)
+    public function index(CartService $cartService, Request $request)
 
     
     {
        
-        $cart = new Cart();
-        
+
 
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
@@ -42,7 +43,7 @@ class CartController extends AbstractController
 
         ]);
     }
-       /**
+    /**
      * @Route("/facture", name="facture")
      */
     public function facture(CartRepository $cartrepo, CartService $cartService)
@@ -79,22 +80,23 @@ class CartController extends AbstractController
     /**
      * @Route("/confirm", name="confirm_checkout")
      */
-    public function prePayment(CartService $cartService)
+    public function prePayment(CartService $cartService, Request $request)
 
     {
+      
         $cart = new Cart();
-        // if (isset($_POST['date_1'])) {   // si on a reçu une valeur du formulaire
-        //     $date = htmlentities($_POST['date_1']);
-        //     if ($date !== FALSE) {  // si on a pu créer l'objet
-        //      $cart->setRsv($date);
-           
-           
-        //     }else{
-        //         echo 'error';
-        //     }
-        // }
-        $panierWithData = $cartService->getFullCart();
-        $total = $cartService->getTotal();
+        $form = $this->createForm(CartType::class, $cart);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+        
+            $em= $this->getDoctrine()->getManager();
+            $cart->setRsv($request->request->get('reservation'));
+            $em->persist($cart);
+            $em->flush();
+
+        }
+ 
+    
         return $this->render('cart/cart_recap.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal()
@@ -164,20 +166,24 @@ class CartController extends AbstractController
               'text/html'
           );
       
-        
+          
           return $this->redirect($session->url,303);
+          $panierWithData = $cartService->getFullCart();
           $em=$this->getDoctrine()->getManager();
-        $cart->setFirstname($user->getFirstname());
-        $cart->setLastname($user->getLastname());
-        $cart->setTotal($commande);
-         $cart->setCircuitName('voili voilouuu à modifier');
-      //   $cart->setCircuitName($commande->getCircuitName());
-      //   $cart->setCreatedAt( new \DateTime('now')=);
-      $em->persist($cart);
-      $em->flush();
-        $mailer->send($recap);
-        $panier = $this->session->get('panier', []);
-      unset(  $panier);
+          $cart->setFirstname($user->getFirstname());
+          $cart->setLastname($user->getLastname());
+          $cart->setTotal($commande);
+
+          $cart->setCircuitName('voili voilouuu à modifier');
+
+          $em->persist($cart);
+          $em->flush();
+        
+          $mailer->send($recap);
+          $panier = $this->session->get('panier', []);
+          unset(  $panier);
+          unset(  $panierWithData);
+          
       
     }
 

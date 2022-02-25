@@ -9,8 +9,8 @@
 {% endblock %}
 {% block content %}
 <h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Réinitialisation de votre mot de passe</h1>
-<div class="container">
-	<section class="d-flex justify-content-center flex-column align-items-center">
+	<div class="container">
+		<section class="d-flex justify-content-center flex-column align-items-center">
 			<div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-xs-8 col-xxs-9 col-10 " style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 				<form method="post">		
 							{{ form(resetForm) }}
@@ -18,5 +18,5 @@
 				</form>
 			</div>
 		</section>
-</div>
+	</div>
 			{% endblock %}

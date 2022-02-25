@@ -28,17 +28,17 @@
 
 								<img class="card-img-top" src="{{ vich_uploader_asset(circuit,'imageFile') }}" style="height:200px" alt="imageCircuit"/>
 							</a>
-							<h4 class="card-title text-center">
-								<a href="{{ path('detail', {id:circuit.id}) }} " style="color:green;font-weight:bold;">
+							<h4 class="card-title text-center mt-2 mb-2">
+								<a href="{{ path('detail', {id:circuit.id}) }} "  style="color:#7f6048;font-weight:bold;">
 									{{circuit.title}}
 								</a>
 							</h4>
 							<p class="card-text text-center"/>{{circuit.minidescription}}</p>
-							<p class="card-text text-center price" style="font-size: 3rem;font-weight:bold; ">{{circuit.price}}€</p>
+							<p class="card-text text-center price" style="font-size: 3rem;color:green;font-weight:bold; ">{{circuit.price}}€</p>
 							<p class="card-text text-center"><small class="text-muted">Prix journalier/adulte</small></p>
 							{% if( is_granted('ROLE_EDITOR') ) %}
-								<div class="row d-flex justify-content-center">
-									<div class="col-4">
+								<div class="row d-flex justify-content-center mb-3">
+									<div class="col-4 d-flex justify-content-center">
 										<a href="{{ path('circuit_edit', {id:circuit.id})}}" class="btn btn-warning">
 											<i class="fa fa-pencil" aria-hidden="true"></i>
 										</a>&nbsp;&nbsp;

@@ -5,11 +5,12 @@ namespace App\Form;
 use App\Entity\Cart;
 use DateTime;
 use Symfony\Component\Form\AbstractType;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 // use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CartType extends AbstractType
@@ -21,18 +22,13 @@ class CartType extends AbstractType
             ->add('total' ,IntegerType ::class)
             ->add('firstname')
             ->add('lastname', TextType ::class)
-            ->add('created_at', Date::class)
+            ->add('created_at', DateType::class)
             ->add('date_reservation', TextType:: class)
             ->add('date', DateType::class)
-            ->add('rsv', DateType::class, [
-                'widget' => 'single_text',
-                'required' => false,
-                'empty_data' => '',
-             ])
-                
-            ->add('user_id');
-    
-    }
+           ;
+          
+            
+        }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

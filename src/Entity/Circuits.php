@@ -23,7 +23,7 @@ class Circuits
     /**
      * @Assert\File(
         *     maxSize = "3000k",
-        *     mimeTypes={"image/png", "image/jpeg", "image/jpg"},
+        *     mimeTypes={"image/png", "image/jpeg", "image/jpg","image/webp"},
         *     mimeTypesMessage = "Merci de choisir une image valide."
      * )
      * @Vich\UploadableField(mapping="circuits_img", fileNameProperty="image")

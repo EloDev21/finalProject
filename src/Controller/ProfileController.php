@@ -55,18 +55,10 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile_detail", name="profile_detail")
      */
-    public function profile(CartService $cartService, User $user): Response
-    {
-        $user = $this->getUser();
-        $id = $user->getId();
-        $carts = $this->getDoctrine()->getRepository(Cart::class);
-        $one = $carts->findOneBy( $id);
-    
+    public function profile(): Response
+    {  
 
-    
-        return $this->render('profile/profile_detail.html.twig',[
-            'carts' => $carts
-        ]);
+        return $this->render('profile/profile_detail.html.twig');
     }
     /**
      * @Route("/profile/edit", name="profile_edit")

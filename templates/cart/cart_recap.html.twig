@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Votre panier
 {% endblock %}
 
@@ -15,6 +16,7 @@
 					{{app.user.lastname | upper}}
 				</h5>
 		{# si le length du tableau est  <= 0 on affiche rien #}
+			<form method="post">
 				{% if items | length >0  %}
 					{% for item in items %}
 						<div class="recapPanier">
@@ -24,11 +26,12 @@
 									<p>Circuit :<strong> {{item.circuit.title}}</strong></p>
 									<p>Quantité:<strong>* {{item.quantity}}</strong></p>
 									<p>Sous-total:<strong>	{{item.circuit.price * item.quantity}}€</strong></p>
+									<p>Date de réservation:<strong>	</strong></p>
 								</div>
 							</div>
 						</div>
-								<td><input type="date" class="form-control" size="30" name="date_1" id="date_1" /></td>
 					{% endfor %}
+				{# <td><input type="date" class="form-control" size="30" name="reservation" id="reservation" required /></td> #}
 						<div class="total mt-3">
 							<p style="font-size:larger;font-weight:bold; color:green">Total de votre commande :<span style="color:black">{{total}}€</span>
 							<a href="{{path('checkout')}}" class="btn d-flex float-end btn-success btn-md">
@@ -36,6 +39,7 @@
 							</a>
 						</div>
 				{% endif %}
+			</form>
 			</div>
 		</section>
 	</div>

@@ -49,10 +49,10 @@
 					</div><br>
 					<div class="d-flex justify-content-center flex-column align-items-center ">
 						<div class="col-xs3">
-							<a href="{{path('profile_edit')}}" class="btn btn-primary btn-md  ">Modifier le profil</a>
+							<a href="{{path('profile_edit')}}" class="btn btn-primary btn-md mt-2 mb-2  ">Modifier le profil</a>
 						</div><br>
 						<div class="col-xs3">
-							<a href="{{path('pass_edit')}}" class="btn btn-primary btn-md ">Modifier le mot de passe</a>
+							<a href="{{path('pass_edit')}}" class="btn btn-primary btn-md mt-2 mb-2  ">Modifier le mot de passe</a>
 						</div>
 					</div>
 
@@ -60,29 +60,6 @@
 				</div>
 
 
-				<div class=" col-xxl-4 col-xl-5 col-lg-6 col-8 col-md-7 reservations bg-white" style="border-radius:10px">
-					<table class="table table condensed  table-striped ">
-						<thead>
-							<tr>
-
-								<th scope="col">Nom de circuit</th>
-								<th scope="col">Total</th>
-								{# <th scope="col">Date</th> #}
-							</tr>
-						</thead>
-						<tbody>
-							{% for cart in carts %}
-								<tr>
-
-									<td>{{cart.circuitName}}</td>
-									<td>{{cart.total}}</td>
-									{# <td>{{cart.createdAt}}</td> #}
-								</tr>
-
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
 			</section>
 		</div>
 	</div>

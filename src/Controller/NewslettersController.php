@@ -9,10 +9,13 @@ use App\Entity\User;
 use App\Form\NewslettersType;   
 use App\Form\NewslettersUsersType;
 use App\Repository\Newsletters\NewslettersRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
 
 class NewslettersController extends AbstractController
 {
@@ -108,7 +111,7 @@ class NewslettersController extends AbstractController
     /**
     * @Route("newsletters/send/{id}", name="newsletters_send")
     */
-    public function send (Newsletters $newsletter, \Swift_Mailer $mailer):Response
+    public function send (Newsletters $newsletter,  \Swift_Mailer $mailer):Response
          {
              
             //  $users = $newsletter->getCategories()->getUsers();
@@ -119,25 +122,25 @@ class NewslettersController extends AbstractController
              foreach ($users as $user) {
                  if($user->getIsValid())
                  {
-                        // $newsltr = $newsletters->findBy($user);
-                        $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
-                        ->setSubject('Inscription à la newsletter')
-                        ->setFrom('contact@senesafari.com')
-                        ->setTo($user->getEmail())
-                        ->setBody(
-                            $this->renderView(
-                                // templates/emails/registration.html.twig
-                                'emails/newsletter.html.twig',
-                                ['user' => $user,
-                                'newsletter' => $newsletter
+                    $message = (new \Swift_Message('Mail de contact - SeneSAFARI'))
+                    ->setSubject('Inscription à la newsletter')
+                    ->setFrom('senesafari@example.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            // templates/emails/registration.html.twig
+                            'emails/newsletter.html.twig',
+                            ['user' => $user,
+                            'newsletter' => $newsletter
 
-                             
-                                  
-                                ]
-                            ),
-                            'text/html'
-                        );
-                        $mailer->send($message);
+                         
+                              
+                            ]
+                        ),
+                        'text/html'
+                    );
+                    $mailer->send($message);
+                       
 
                     }
                 }
@@ -158,7 +161,7 @@ class NewslettersController extends AbstractController
             throw $this->createNotFoundException('Page non trouvée.');
         }
         $em = $this->getDoctrine()->getManager();
-        if(count($user->getCategories())>1){
+        if(count($user->getCategories()) > 1){
             // on le remove de la categorie selectionnee sil est aboonné a plusieurs newsL
             $user->removeCategory($newsletter->getCategories());
             $em->persist($user);
@@ -170,7 +173,7 @@ class NewslettersController extends AbstractController
         $em->flush();
 
         $this->addFlash('delete', 'Newsletter supprimée!');
-        return$this->redirectToRoute('home');
+        return $this->redirectToRoute('home');
     } 
 
 }

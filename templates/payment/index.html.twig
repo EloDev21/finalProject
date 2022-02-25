@@ -5,21 +5,19 @@
 {{parent()}}
 <h1 class="text-center" style=" padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;opacity:0.8;color:#7f5539;font-weight:bold">Vous y êtes presque ...</h1>
 <div class="container mt-5 mb-5  " >
-<div class="row">
-<p>Toute notre équipe vous remercie de </p>
-</div>
-<div class ="row  "style="display:flex;justify-content:center;">
-<div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
+    <div class="row">
+        <p>Toute notre équipe vous remercie de </p>
+    </div>
+    <div class ="row  "style="display:flex;justify-content:center;">
+        <div class ="col-6" style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;" >
 
-<form action="/checkout" method="POST" >
-<button type="submit" class="btn btn-success  btn-lg "> Valider et Payer {{total}} €</button>
-</form>
+             <form action="/checkout" method="POST" >
+                <button type="submit" class="btn btn-success  btn-lg "> Valider et Payer {{total}} €</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-<div>
-</div>
-</div>
-</div>
-</div>
 {% endblock %}
 {% block js %}
 <script src="https://js.stripe.com/v3/"></script>
