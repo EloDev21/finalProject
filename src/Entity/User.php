@@ -27,7 +27,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(
-     *  message = "L'adresse e-mail '{{ value }}' n'est pas valide. Merci de recommencer."
+     *  message = " '{{ value }}' n'est pas une adresse e-mail valide. Merci de recommencer."
      * )
      */
     private $email;
@@ -40,12 +40,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @RollerworksPassword\PasswordStrength(minLength=7, minStrength=4)
+     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*\d).{6,}$/i", message="New password is required to be minimum 6 chars in length and to include at least one letter and one number.")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 20,
+     *      minMessage = "Votre prénom doit être de   4  charactères minimum ",
+     *      maxMessage = "Votre prénom doit être de   20  charactères maximum ",
+     * ) 
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
@@ -56,6 +62,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 20,
+     *      minMessage = "Votre prénom doit être de   4  charactères minimum ",
+     *      maxMessage = "Votre prénom doit être de   20  charactères maximum ",
+     * ) 
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
@@ -66,7 +78,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Regex("/^[0-9]{10}/")
+     * @Assert\Regex(
+     *      pattern="/^[0-9]{10}/",
+     *      match=false,
+     *      message="Votre numéro n'est pas valide. Exemple de numéro valide : 0123456789"
+     * )
      */
     private $phone;
 

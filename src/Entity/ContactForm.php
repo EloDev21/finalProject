@@ -25,8 +25,8 @@ class ContactForm
      * @Assert\Length(
      *      min = 4,
      *      max = 20,
-     *      minMessage = "Votre prénom doit être de  {{ 4 }} charactères minimum ",
-     *      maxMessage = "Votre prénom doit être de  {{ 20 }} charactères maximum ",
+     *      minMessage = "Votre prénom doit être de  4  charactères minimum ",
+     *      maxMessage = "Votre prénom doit être de   20  charactères maximum ",
      * )
      * @Assert\Regex(
      *     pattern="/\d/",
@@ -42,8 +42,8 @@ class ContactForm
      * @Assert\Length(
      *      min = 4,
      *      max = 20,
-     *      minMessage = "Votre prénom doit être de  {{ 4 }} charactères minimum ",
-     *      maxMessage = "Votre prénom doit être de  {{ 20 }} charactères maximum ",
+     *      minMessage = "Votre prénom doit être de  4 charactères minimum ",
+     *      maxMessage = "Votre prénom doit être de   20 charactères maximum ",
      * ) 
      * @Assert\Regex(
      *     pattern="/\d/",
@@ -57,7 +57,7 @@ class ContactForm
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank
      * @Assert\Email(
-     *  message = "L'adresse e-mail '{{ value }}' n'est pas valide. Merci de recommencer."
+     *  message = "L'adresse e-mail ' value ' n'est pas valide. Merci de recommencer."
      * )
      */
     private $email;
