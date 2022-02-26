@@ -11,7 +11,7 @@ class CartService
 {
 
     protected $session;
-    protected $tripsRepository;
+
 
     public function __construct(SessionInterface $session, CircuitsRepository $circuitsRepository)
     {
