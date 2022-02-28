@@ -13,6 +13,7 @@ class AboutController extends AbstractController
      */
     public function index(): Response
     {
+        // redirection vers la page index du dossier about
         return $this->render('about/index.html.twig');
     }
 }

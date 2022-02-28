@@ -35,4 +35,11 @@ class HomeController extends AbstractController
         // throw $this->createNotFoundException('Page perdue ou inexistante!');
         return $this->render('mentions/cgucgv.html.twig');
     }
+    /**
+     * @Route("/cookie", name="cookie")
+     */
+    public function cookie(): Response
+    {
+        return $this->render('base.html.twig');
+    }
 }

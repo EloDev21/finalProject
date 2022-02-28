@@ -101,3 +101,32 @@ h1{
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+.banniere{
+  border-top: solid 1px rgb(216, 30, 30) 5px solid;
+  background: rgba(0, 0, 0, 911);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+.texte-banniere p{
+  font-size: large;
+   
+}
+.button-banniere{
+  padding-top: 15px;
+}
+.button-banniere a{
+  border: solid 1px rgb(216, 30, 30);
+  padding: 10px;
+  background:rgb(216, 30, 30);
+  border-radius: 7px;
+  color: white;
+  text-decoration: none;
+
+}

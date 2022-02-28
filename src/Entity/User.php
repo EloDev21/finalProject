@@ -78,11 +78,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Regex(
-     *      pattern="/^[0-9]{10}/",
-     *      match=false,
-     *      message="Votre numéro n'est pas valide. Exemple de numéro valide : 0123456789"
-     * )
      */
     private $phone;
 

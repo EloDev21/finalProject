@@ -1,3 +1,8 @@
+{# <?php if (isset($_GET['accepter-cookie'])){
+	setCookie('accepter-cookie','true',time() + 365*24*3600);
+	header('Location:./');
+
+} #}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,6 +22,7 @@
 				</title>
 
 				{% block css %}
+				<link href="{{ asset('assets/css/home.css') }}" rel="stylesheet"/>
 				{% endblock %}
 
 			{% block js %}
@@ -24,10 +30,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 			<script src="{{ asset('assets/js/scroll.js') }}"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+				
 			{% endblock %}
 	</head>
 
 	<body>
+
 		{% block nav %}
 			{# mise en place de la navbar dans le fichier base pour l'avoir sur toutes les templates #}
 			<header>
@@ -145,15 +153,15 @@
 				<section class="px-3 pt-0 d-flex justify-content-between">
 					<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-start d-flex align-items-center"> <!-- Facebook -->
 						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" style="transition: inherit !important" role="button">
-						<i class="fa fa-facebook-f links" id="sn" style="color:black"></i>
+						<i class="fa fa-facebook-f links sn" style="color:black"></i>
 						</a>
 			<!-- Twitter -->
-						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" class="" role="button">
-						<i class="fa fa-twitter links" id="sn" style="color:black"></i>
+						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1"  role="button">
+						<i class="fa fa-twitter links sn" style="color:black"></i>
 						</a>
 			<!-- Instagram -->
-						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" class="" role="button">
-						<i class="fa fa-instagram links" id="sn" style="color:black"></i>
+						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" role="button">
+						<i class="fa fa-instagram links sn" style="color:black"></i>
 						</a>
 					</div>
 
@@ -166,8 +174,17 @@
 				</section>
 			</footer>
 			
-			<div id="scrolltotop"><div></div></div>
+			<div class="banniere">
+				<div class="texte-banniere">
+					<p>Notre site utilise des cookies pour une meilleure experience.</p>
+				</div>
+				<div class="button-banniere">
+					<a href ="{{path( 'cookie' )}}">OK, J'accepte ! </a>
+				</div>
+	</div>
 			{% endblock %}
+			
 		</body>
+		
 	
 </html>

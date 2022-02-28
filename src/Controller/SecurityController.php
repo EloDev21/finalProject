@@ -23,15 +23,13 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+     
 
-        // get the login error if there is one
+        // erreur de connexion
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // dernier nom rempli par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
-
+        // on envoie ça à la vue ainsi que l'error
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
@@ -66,12 +64,17 @@ class SecurityController extends AbstractController
             $token = $tokenGenerator->generateToken();
             try {
                 $user->setResetToken($token);
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($user);
-                $entityManager->flush();
+                 // on fait appel à doctrine pour enregistrer en base de données
+                $em = $this->getDoctrine()->getManager();
+                // on prepare la mise en BDD
+                $em->persist($user);
+                // on sauvegarde en BDD
+                $em->flush();
             } 
-            catch (\Exception $error) {
+            catch (\Exception $error) { 
+                // on envoie un flash avec l'erreur
                 $this->addFlash('warning', `Une erreur est survenue :` . $error->getMessage());
+                // on retourne à la page de connexion
                 return $this->redirectToRoute('app_login');
             }
             //    generation de l'url de reinitialisation de mdp 

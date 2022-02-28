@@ -1,6 +1,9 @@
 {% extends "base.html.twig" %}
 {% block title %}Accès interdit
 {% endblock %}
+{% block css %}
+<link href="{{ asset('assets/css/error.css') }}" rel="stylesheet"/>
+{% endblock %}
 {% block content %}
 	<div class="container-fluid">
 		<section class="d-flex justify-content-center flex-column align-items-center">

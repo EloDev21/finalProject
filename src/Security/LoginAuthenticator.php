@@ -31,9 +31,12 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): PassportInterface
     {
+        // recuperation de l'email de l'utilisateur pour le connecter
         $email = $request->request->get('email', '');
-
+        // on set la valeur de notre requette
         $request->getSession()->set(Security::LAST_USERNAME, $email);
+        // on retourne les informations concernat notre user
+
 
         return new Passport(
             new UserBadge($email),
@@ -49,15 +52,9 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
         // redirection une fois que nous sommes connectés
-
-        // For example:
-        //return new RedirectResponse($this->urlGenerator->generate('some_route'));
         return new RedirectResponse($this->urlGenerator->generate('circuit'));
-        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
-
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);

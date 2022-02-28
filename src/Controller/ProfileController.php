@@ -24,7 +24,14 @@ class ProfileController extends AbstractController
      */
     public function index(): Response
     {
+        // on cree une variable $profiles puis on utilise Doctrine pour acceder à notre BDD 
+        // plus précisèment à la table circuits à laquelle on applique la requete SQL findAll()
+        // pour afficher tous les elements présents dans notre table user
+        // on envoie $profiles à la vue index du dossier profile
+        // on voit les parametres profiles et le total à notre vue
+
         $profiles = $this->getDoctrine()->getRepository(User::class)->findAll();
+        // nombre total d'utilsateurs
         $total= count($profiles);
        
         return $this->render('profile/index.html.twig', [
@@ -41,16 +48,17 @@ class ProfileController extends AbstractController
      */
     public function remove($id)
     {
-      
-         
+    //   on utilise doctrine et sql pour trouver l'utilisateur en question   
         $profil = $this->getDoctrine()->getRepository(User::class)->find($id);
+
         $em = $this->getDoctrine()->getManager();
+        // on attribue l'id de notre élément séléctionné à la fonction remove
         $em->remove($profil);
+        // on enregistre les modifications en BDD
         $em->flush();
         $this->addFlash('message', 'Utilisateur supprimé avec succès!!! ');
+        // redirection vers la route nommée profiles
         return $this->redirectToRoute('profiles') ;
-           
-        
     }
     /**
      * @Route("/profile_detail", name="profile_detail")
