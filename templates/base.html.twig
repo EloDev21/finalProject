@@ -1,11 +1,58 @@
-{# <?php if (isset($_GET['accepter-cookie'])){
-	setCookie('accepter-cookie','true',time() + 365*24*3600);
-	header('Location:./');
 
-} #}
 <!DOCTYPE html>
-<html>
+<html lang="FR">
 	<head>
+
+
+		{# script tarteaucitron pour que les cookies soient chargées avant le chargement totale de la page #}
+		<script src="{{ asset('assets/js/tarteaucitron/tarteaucitron.js') }}"></script>
+
+		<script type="text/javascript">
+		tarteaucitron.init({
+  			"privacyUrl": "", /*  url de la page de politique privée */
+		    "hashtag": "#tarteaucitron", /* Ouvre le panneau contenant ce hashtag */
+  			"cookieName": "tarteaucitron", /* Cookie name */
+
+  			"orientation": "middle", /*Position de la banniere (top- bottom) */
+
+  			"groupServices": false, /* Group services par catégorie */
+				   
+  			"showAlertSmall": false, /*Montre la petite bannière en bas à droite */
+  			"cookieslist": false, /* montre la liste des cookies */
+				   
+  			"closePopup": false, /* Affiche une X sur la banniere */
+
+  			"showIcon": true, /* Affiche l'icone cookie qui gere les cookies */
+ 			 //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+  			"iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+  			"adblocker": false, /* Afficher un message si un bloqueur  de pubs est activé */
+				   
+  			"DenyAllCta" : true, /* Affiche le bouton refuser */
+  			"AcceptAllCta" : true, /* Afficher le bouton Accpeter quand highPrivacy est à true  */
+  			"highPrivacy": true, /* desactiver le consentement automatique -- obligatoire aujourd'hui pour les visiteur de l'U.E*/
+				   
+  			"handleBrowserDNTRequest": false, /*si la protection de suivi du navigateur est activé, tout interdire */
+
+ 			 "removeCredit": false, /* Retirer le lien vers tarteaucitron.js */
+  			"moreInfoLink": true, /*Afficher le lien "Voir Plus d'infos" */
+
+  			"useExternalCss": false, /* si c'est faux, le fichier tarteaucitron.css  sera chargé */
+ 			"useExternalJs": false, /* si c'est faux, le fichier tarteaucitron.js sera chargé */
+
+ 			 //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+				  
+  			"readmoreLink": "", /* changer le lien lire plus par defaut 	 */
+
+  			"mandatory": true, /* afficher un message des cookies essentiels*/
+			});
+			tarteaucitron.user.gtagUa = 'UA-97102682-4';
+			// tarteaucitron.user.gtagCrossdomain = ['example.com', 'example2.com'];
+			tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+			(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+		 
+		</script>
+		
 
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,7 +85,8 @@
 	</head>
 
 	<body>
-
+		{# <div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v13.0" nonce="0YNQX96Q"></script> #}
 		{% block nav %}
 			{# mise en place de la navbar dans le fichier base pour l'avoir sur toutes les templates #}
 			<header>
@@ -119,6 +167,7 @@
 		{% endblock %}
 		{% block content %}
 		{% endblock %}
+		{# <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div> #}
 		{% block footer %}
 
 			<footer class="text-center text-lg-start text-black d-flex flex-column" style="opacity:0.98;color:black;background-color: #cfd6e2 ">
@@ -177,15 +226,6 @@
 					</div>
 				</section>
 			</footer>
-			
-			{# <div class="banniere">
-				<div class="texte-banniere">
-					<p>Notre site utilise des cookies pour une meilleure experience.</p>
-				</div>
-				<div class="button-banniere">
-					<a href ="{{path( 'cookie' )}}">OK, J'accepte ! </a>
-				</div>
-	</div> #}
 			{% endblock %}
 			
 		</body>

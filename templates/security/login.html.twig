@@ -34,7 +34,7 @@
 		<div class=" col-xxl-6 col-xl-7 col-lg-6 col-10 col-md-9 " style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
 			<form method="post">
 				<h1 class="h3 mb-3 font-weight-normal text-center">
-					<strong>Bonjour!<strong></h1>
+					<strong>Bonjour !</h1></strong></h1>
 						{% if error %}
 							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 						{% endif %}
@@ -47,7 +47,7 @@
 							</div>
 						{% endif %}
 
-						<h5>Envie de nous rejoindre ?<a href="{{path('app_register')}}" style="color:blue;text-decoration:underline">Créer un compte</a></h5>
+						<h5>Envie de nous rejoindre ? <a href="{{path('app_register')}}" style="color:blue;text-decoration:underline">Créer un compte</a></h5>
 						<h6>Merci de vous connecter pour découvrir toutes nos fonctionnalités.</h6>
 						<label for="inputEmail">Email</label><br>
 						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
