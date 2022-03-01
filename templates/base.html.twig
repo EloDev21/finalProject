@@ -26,12 +26,15 @@
 				{% endblock %}
 
 			{% block js %}
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-			<script src="{{ asset('assets/js/scroll.js') }}"></script>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+			<script src="{{ asset('assets/js/cookies.js') }}"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 				
 			{% endblock %}
+			{# favicon #}
+			<link rel="icon" type="image/x-icon" href="{{asset('/images/circuits/logTrans.png')}} ">
 	</head>
 
 	<body>
@@ -42,7 +45,7 @@
 				<nav class="navbar navbar-expand-lg navbar-light  " style="opacity:0.9; background-color: #cfd6e2">
 					<div class="container-fluid justify-content-center">
 						<a class="navbar-brand logo" href="{{path('home')}}">
-							<img src="https://res.cloudinary.com/dqdoissmb/image/upload/v1638832777/safariSaly/logo2_ejsqpm.png" alt="logoNavbar"/>
+							<img src="{{asset('/images/circuits/logTrans.png')}} " style="height:60px" alt="logoNavbar"/>
 						</a>
 						<h5 class="clignote me-3">Site test</h5>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,7 +125,7 @@
 				<section class=" px-3 d-flex align-items-center">
 					<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 ">
 						<a href="{{path('newsletters')}}" class=" btn newsButton border-secondary newsletter btn-transparent btn-lg text-dark">
-							<i class="fa fa-envelope-square "></i>S'inscrire à la newsletter
+							<i class="fa fa-envelope-square  "></i> S'inscrire à la newsletter
 						</a>
 					</div>
 				    <hr class="w-100 mt-3 clearfix d-md-none"/>
@@ -147,19 +150,20 @@
 						<a href="{{ path('conditions_d_utilisation') }}" class="nav-link" style="font-size:1.3rem">CGU-CGV</a>
 					</div>
 				</section>
-	<!-- Section: Links -->
+				<!-- Section: Links -->
 				<hr class="my-3">
-	<!-- Section: Copyright -->
+				<!-- Section: Copyright -->
 				<section class="px-3 pt-0 d-flex justify-content-between">
-					<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-start d-flex align-items-center"> <!-- Facebook -->
+					<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-start d-flex align-items-center">
+				<!-- Facebook -->
 						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" style="transition: inherit !important" role="button">
 						<i class="fa fa-facebook-f links sn" style="color:black"></i>
 						</a>
-			<!-- Twitter -->
+				<!-- Twitter -->
 						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1"  role="button">
 						<i class="fa fa-twitter links sn" style="color:black"></i>
 						</a>
-			<!-- Instagram -->
+				<!-- Instagram -->
 						<a href="https://www.google.fr/" target="blank" class="btn btn-outline-warning btn-lg btn-floating m-1" role="button">
 						<i class="fa fa-instagram links sn" style="color:black"></i>
 						</a>
@@ -174,14 +178,14 @@
 				</section>
 			</footer>
 			
-			<div class="banniere">
+			{# <div class="banniere">
 				<div class="texte-banniere">
 					<p>Notre site utilise des cookies pour une meilleure experience.</p>
 				</div>
 				<div class="button-banniere">
 					<a href ="{{path( 'cookie' )}}">OK, J'accepte ! </a>
 				</div>
-	</div>
+	</div> #}
 			{% endblock %}
 			
 		</body>
