@@ -1,1 +1,0 @@
-Cookies.set('senesafari', 'true')
