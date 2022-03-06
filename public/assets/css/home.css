@@ -68,9 +68,12 @@
     color:red
 }
 
-h4,p{
-    color: white;
+h4{
+    color:black !important;
+    font-weight: bold;
 }
 p{
     font-size: 16px;
+    color:black;
+    font-weight: bold;
 }
