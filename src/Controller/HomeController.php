@@ -27,7 +27,7 @@ class HomeController extends AbstractController
         return $this->render('mentions/index.html.twig');
     }
     /**
-     * @Route("/conditions_d_utilisation", name="conditions_d_utilisation")
+     * @Route("/conditions-d-utilisation", name="conditions-d-utilisation")
      */
     public function cgu(): Response
     {
